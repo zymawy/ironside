@@ -66,6 +66,10 @@ if (COMPILE == 'admin' || COMPILE == 'all') {
     mix.styles([
         pathCSS + 'style.css',
     ], public + '/css/admin/style.css')
+    //style
+    mix.styles([
+        pathCSS + 'style-rtl.css',
+    ], public + '/css/admin/style-rtl.css')
     //animate
     mix.styles([
         pathCSS + 'animate.css',
@@ -99,7 +103,6 @@ if (COMPILE == 'admin' || COMPILE == 'all') {
     mix.styles([
 
         // Include All From Lib Folder...
-
 
         //-- Amchart Assets...
         pathCSS + 'lib/amchart/export.css',
