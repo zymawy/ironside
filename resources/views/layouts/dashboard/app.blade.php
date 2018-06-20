@@ -10,8 +10,9 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <title>Ironside - Laravel Admin Dashboard Template - Created By Zymawy</title>
-    <link rel="stylesheet" href="/css/admin/bootstrap.css"> {{--
-    <link rel="stylesheet" href="/css/admin/admin.css"> --}}
+    {{-- <link rel="stylesheet" href="/css/admin/bootstrap.css"> --}}
+    <link rel="stylesheet" href="/css/app.css">
+    {{-- <link rel="stylesheet" href="/css/admin/admin.css"> --}}
     <link rel="stylesheet" href="/css/admin/calendar2.css">
     <link rel="stylesheet" href="/css/admin/carousel.css"> @yield('css')
 
@@ -21,6 +22,7 @@
         @else
         <link rel="stylesheet" href="/css/admin/style.css">
     @endif
+    <link rel="stylesheet" href="/css/override.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>

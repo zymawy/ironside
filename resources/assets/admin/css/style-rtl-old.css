@@ -215,21 +215,21 @@ h6 {
 }
 @media (min-width: 1024px) {
   .page-wrapper {
-    margin-right: 240px;
+    margin-left: 240px;
   }
   .footer {
-    right: 240px;
+    left: 240px;
   }
 }
 @media (max-width: 1023px) {
   .page-wrapper {
-    margin-right: 60px;
+    margin-left: 60px;
     -webkit-transition: 0.2s ease-in;
     -o-transition: 0.2s ease-in;
     transition: 0.2s ease-in;
   }
   .footer {
-    right: 60px;
+    left:60px;
   }
   .widget-app-columns {
     -webkit-column-count: 1;
@@ -367,7 +367,7 @@ h6 {
   .col-xlg-7,
   .col-xlg-8,
   .col-xlg-9 {
-    float: right;
+    float: left;
   }
   .col-xlg-12 {
     -webkit-box-flex: 0;
@@ -1441,7 +1441,7 @@ textarea {
     padding-top: 0;
   }
   .page-titles .breadcrumb {
-    float: right;
+    float: left;
   }
   .card-group .card:first-child {
     border-left: 1px solid rgba(0, 0, 0, 0.03);
@@ -1456,7 +1456,7 @@ textarea {
     line-height: 40px;
   }
   .mini-sidebar .page-wrapper {
-    margin-right: 60px;
+    margin-left: 60px;
   }
   .mini-sidebar .footer {
     right: 60px;
@@ -1526,13 +1526,12 @@ textarea {
   width: 240px;
   height: 100%;
   top: 0;
-  right: 0;
+  left: 0;
   z-index: 20;
   padding-top: 60px;
   background: #fff;
   -webkit-box-shadow: -1px 0 20px rgba(0, 0, 0, 0.08);
   box-shadow: -1px 0 20px rgba(0, 0, 0, 0.08);
-  text-align: right
 }
 .fix-sidebar .left-sidebar {
   position: fixed;
@@ -1627,7 +1626,6 @@ textarea {
   display: inline-block;
   vertical-align: middle;
   color: #99abb4;
-  float: right;
 }
 .sidebar-nav > ul > li > a .label {
   position: absolute;
@@ -1709,9 +1707,9 @@ textarea {
     top: 38px;
     width: 200px;
     z-index: 1001;
-    background: #ff3300;
+    background: #f2f6f8;
     display: none;
-    padding-left: 1px;
+    padding-right: 1px;
   }
   .mini-sidebar .sidebar-nav #sidebarnav > li:hover > ul {
     height: auto !important;
@@ -1735,7 +1733,7 @@ textarea {
     display: none;
   }
   .mini-sidebar .sidebar-nav #sidebarnav > li > a {
-    padding: 12px 18px;
+    padding: 9px 18px;
     width: 50px;
   }
   .mini-sidebar .user-profile {
@@ -2041,7 +2039,7 @@ textarea {
   left: 0;
 }
 .footer {
-  right: 240px;
+  left: 240px;
 }
 #chartdiv3 {
   height: 450px;
@@ -6577,10 +6575,10 @@ tbody tr td:last-child {
   width: 30px;
 }
 .media-text-right {
-  text-align: right;
+  text-align: left;
 }
 .media-text-left {
-  text-align: left;
+  text-align: right;
 }
 .boxshadow-none {
   box-shadow: none;

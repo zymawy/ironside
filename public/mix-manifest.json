@@ -1,4 +1,7 @@
 {
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/override.css": "/css/override.css",
     "/css/admin/style.css": "/css/admin/style.css",
     "/css/admin/style-rtl.css": "/css/admin/style-rtl.css",
     "/css/admin/animate.css": "/css/admin/animate.css",

@@ -1,21 +1,21 @@
-@extends('layouts.admin.app')
+@extends('layouts.dashboard.app')
 @section('content')
 
     @if(App::isLocale('ar'))
 
-        @include('layouts.admin.includes.header-rtl')
+        @include('layouts.dashboard.includes.header-rtl')
 
     @else
 
-    @include('layouts.admin.includes.header')
+    @include('layouts.dashboard.includes.header')
 
     @endif
 
-    @include('layouts.admin.includes.sidebar')
+    @include('layouts.dashboard.includes.sidebar')
 <!-- Page wrapper  -->
 <div class="page-wrapper">
 
-    @include('layouts.admin.includes.breadcrumb')
+    @include('layouts.dashboard.includes.breadcrumb')
     <!-- Container fluid  -->
     <div class="container-fluid">
         <!-- Start Page Content -->
@@ -409,7 +409,7 @@
         <!-- End PAge Content -->
     </div>
 
-    @include('layouts.admin.includes.footer')
+    @include('layouts.dashboard.includes.footer')
 </div>
 <!-- End Container fluid  -->
 @endsection

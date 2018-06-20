@@ -1,0 +1,34 @@
+.dropdown-menu-right {
+    right:auto;
+    left: 0;
+}
+
+.dropdown-menu-lang {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: right;
+    min-width: 2rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem -7px 0;
+    font-size: 0.9rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+
+.header ul.dropdown-lang {
+    min-width:0;
+
+    li {
+        height: 22px;
+    }
+
+
+}

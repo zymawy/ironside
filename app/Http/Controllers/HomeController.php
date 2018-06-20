@@ -30,7 +30,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function admin()
+    public function dashboard()
     {
         return view('admin.dashboard.index');
     }

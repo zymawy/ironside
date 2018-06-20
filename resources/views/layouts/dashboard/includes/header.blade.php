@@ -255,6 +255,42 @@
                         </ul>
                     </div>
                 </li>
+                <!-- Change Langauges -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{-- <img src="images/users/5.jpg" alt="user" class="profile-pic" /> --}}
+                        <i class="flag-icon flag-icon-us"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lang dropdown-menu-right animated zoomIn">
+                        <ul class="dropdown-lang">
+                            <li>
+                                <a href="#">
+                                <i class="flag-icon flag-icon-ng"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="flag-icon flag-icon-sa"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="flag-icon flag-icon-gt"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="flag-icon flag-icon-ru"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="flag-icon flag-icon-ca"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>

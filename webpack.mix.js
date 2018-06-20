@@ -441,5 +441,6 @@ if (COMPILE == 'admin' || COMPILE == 'all') {
     ], public + '/js/admin.js');
 }
 
-// mix.js('resources/assets/js/app.js', 'public/js')
-//    .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js('resources/assets/js/app.js', 'public/js')
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .sass('resources/assets/sass/override.scss', 'public/css');
