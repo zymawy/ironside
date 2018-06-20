@@ -25,6 +25,7 @@ return [
     'header.notifications-checkAll' => 'Check all notifications',
     'header.notifications-have' => 'You have 4 new messages',
     'header.email-see' => 'See all e-Mails',
+    'header.setlang' => 'Select Language',
 
     //Dashboard Sidebar
 

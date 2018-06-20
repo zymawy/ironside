@@ -11,11 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/**
+ * All routes in which you want to set language
+ * should be under the localizer's middleware
+ * to set at each request de App locale.
+ */
+Route::group(['middleware' => 'localizer'], function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');

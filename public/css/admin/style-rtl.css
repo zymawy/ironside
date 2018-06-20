@@ -249,6 +249,14 @@ h6 {
   height: 88px;
   width: 88px;
 }
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+.dropdown-menu-right {
+    right:auto;
+    left: 0;
+}
 .hide {
   display: none;
 }

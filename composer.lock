@@ -4,8 +4,161 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5bca48e56bbf3a25645858fcab9c285",
+    "content-hash": "5b26811bbb541c37514f5dbb0eb1b47d",
     "packages": [
+        {
+            "name": "aitor24/localizer",
+            "version": "1.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/24aitor/Localizer.git",
+                "reference": "3b7dd3b743555e0d1e5351cf2c59f96c19d92c4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/24aitor/Localizer/zipball/3b7dd3b743555e0d1e5351cf2c59f96c19d92c4f",
+                "reference": "3b7dd3b743555e0d1e5351cf2c59f96c19d92c4f",
+                "shasum": ""
+            },
+            "require": {
+                "consoletvs/identify": "1.*",
+                "laravel/framework": "^5.4",
+                "php": ">=5.6.4"
+            },
+            "type": "translations",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Aitor24\\Localizer\\LocalizerServiceProvider"
+                    ],
+                    "aliases": {
+                        "Localizer": "Aitor24\\Localizer\\Facades\\LocalizerFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Aitor24\\Localizer\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aitor Riba",
+                    "email": "contact@aitorriba.com",
+                    "homepage": "https://aitorriba.com/",
+                    "role": "author"
+                }
+            ],
+            "description": "Pakcage to change easily default locale in laravel 5.4",
+            "time": "2017-12-14T17:09:38+00:00"
+        },
+        {
+            "name": "consoletvs/identify",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ConsoleTVs/Identify.git",
+                "reference": "21b8abb146b30a124df2737e46f217272d7039a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ConsoleTVs/Identify/zipball/21b8abb146b30a124df2737e46f217272d7039a4",
+                "reference": "21b8abb146b30a124df2737e46f217272d7039a4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.5.9",
+                "sinergi/browser-detector": "6.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Unicodeveloper\\Identify\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "unicodeveloper",
+                    "email": "prosperotemuyiwa@gmail.com"
+                }
+            ],
+            "description": "A Laravel 5 Package Provider to Identify/detect a user's browser, device, operating system and Language",
+            "keywords": [
+                "Evangelist",
+                "browser",
+                "detect",
+                "github",
+                "identify",
+                "language",
+                "laravel",
+                "open source",
+                "operating system"
+            ],
+            "time": "2017-04-24T17:27:25+00:00"
+        },
+        {
+            "name": "creativeorange/gravatar",
+            "version": "v1.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/creativeorange/gravatar.git",
+                "reference": "4459b68a853ffdb1c2abbf9419214df46371889b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/4459b68a853ffdb1c2abbf9419214df46371889b",
+                "reference": "4459b68a853ffdb1c2abbf9419214df46371889b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Creativeorange\\Gravatar\\GravatarServiceProvider"
+                    ],
+                    "aliases": {
+                        "Gravatar": "Creativeorange\\Gravatar\\Facades\\Gravatar"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Creativeorange\\Gravatar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jaco Tijssen",
+                    "email": "jaco@creativeorange.nl",
+                    "homepage": "https://www.creativeorange.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Gravatar for Laravel 5.0.x through 5.5.x package for retrieving gravatar image URLs or checking the existance of an image.",
+            "keywords": [
+                "avatar",
+                "gravatar",
+                "laravel"
+            ],
+            "time": "2018-03-29T22:10:58+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -1265,6 +1418,62 @@
                 "uuid"
             ],
             "time": "2018-01-20T00:28:24+00:00"
+        },
+        {
+            "name": "sinergi/browser-detector",
+            "version": "6.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sinergi/php-browser-detector.git",
+                "reference": "7fcda47cf2690fb978c8cee3ba7304b7dca1bcc7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sinergi/php-browser-detector/zipball/7fcda47cf2690fb978c8cee3ba7304b7dca1bcc7",
+                "reference": "7fcda47cf2690fb978c8cee3ba7304b7dca1bcc7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "6.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sinergi\\BrowserDetector\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Schuld",
+                    "email": "chris@chrisschuld.com",
+                    "homepage": "http://chrisschuld.com"
+                },
+                {
+                    "name": "Gabriel Bull",
+                    "email": "me@gabrielbull.com"
+                }
+            ],
+            "description": "Detecting the user's browser, operating system and language.",
+            "keywords": [
+                "browser",
+                "detection",
+                "language",
+                "operating system",
+                "os"
+            ],
+            "time": "2016-07-28T15:35:24+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

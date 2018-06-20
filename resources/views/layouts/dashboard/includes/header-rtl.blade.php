@@ -167,7 +167,9 @@
                 <!-- End Messages -->
                 <!-- Profile -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/users/5.jpg" alt="user" class="profile-pic" /></a>
+                    <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{{ Gravatar::get( auth()->user()->email ) }}" alt="user" class="profile-pic" />
+                    </a>
                     <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                         <ul class="dropdown-user">
                             <li><a href="#"><i class="ti-user"></i> Profile</a></li>
@@ -181,36 +183,20 @@
                 <!-- Change Langauges -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{-- <img src="images/users/5.jpg" alt="user" class="profile-pic" /> --}}
-                        <i class="flag-icon flag-icon-us"></i>
+                    <i class="ti-world"></i>
+                    <i class="">{{ Localizer::getLanguage() }}</i>
+
                     </a>
                     <div class="dropdown-menu dropdown-menu-lang dropdown-menu-right animated zoomIn">
                         <ul class="dropdown-lang">
-                            <li>
-                                <a href="#">
-                                <i class="flag-icon flag-icon-ng"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="flag-icon flag-icon-sa"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="flag-icon flag-icon-gt"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="flag-icon flag-icon-ru"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="flag-icon flag-icon-ca"></i>
-                                </a>
-                            </li>
+                            <li>@lang('dashboard.header.setlang')</li>
+                            @foreach (Localizer::allowedLanguages() as $code => $value)
+                                <li>
+                                    <a href="{{ Localizer::setRoute($code) }}">
+                                    <i class="ti-world"></i> {{ $value }}
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>

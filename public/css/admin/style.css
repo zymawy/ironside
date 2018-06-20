@@ -98,6 +98,11 @@ html {
   min-height: 100%;
   background: #ffffff;
 }
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
 a:focus,
 a:hover {
   text-decoration: none;

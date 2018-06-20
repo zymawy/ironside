@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -148,8 +148,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
+         * Added Package Service Providers From Me...
          */
+        Aitor24\Localizer\LocalizerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -208,6 +209,13 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // Added Facedes From Me
+        'Localizer' => Aitor24\Localizer\Facades\LocalizerFacade::class,
+        'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
+
+
+
 
     ],
 

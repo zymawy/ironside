@@ -1,6 +1,5 @@
-.dropdown-menu-right {
-  right: auto;
-  left: 0;
+.navbar-expand-md .navbar-nav .dropdown-menu-lang {
+  width: 138px;
 }
 
 .dropdown-menu-lang {
