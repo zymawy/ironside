@@ -1,0 +1,55 @@
+id,ar_title,en_title,ar_description,en_description,slug,url,icon,ar_help_index_title,en_help_index_title,ar_help_index_content,en_help_index_content,ar_help_create_title,en_help_create_title,ar_help_create_content,en_help_create_content,ar_help_edit_title,en_help_edit_title,ar_help_edit_content,en_help_edit_content,list_order,is_hidden,parent_id,url_parent_id
+1,الرئيسية,Dashboard,الرئيسية,Dashboard,/,/dashboard,dashboard,,,,,,,,,,,,,1,0,0,0
+2,احصائيات قوقل,Google Analytics,احصائيات قوقل,Google Analytics,analytics,/dashboard/analytics,line-chart,,,,,,,,,,,,,2,0,0,0
+3,ملخص,Summary,ملخص,,,/dashboard/analytics,star-half-o,,,,,,,,,,,,,1,0,2,2
+4,الاجهزة,Devices,الاجهزة,,devices,/dashboard/analytics/devices,tablet,,,,,,,,,,,,,2,0,2,2
+5,إحصائيات سكانية,Demographics,إحصائيات سكانية,,demographics,/dashboard/analytics/demographics,female,,,,,,,,,,,,,5,0,2,2
+6,الزيارات والإحالات,Visits and Referrals,الزيارات والإحالات,,visits-and-referrals,/dashboard/analytics/visits-and-referrals,cloud,,,,,,,,,,,,,3,0,2,2
+7,الاهتمامات,Interests,الاهتمامات,,interests,/dashboard/analytics/interests,heart,,,,,,,,,,,,,4,0,2,2
+8,الحسابات,Accounts,الحسابات,Accounts,accounts,/dashboard/accounts,users,,,,,,,,,,,,,3,0,0,0
+9,المستخدمين,Clients,المستخدمين,Clients,clients,/dashboard/accounts/clients,users,,,,,,,,,,,,,1,0,8,8
+10,المدراء,Administrators,المدراء,,administrators,/dashboard/accounts/administrators,users,,,,,,,,,,,,,2,0,8,8
+11,دعوة مدير,Admin Invites,دعوة مدير,,invites,/dashboard/accounts/administrators/invites,user,,,,,,,,,,,,,3,1,10,10
+12,البروفايل,Profile,البروفايل,,profile,/dashboard/profile,user,,,,,,,,,,,,,4,1,0,0
+13,الاعدادات,Settings,الاعدادات,,settings,/dashboard/settings,cogs,,,,,,,,,,,,,15,0,0,0
+14,الانتقالات,Navigation,الانتقالات,,navigation,/dashboard/settings/navigation,align-center,Help,Help,Helpfull text here - explaining what u can do here...,Helpfull text here - explaining what u can do here...,Information,Information,Please complete the form to create the navigation,Please complete the form to create the navigation,,,,,1,0,13,13
+15,ترتيب الانتقالات,Navigation Order,ترتيب الانتقالات,Navigation Order,order,/dashboard/settings/navigation/order,list-ol,,,,,,,,,,,,,2,0,14,14
+16,الادوار,Roles,الادوار,Roles,roles,/dashboard/settings/roles,universal-access,,,,,,,,,,,,,3,0,13,13
+17,الرخص,Permission,الرخص,Permission,permission,/dashboard/settings/permission,universal-access,,,,,,,,,,,,,4,0,13,13
+18,الاعدادات,Settings,الاعدادات,Settings,settings,/dashboard/settings/settings,cog,,,,,,,,,,,,,4,0,13,13
+19,الصفحات,Pages,الصفحات,Pages,pages,/dashboard/pages,navicon,Help,Help,All the menu items for the website.,All the menu items for the website.,Help,Help,You can set the HTML Title and HTML Description.<br/>You can select the parent (under which navigation is this item).<br/>You can specify if the menu is hidden.,You can set the HTML Title and HTML Description.<br/>You can select the parent (under which navigation is this item).<br/>You can specify if the menu is hidden.,,,,,6,1,0,0
+20,ترتيب الصفحات,Navigation Order,ترتيب الصفحات,Navigation Order,order,/dashboard/pages/order,list-ol,,,,,,,,,,,,,1,1,16,16
+21,التفارير,Reports,التفارير,,reports,/dashboard/reports,bar-chart,,,,,,,,,,,,,7,0,0,0
+22,ملخص التقارير,Summary,ملخص التقارير,,summary,/dashboard/reports/summary,align-left,,,,,,,,,,,,,1,0,21,21
+23,تواصل معنا,Contact Us,تواصل معنا,,contact-us,/dashboard/reports/contact-us,comments-o,,,,,,,,,,,,,2,0,21,21
+24,اخر النشاطات,Latest Activity,اخر النشاطات,Latest Activity,latest-activity,/dashboard/latest-activity,history,,,,,,,,,,,,,8,0,0,0
+25,نشاطات المستخدمين,Website,نشاطات المستخدمين,,website,/dashboard/latest-activity/website,home,,,,,,,,,,,,,1,0,24,24
+26,نشاطات المدراء,Dashboard,نشاطات المدراء,Dashboard,dashboard,/dashboard/latest-activity/dashboard,lock,,,,,,,,,,,,,2,0,24,24
+27,عام,General,عام,General Website,general,/dashboard/general,cubes,,,,,,,,,,,,,9,0,0,0
+28,البنارات,Banners,البنارات,Banners,banners,/dashboard/general/banners,image,,,,,,,,,,,,,27,0,27,27
+29,النشرة الاخبارية,Newsletter,النشرة الاخبارية,Newsletter,newsletter,/dashboard/newsletter,newspaper-o,,,,,,,,,,,,,10,0,0,0
+30,المشتركين,Subscribers,المشتركين,Newsletter Subscribers,subscribers,/dashboard/newsletter/subscribers,users,,,,,,,,,,,,,1,0,29,29
+31,المدونة,Blog,المدونة,Blog,blog,/dashboard/blog,newspaper-o,,,,,,,,,,,,,11,1,0,0
+32,المقالات,Articles,المقالات,Articles,articles,/dashboard/blog/articles,newspaper-o,,,,,,,,,,,,,1,0,31,31
+33,اقسام المقالة,Categories,اقسام المقالة,Categories,categories,/dashboard/blog/categories,cubes,,,,,,,,,,,,,2,0,31,31
+34,معرض الصور,Gallery,معرض الصور,Images,photos,/dashboard/photos,image,,,,,,,,,,,,,12,1,0,0
+35,الصور,Photos,الصور,Photos,,/dashboard/photos,image,,,,,,,,,,,,,1,0,34,34
+36,الالبوم,Albums,الالبوم,Albums,albums,/dashboard/photos/albums,cubes,,,,,,,,,,,,,2,0,34,34
+37,مستندات,Documents,مستندات,Documents,documents,/dashboard/documents,files-o,,,,,,,,,,,,,13,0,0,0
+38,اقسام المستندات,Categories,اقسام المستندات,Categories,categories,/dashboard/documents/categories,cubes,,,,,,,,,,,,,1,0,37,37
+39,المستندات,Documents,المستندات,Documents,,/dashboard/documents,file-o,,,,,,,,,,,,,2,0,37,37
+40,أخبار وأحداث,News and Events,أخبار وأحداث,News and Events,news-and-events,/dashboard/news-and-events,newspaper-o,,,,,,,,,,,,,14,1,0,0
+41,أخبار وأحداث,News and Events,أخبار وأحداث,News and Events,news,/dashboard/news-and-events/news,newspaper-o,,,,,,,,,,,,,1,0,40,40
+42,اقسام الأخبار وألاحداث,Categories,اقسام الأخبار وألاحداث,Categories,categories,/dashboard/news-and-events/categories,cubes,,,,,,,,,,,,,2,0,40,40
+43,الدورات,Courses,الدورات,Courses,courses,/dashboard/courses,history,,,,,,,,,,,,,16,0,0,0
+44,المستويات,Levels,المستويات,Levels,levels,/dashboard/levels,sort-numeric-up,,,,,,,,,,,,,1,0,43,0
+45,القوائم,Series,القوائم,Series,series,/dashboard/series,sort-amount-up,,,,,,,,,,,,,2,0,43,0
+46,الدروس,Lessons,الدروس,Lessons,lessons,/dashboard/lessons,sort-alpha-up,,,,,,,,,,,,,3,0,43,0
+47,الاختبارات,Tests,الاختبارات,Tests,tests,/dashboard/tests,edit,,,,,,,,,,,,,17,0,0,0
+48,الاختبارات,Tests,الاختبارات,Tests,tests,/dashboard/tests,edit,,,,,,,,,,,,,1,0,47,0
+49,اجوبة الاختبارات,TestsAnswer,اجوبة الاختبارات,TestsAnswer,testsanswer,/dashboard/testsanswer,trophy,,,,,,,,,,,,,2,0,47,0
+50,الاسئلة,Question,الاسئلة,Question,question,/dashboard/question,question,,,,,,,,,,,,,18,0,0,0
+51,الاسئلة,Question,الاسئلة,Question,question,/dashboard/questions,question,,,,,,,,,,,,,1,0,50,50
+52,خيارات الاسئلة,Questions Option,خيارات الاسئلة,Questions Option,questionsoption,/dashboard/questionsoptions,,,,,,,,,,,,,,2,0,50,50
+53,الاشتراكات,Subscription Plans,الاشتراكات,Subscription Plans,subscription-plans,/dashboard/subscription-plans,money,,,,,,,,,,,,,19,0,0,0
+54,البيت,Subscription Plans,الاشتراكات,Subscription Plans,subscription-plans,/,money,,,,,,,,,,,,,19,0,0,0

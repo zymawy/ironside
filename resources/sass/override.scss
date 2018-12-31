@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Amiri:400,400i,700,700i|Cairo:200,300,400,600,700,900&subset=arabic,latin-ext');
+body, input, textarea {
+    font-family: 'Cairo', 'Amiri', serif;
+}
+
+body {
+    font-family: 'Cairo', 'Amiri', serif !important;
+}
+
+.navbar-expand-md .navbar-nav .dropdown-menu-lang {
+    width: 138px;
+}
+
+
+.dropdown-menu-lang {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: right;
+    min-width: 2rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem -7px 0;
+    font-size: 0.9rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+
+.header ul.dropdown-lang {
+    min-width:0;
+
+    li {
+        height: 22px;
+    }
+}
+.browse
+{
+    height: 30px;
+    padding: 5px 10px !important;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    background-color: #f4f4f4;
+    color: #444;
+    border-color: #ddd
+}
