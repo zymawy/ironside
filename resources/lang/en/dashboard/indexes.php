@@ -26,6 +26,7 @@ return [
     'list_all_suburbs' => 'List All Suburbs',
     'list_all_adminstrators' => 'All Invited Adminstrators',
     'list_all_newsletters' => 'List All Newsletter Subscribers',
+    'list_all_news' => 'List All News',
     'banner' => 'Banner',
     'articles' => 'Articles',
     'document' => 'Document',
@@ -127,4 +128,5 @@ return [
     'provinces' => 'Provinces',
     'suburbs' => 'Suburbs',
     'subscribed_on' => 'Subscribed On',
+    'keyword' => 'Keyword',
 ];

@@ -23,18 +23,24 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <section class="form-group {{ form_error_class('name', $errors) }}">
-                                        <label for="id-title">Name</label>
-                                        <input type="text" class="form-control input-generate-slug" id="id-name" name="name" placeholder="Please insert the Name" value="{{ ($errors && $errors->any()? old('name') : (isset($item)? $item->name : '')) }}">
+                                        <label for="id-title">
+                                            {{ __('dashboard/indexes.name') }}
+                                        </label>
+                                        <input type="text" class="form-control input-generate-slug" id="id-name" name="name" placeholder="{{ __('dashboard/forms.name_placeholder') }}" value="{{ ($errors && $errors->any()? old('name') : (isset($item)? $item->name : '')) }}">
                                         {!! form_error_message('name', $errors) !!}
                                     </section>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group {{ form_error_class('slug', $errors) }}">
-                                        <label for="id-slug">Slug</label>
+                                        <label for="id-slug">
+                                            {{ __('dashboard/forms.slug') }}
+                                        </label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="id-slug" name="slug" placeholder="Please insert the Slug" value="{{ ($errors && $errors->any()? old('slug') : (isset($item)? $item->slug : '')) }}">
-                                            <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                                            <input type="text" class="form-control" id="id-slug" name="slug" placeholder="{{ __('dashboard/forms.slug_placeholder') }}" value="{{ ($errors && $errors->any()? old('slug') : (isset($item)? $item->slug : '')) }}">
+                                            <span class="input-group-btn">
+                                                <span class="btn btn-primary btn-group-right"><i class="fa fa-link"></i></span>
+                                            </span>
                                         </div>
                                         {!! form_error_message('slug', $errors) !!}
                                     </div>
@@ -44,9 +50,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group {{ form_error_class('icon', $errors) }}">
-                                        <label for="icon">Icon</label>
+                                        <label for="icon">
+                                            {{ __('dashboard/forms.icon') }}
+                                        </label>
                                         <div class="input-group">
-                                            <span class="input-group-addon">fa fa-</span>
+                                            <span class="input-group-btn">
+                                                <span class="btn btn-primary btn-group-right">fa fa-</span>
+                                            </span>
                                             <input type="text" class="form-control" id="icon" name="icon" placeholder="Please insert the Icon" value="{{ ($errors && $errors->any()? old('icon') : (isset($item)? $item->icon : '')) }}">
                                         </div>
                                         {!! form_error_message('icon', $errors) !!}

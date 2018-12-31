@@ -13,13 +13,13 @@
                     </h3>
                 </div>
 
+                @include('DH::partials.info')
+
+                @include('DH::partials.toolbar')
+
                 <div class="card-body">
 
-                    @include('DH::partials.info')
-                    <hr>
-                    @include('DH::partials.toolbar')
-                    <hr>
-                    <table id="tbl-list" data-server="false" class="dt-table table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="tbl-list" data-server="false" class="dt-table table" cellspacing="0" width="100%">
                         <thead>
                         <tr>
                             <th>{{ trans('dashboard/forms.name') }}</th>

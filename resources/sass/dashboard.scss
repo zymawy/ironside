@@ -4,13 +4,13 @@
 @import '_gradients';
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
-@import "dashboard/vendor/select2.css";
-@import "dashboard/vendor/lightbox.css";
-@import "dashboard/vendor/dropzone.css";
-@import "dashboard/vendor/summernote-bs4.css";
-@import "dashboard/vendor/daterangepicker.css";
-@import "dashboard/vendor/pace-theme-flash.css";
-@import "dashboard/vendor/bootstrap-datetimepicker.css";
+@import "../assets/css/vendor/select2.css";
+@import "../assets/css/vendor/lightbox.css";
+@import "../assets/css/vendor/dropzone.css";
+@import "../assets/css/vendor/summernote-bs4.css";
+@import "../assets/css/vendor/daterangepicker.css";
+@import "../assets/css/vendor/pace-theme-flash.css";
+@import "../assets/css/vendor/bootstrap-datetimepicker.css";
 //@import "dashboard/vendor/datatables.bootstrap.css";
 @import "~datatables.net-bs4/css/dataTables.bootstrap4.min.css";
 @import "~datatables.net-rowgroup-bs4/css/rowGroup.bootstrap4.min.css";
@@ -18,11 +18,11 @@
 @import "~datatables.net-autofill-bs4/css/autoFill.bootstrap4.min.css";
 @import "~datatables.net-scroller-bs4/css/scroller.bootstrap4.min.css";
 @import "~datatables.net-select-bs4/css/select.bootstrap4.min.css";
-@import "dashboard/vendor/responsive.bootstrap.css";
+@import "../assets/css/vendor/responsive.bootstrap.css";
 @import "dashboard/ironside.css";
 // Dashborad Theme
-@import "dashboard/lib/calendar2/semantic.ui.min.css";
-@import "dashboard/lib/calendar2/pignose.calendar.min.css";
+@import "../assets/css/lib/calendar2/semantic.ui.min.css";
+@import "../assets/css/lib/calendar2/pignose.calendar.min.css";
 //@import "dashboard/css/lib/owl.carousel.min.css";
 @import "~owl.carousel/src/scss/owl.carousel";
 @import "~owl.carousel/src/scss/owl.theme.default";

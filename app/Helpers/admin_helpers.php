@@ -24,7 +24,7 @@ if (!function_exists('notify_admins')) {
     {
         function isRTL()
         {
-            return app()->isLocal('ar');
+            return app()->isLocale('ar');
         }
     }
 }

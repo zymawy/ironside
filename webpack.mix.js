@@ -14,28 +14,28 @@ mix.combine([
 
 mix.combine([
 
-    'resources/js/dashboard/vendor/pace.js',
-    'resources/js/dashboard/vendor/chart.js',
-    'resources/js/dashboard/vendor/select2.js',
-    'resources/js/dashboard/vendor/dropzone.js',
-    'resources/js/dashboard/vendor/fastclick.js',
-    'resources/js/dashboard/vendor/lightbox.js',
-    'resources/js/dashboard/vendor/summernote-bs4.js',
-    'resources/js/dashboard/vendor/jquery.nestable.js',
-    'resources/js/dashboard/vendor/jquery.cookie.js',
-    'resources/js/dashboard/vendor/cropper.js',
+    'resources/assets/js/vendor/pace.js',
+    'resources/assets/js/vendor/chart.js',
+    'resources/assets/js/vendor/select2.js',
+    'resources/assets/js/vendor/dropzone.js',
+    'resources/assets/js/vendor/fastclick.js',
+    'resources/assets/js/vendor/lightbox.js',
+    'resources/assets/js/vendor/summernote-bs4.js',
+    'resources/assets/js/vendor/jquery.nestable.js',
+    'resources/assets/js/vendor/jquery.cookie.js',
+    'resources/assets/js/vendor/cropper.js',
 
-    'resources/js/dashboard/vendor/jquery.fancybox.min.js',
-    'resources/js/dashboard/vendor/lazysizes.min.js',
-    'resources/js/dashboard/vendor/owl.carousel.min.js',
+    'resources/assets/js/vendor/jquery.fancybox.min.js',
+    'resources/assets/js/vendor/lazysizes.min.js',
+    // 'resources/assets/js/vendor/owl.carousel.min.js',
 
-    'resources/js/dashboard/vendor/moment.js',
-    'resources/js/dashboard/vendor/daterangepicker.js',
-    'resources/js/dashboard/vendor/bootstrap-datetimepicker.js',
+    'resources/assets/js/vendor/moment.js',
+    'resources/assets/js/vendor/daterangepicker.js',
+    'resources/assets/js/vendor/bootstrap-datetimepicker.js',
 
-    'resources/js/dashboard/vendor/jquery.dataTables.js',
-    'resources/js/dashboard/vendor/datatables.bootstrap.js',
-    'resources/js/dashboard/vendor/datatables.responsive.js',
+    'resources/assets/js/vendor/jquery.dataTables.js',
+    'resources/assets/js/vendor/datatables.bootstrap.js',
+    'resources/assets/js/vendor/datatables.responsive.js',
 
     'resources/js/dashboard/ironside.js',
     'resources/js/dashboard/buttons.js',
@@ -53,5 +53,5 @@ mix.combine([
 ],'public/js/dashboard.js');
 
 
-mix.copy()
+mix.copy('resources/assets/lang','public/lang')
 mix.version();

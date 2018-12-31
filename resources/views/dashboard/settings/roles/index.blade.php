@@ -7,30 +7,44 @@
                 <div class="card-header bg-primary with-border">
                     <h3 class="card-title text-white">
                         <span><i class="fa fa-table"></i></span>
-                        <span>List All Roles</span>
+                        <span>
+                            {{ __('dashboard/indexes.list_all_roles') }}
+                        </span>
                     </h3>
                 </div>
 
+                @include('DH::partials.info')
+
+                @include('DH::partials.toolbar')
+
                 <div class="card-body">
 
-                    @include('DH::partials.info')
-
-                    @include('DH::partials.toolbar')
-
-                    <table id="tbl-list" data-server="false" class="dt-table table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="tbl-list" data-server="false" class="dt-table table" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Slug</th>
-                            <th>Keyword</th>
-                            <th>Action</th>
+                            <th>{{ __('dashboard/indexes.name') }}</th>
+                            <th>
+                                {{ __('dashboard/forms.slug') }}
+                            </th>
+                            <th>
+                                {{ __('dashboard/indexes.keyword') }}
+                            </th>
+                            <th>
+                                {{ __('dashboard/forms.action') }}
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach ($items as $item)
                             <tr>
                                 <td><i class="fa fa-{{ $item->icon }}"></i> {{ $item->name }}</td>
-                                <td>{{ $item->slug }}</td>
+                                <td>
+                                    <h5>
+                                        <span class="badge badge-primary">
+                                            {{ $item->slug }}
+                                        </span>
+                                    </h5>
+                                </td>
                                 <td>{{ $item->keyword }}</td>
                                 <td>
                                     @if(!config('app.is_preview'))

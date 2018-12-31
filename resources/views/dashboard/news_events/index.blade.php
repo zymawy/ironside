@@ -7,26 +7,42 @@
                 <div class="card-header bg-primary with-border">
                     <h3 class="card-title text-white">
                         <span><i class="fa fa-table"></i></span>
-                        <span>List All News</span>
+                        <span>
+                            {{ __('dashboard/indexes.list_all_news') }}
+                        </span>
                     </h3>
                 </div>
 
+                @include('dashboard.partials.info')
+
+                @include('dashboard.partials.toolbar')
+
                 <div class="card-body">
 
-                    @include('dashboard.partials.info')
-
-                    @include('dashboard.partials.toolbar')
-
-                    <table id="tbl-list" data-server="false" class="dt-table table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="tbl-list" data-server="false" class="dt-table table" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th>Title</th>
-                            <th class="desktop">Summary</th>
-                            <th>Category</th>
-                            <th>Active From</th>
-                            <th>Active To</th>
-                            <th>Cover Photo</th>
-                            <th style="min-width: 100px;">Action</th>
+                            <th>
+                                {{ __('dashboard/forms.title') }}
+                            </th>
+                            <th class="desktop">
+                                {{ __('dashboard/indexes.summary') }}
+                            </th>
+                            <th>
+                                {{ __('dashboard/forms.category') }}
+                            </th>
+                            <th>
+                                {{ __('dashboard/forms.active_from') }}
+                            </th>
+                            <th>
+                                {{ __('dashboard/forms.active_to') }}
+                            </th>
+                            <th>
+                                {{ __('dashboard/indexes.cover_photo') }}
+                            </th>
+                            <th style="min-width: 100px;">
+                                {{ __('dashboard/forms.action') }}
+                            </th>
                         </tr>
                         </thead>
                         <tbody>

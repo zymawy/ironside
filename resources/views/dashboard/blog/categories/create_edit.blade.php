@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="card card-solid">
                 <div class="card-header bg-primary with-border">
-                    <h3 class="card-title">
+                    <h3 class="card-title text-white">
                         <span><i class="fa fa-edit"></i></span>
                         <span>{{ isset($item)? trans('dashboard/forms.edit_the')  . $item->title . trans('dashboard/forms.entry'): trans('dashboard/forms.create_banner_text_title') }}</span>
                     </h3>

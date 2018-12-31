@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Classes\SlugOptions;
+use App\Models\Traits\HasSlug;
 use App\User;
 use App\Models\Traits\Photoable;
 use App\Models\IronsideCMSModel;
@@ -10,7 +12,7 @@ use App\Models\Traits\ActiveTrait;
 
 class Article extends IronsideCMSModel
 {
-    use SoftDeletes, ActiveTrait, Photoable;
+    use SoftDeletes, ActiveTrait, Photoable,HasSlug;
 
     protected $table = 'articles';
 

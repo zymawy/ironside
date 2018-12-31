@@ -60,7 +60,10 @@
                                             {{ trans('dashboard/forms.active_from') }}
                                         </label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="active_from" data-date-format="YYYY-MM-DD HH:mm:ss" name="active_from"
+                                            <input type="text" class="form-control" id="active_from"
+                                                   data-date-format="YYYY-MM-DD HH:mm:ss"
+                                                   name="active_from"
+                                                   autocomplete="off"
                                                    placeholder="{{ trans('dashboard/forms.active_from_placeholder') }}"
                                                    value="{{ ($errors && $errors->any()? old('active_from') : (isset($item)? $item->active_from : '')) }}">
                                             {{--<span class="input-group-addon"><i class="fa fa-calendar"></i></span>--}}
@@ -75,8 +78,12 @@
                                             {{ trans('dashboard/forms.active_to') }}
                                         </label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="active_to"
-                                                   data-date-format="YYYY-MM-DD HH:mm:ss" name="active_to"
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="active_to"
+                                                   autocomplete="off"
+                                                   data-date-format="YYYY-MM-DD HH:mm:ss"
+                                                   name="active_to"
                                                    placeholder="{{ trans('dashboard/forms.active_to_placeholder') }}"
                                                    value="{{ ($errors && $errors->any()? old('active_to') : (isset($item)? $item->active_to : '')) }}">
                                             {{--<span class="input-group-addon"><i class="fa fa-calendar"></i></span>--}}
@@ -107,12 +114,14 @@
 
 @section('js')
     @parent
+    {!! isRTL() ? '<script src="/lang/summernote-ar-AR.js"></script>':''  !!}
     <script type="text/javascript" charset="utf-8">
         $(function ()
         {
             setDateTimePickerRange('#active_from', '#active_to');
 
-            initSummerNote('.summernote');
+            initSummerNote('.summernote',400,"{!!  isRTL() ? "ar-AR":"en-US"  !!}");
+
             $('#form-edit').on('submit', function ()
             {
                 $('#article-content').html($('.summernote').val());

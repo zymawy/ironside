@@ -17,7 +17,7 @@
 
                     @include('DH::partials.toolbar')
 
-                    <table id="tbl-list" data-server="false" class="dt-table table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="tbl-list" data-server="false" class="dt-table table" cellspacing="0" width="100%">
                         <thead>
                         <tr>
                             <th>{{ __('dashboard/forms.title') }}</th>

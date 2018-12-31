@@ -15,7 +15,7 @@ id,ar_title,en_title,ar_description,en_description,slug,url,icon,ar_help_index_t
 14,الانتقالات,Navigation,الانتقالات,,navigation,/dashboard/settings/navigation,align-center,Help,Help,Helpfull text here - explaining what u can do here...,Helpfull text here - explaining what u can do here...,Information,Information,Please complete the form to create the navigation,Please complete the form to create the navigation,,,,,1,0,13,13
 15,ترتيب الانتقالات,Navigation Order,ترتيب الانتقالات,Navigation Order,order,/dashboard/settings/navigation/order,list-ol,,,,,,,,,,,,,2,0,14,14
 16,الادوار,Roles,الادوار,Roles,roles,/dashboard/settings/roles,universal-access,,,,,,,,,,,,,3,0,13,13
-17,الرخص,Permission,الرخص,Permission,permission,/dashboard/settings/permission,universal-access,,,,,,,,,,,,,4,0,13,13
+17,الرخص,Permission,الرخص,Permission,permission,/dashboard/settings/permissions,universal-access,,,,,,,,,,,,,4,0,13,13
 18,الاعدادات,Settings,الاعدادات,Settings,settings,/dashboard/settings/settings,cog,,,,,,,,,,,,,4,0,13,13
 19,الصفحات,Pages,الصفحات,Pages,pages,/dashboard/pages,navicon,Help,Help,All the menu items for the website.,All the menu items for the website.,Help,Help,You can set the HTML Title and HTML Description.<br/>You can select the parent (under which navigation is this item).<br/>You can specify if the menu is hidden.,You can set the HTML Title and HTML Description.<br/>You can select the parent (under which navigation is this item).<br/>You can specify if the menu is hidden.,,,,,6,0,0,0
 20,ترتيب الصفحات,Navigation Order,ترتيب الصفحات,Navigation Order,order,/dashboard/pages/order,list-ol,,,,,,,,,,,,,1,1,16,16

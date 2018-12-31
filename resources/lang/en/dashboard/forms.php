@@ -77,6 +77,8 @@ return [
     'content' => 'Content',
     'cover_photo' => 'Cover Photo',
     'slug' => 'Slug',
+    'icon' => 'Icon',
+    'slug_placeholder' => 'Please insert the Slug',
 
     // Documents
     'document_muted' => 'Please click on the panel below to upload documents to',

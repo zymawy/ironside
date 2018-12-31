@@ -12,4 +12,5 @@ npm-debug.log
 yarn-error.log
 .env
 .phpunit.result.cache
-meshal-logo.psd
+_ide_helper.php
+.phpstorm.meta.php

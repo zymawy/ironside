@@ -152,7 +152,7 @@ class ClientsController extends AdminController
         }
 
         $attributes = request()->validate([
-            'firstname' => 'required',
+            'firstname' => 'sometimes|required',
             'lastname'  => 'required',
             'cellphone' => 'required',
             'telephone' => 'nullable',
