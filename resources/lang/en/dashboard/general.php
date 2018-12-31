@@ -6,6 +6,9 @@
  * Time: 11:15 AM
  */
 return [
+    'dashboard' => 'Dashboard',
+    'woops_missed' => 'Whoops. Navigation not found - please see if url is in database (navigation_dashboard)',
+    'we_cant_upload' => 'Something went wrong, we could not upload the file. Please try again.',
 
     'table' => [
         'title' => 'Title',

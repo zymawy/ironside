@@ -44,7 +44,7 @@ class IronsideDashboardController extends IronsideController
             }
         }
 
-        return $this->title . ' - Dashboard | ' . config('app.name');
+        return $this->title . ' - ' . __('dashboard/general.dashboard') . ' | ' . config('app.name');
     }
 
     /**
@@ -84,7 +84,7 @@ class IronsideDashboardController extends IronsideController
 
         // for dashboard, only add home
         if (count($navigation) == 1 && $navigation[0]->title == 'Dashboard') {
-            $html .= '<li class="b-ir-primary"><a href="' . $url . '" class="text-primary"><i class="fa fa-home"></i> Dashboard</a></li>';
+            $html .= '<li><a href="' . $url . '" class="text-primary"><i class="fa fa-home"></i>'. __('dashboard/general.dashboard') . '</a></li>';
         }
         else {
             foreach ($navigation as $key => $nav) {
@@ -209,7 +209,7 @@ class IronsideDashboardController extends IronsideController
         if (config('app.env') == 'local' && !$nav) {
 //            $nav = NavigationDashboard::find(1);
             dump($url);
-            dd('Whoops. Navigation not found - please see if url is in database (navigation_dashboard)');
+            dd(__('dashboard/general.woops_missed'));
             //return false;
         }
 

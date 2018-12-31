@@ -23,7 +23,7 @@ class AdminController extends IronsideDashboardController
 
         if (!\File::exists(upload_path('documents') . $filename)) {
             $validator = \Validator::make([], ['file' => 'required'],
-                ['file.required' => 'Something went wrong, we could not upload the file. Please try again.']);
+                ['file.required' => __('dashboard/general.we_cant_upload')]);
 
             throw new ValidationException($validator);
         }
