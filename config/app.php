@@ -182,6 +182,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\NotifyServiceProvider::class,
+        App\Providers\AlertServiceProvider::class,
         App\Providers\IronsideServiceProvider::class,
 
     ],
@@ -233,7 +234,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Localizer'   => Aitor24\Localizer\Facades\LocalizerFacade::class,
-        'Alert' => Bpocallaghan\Alert\Facades\Alert::class,
+        'Alert' => App\Facades\Alert::class,
         'Notify' => App\Facades\Notify::class,
     ],
 

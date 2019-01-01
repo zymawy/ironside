@@ -5,6 +5,11 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="login-content card">
+
+                        <div class="m-t-20">
+                            @include('partials.alert')
+                        </div>
+
                         <div class="login-form">
                             <h4>{{ __('auth.login.title.page') }}</h4>
                             <form method="POST" action="{{ route('login') }}">

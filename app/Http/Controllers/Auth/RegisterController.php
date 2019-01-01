@@ -52,7 +52,7 @@ class RegisterController extends AuthController
         // log activity
         event(new UserRegistered($user, input('token')));
 
-        notify()->success(__('dashboard/mail.thank_you'),
+        alert()->success(__('dashboard/mail.thank_you'),
             __('dashboard/mail.msg_to_check_your_mail'));
 
         log_activity(__('auth.register.title.page'), $user->fullname . __('dashboard/mail.registered'));
@@ -71,7 +71,7 @@ class RegisterController extends AuthController
         $user = User::where('confirmation_token', $token)->first();
         if ($user) {
             if ($user->confirmed_at && strlen($user->confirmed_at) > 6) {
-                notify()->info(__('dashboard/mail.active_account'),
+                alert()->info(__('dashboard/mail.active_account'),
                     __('dashboard/mail.msg_already_active'));
             }
             else {
@@ -83,14 +83,14 @@ class RegisterController extends AuthController
                 // notify
                 $user->notify(new UserConfirmedAccount());
 
-                notify()->success(__('dashboard/mail.success'),
+                alert()->success(__('dashboard/mail.success'),
                     __('dashboard/mail.congratulations'));
 
                 log_activity(__('dashboard/indexes.user_confirmed'), $user->fullname . __('dashboard/indexes.confirmed_their'), $user);
             }
         }
         else {
-            notify()->error(__('dashboard/general.whoops'), __('dashboard/general.sorry_token_not_exist'));
+            alert()->error(__('dashboard/general.whoops'), __('dashboard/general.sorry_token_not_exist'));
 
             log_activity(__('dashboard/indexes.user_confirmed'), __('dashboard/general.invalid_token'));
         }
