@@ -8,7 +8,7 @@ if (!function_exists('form_error_class')) {
 }
 
 if (!function_exists('form_error_message')) {
-    function form_error_message($attribute, $errors,$class = 'text-red')
+    function form_error_message($attribute, $errors,$class = 'invalid-feedback')
     {
         return $errors->first($attribute,
             '<i><small for="' . $attribute . '" class="'. $class .'">:message</small></i>');

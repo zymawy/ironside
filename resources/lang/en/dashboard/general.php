@@ -7,6 +7,8 @@
  */
 return [
     'dashboard' => 'Dashboard',
+    'oops' => 'Oops',
+    'something_went' => 'Something went wrong',
     'woops_missed' => 'Whoops. Navigation not found - please see if url is in database (navigation_dashboard)',
     'we_cant_upload' => 'Something went wrong, we could not upload the file. Please try again.',
 
@@ -31,6 +33,8 @@ return [
     'yes' => 'Yes',
     'open-window' => 'Open in new Window',
     'whoops' => 'Whoops!',
+    'sorry_token_not_exist' => 'Sorry, the token does not exist.',
+    'invalid_token' => 'INVALID TOKEN',
     'header' => 'Header',
     'logo' => 'Logo',
     'member' => 'Member',
@@ -85,5 +89,10 @@ return [
     'never' => 'Never',
     'visibility' => '(Visibility: <strong> :is_website </strong>) (Expire: <strong>:active_to</strong>)',
     'banner_order_text' => 'Update :resource List Order',
-    'send_forgot_text' => 'Send Forgot Password Instructions',
+    'update_profile' => 'Update Profile',
+    'the_msg_update' => 'The :model has been updated',
+    'the_msg_create' => 'The :model has been created',
+    'the_msg_remove' => 'The :model has been removed',
+    'the_msg_could_not_find' => 'We could not find the :model to delete',
+    'the_msg_not_match' => 'The :model id does not match',
 ];

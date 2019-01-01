@@ -60,7 +60,7 @@ class ProfileController extends AdminController
             ]);
         }
 
-        return redirect('/admin/profile');
+        return redirect('/dashboard/profile');
     }
 
     /**

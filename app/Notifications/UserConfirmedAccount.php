@@ -38,15 +38,15 @@ class UserConfirmedAccount extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->subject('Your account is ready')
-            ->greeting("Dear {$notifiable->firstname}")
-            ->line("Congratulations, your account has been activated.")
+        return (new MailMessage)->subject(__('dashboard/mail.account_ready'))
+            ->greeting(__('dashboard/mail.title_contact_us',['full_name' => $notifiable->firstname]))
+            ->line(__('dashboard/mail.congrats_activated'))
             ->line("")
-            ->line("<strong>Account Holder Details</strong>")
-            ->line("Fullname: {$notifiable->fullname}")
-            ->line("Email: {$notifiable->email}")
-            ->line("Password: (We wouldn't send that in an email.)")
+            ->line(__('dashboard/mail.account_holder'))
+            ->line(__('dashboard/mail.full_name',['full_name' => $notifiable->fullname]))
+            ->line(__('dashboard/mail.email',['email' => $notifiable->email]))
+            ->line(__('dashboard/mail.password'))
             ->line("")
-            ->action('Sign In', url('/auth/login'));
+            ->action(__('dashboard/mail.signIn'), url('/auth/login'));
     }
 }

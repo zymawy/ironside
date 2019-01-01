@@ -9,4 +9,5 @@
 [
     'contact-us' => 'Contact Us',
     'contact-us-submitted' => ' submitted Contact Us.',
+
 ];

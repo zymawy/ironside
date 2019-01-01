@@ -35,7 +35,7 @@ class AdminInvitRegistration extends Mailable
     public function build()
     {
         return $this->to($this->userInvite->email)
-            ->subject('Create your Administrator account - ' . config('app.name'))
-            ->markdown('emails.admin.invite');
+            ->subject(__('dashboard/mail.mail_admin_title') . config('app.name'))
+            ->markdown('emails.dashboard.invite');
     }
 }

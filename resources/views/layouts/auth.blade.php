@@ -80,23 +80,10 @@
 </div>
 
 <!-- End Wrapper -->
-<!-- All Jquery -->
-<script src="/js/admin/jquery.js"></script>
-<!-- Bootstrap tether Core JavaScript -->
-<script src="/js/admin/bootstrap.js"></script>
-<!-- slimscrollbar scrollbar JavaScript -->
-<script src="/js/admin/slimscroll.js"></script>
-<!--Menu sidebar -->
-<script src="/js/admin/sidebarmenu.js"></script>
-<!--stickey kit -->
-<script src="/js/admin/sticky-kit.js"></script>
 <!--Custom JavaScript -->
-@include('notify::notify')
+@include('partials.notify')
 <!-- scripit init-->
-
 @yield('js')
-
-<script src="/js/admin/scripts.js"></script>
 
 </body>
 

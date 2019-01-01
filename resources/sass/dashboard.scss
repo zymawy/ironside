@@ -11,7 +11,6 @@
 @import "../assets/css/vendor/daterangepicker.css";
 @import "../assets/css/vendor/pace-theme-flash.css";
 @import "../assets/css/vendor/bootstrap-datetimepicker.css";
-//@import "dashboard/vendor/datatables.bootstrap.css";
 @import "~datatables.net-bs4/css/dataTables.bootstrap4.min.css";
 @import "~datatables.net-rowgroup-bs4/css/rowGroup.bootstrap4.min.css";
 @import "~datatables.net-keytable-bs4/css/keyTable.bootstrap4.min.css";
@@ -23,11 +22,9 @@
 // Dashborad Theme
 @import "../assets/css/lib/calendar2/semantic.ui.min.css";
 @import "../assets/css/lib/calendar2/pignose.calendar.min.css";
-//@import "dashboard/css/lib/owl.carousel.min.css";
 @import "~owl.carousel/src/scss/owl.carousel";
 @import "~owl.carousel/src/scss/owl.theme.default";
-//@import "dashboard/css/lib/owl.theme.default.min.css";
-//@import "dashboard/";
+@import "assets";
 @import "helper.css";
 @import "bttn.css";
 @import "override";

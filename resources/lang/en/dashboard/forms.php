@@ -106,4 +106,13 @@ return [
     'google_map' => 'Google Map',
 
     'contact_us' => 'Contact Us',
+    'male' => 'Male',
+    'female' => 'Female',
+    'profile_image' => 'Profile image (250 x 250)',
+    'browse_image' => 'Browse for an image',
+    'send_forgot_text' => 'Send Forgot Password Instructions',
+    'confirm_password' => 'Confirm Password',
+    'password_confirm' => 'Password Confirm',
+    'password_update' => " Password <small> (leave blank to keep it unchanged)</small>",
+    'have_account' => 'I have an account!'
 ];

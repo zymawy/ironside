@@ -1,4 +1,4 @@
-<!-- header header  -->
+    <!-- header header  -->
 <div class="header">
     <nav class="navbar top-navbar navbar-expand-md navbar-light">
         <!-- Logo -->
@@ -170,10 +170,18 @@
                     <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                         <ul class="dropdown-user">
                             <li><a href="{{ url('/dashboard/profile') }}"><i class="ti-user"></i> Profile</a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> Balance</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                            {{--<li><a href="#"><i class="ti-wallet"></i> Balance</a></li>--}}
+                            {{--<li><a href="#"><i class="ti-email"></i> Inbox</a></li>--}}
                             <li><a href="#"><i class="ti-settings"></i> Setting</a></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-power-off"></i>
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </li>

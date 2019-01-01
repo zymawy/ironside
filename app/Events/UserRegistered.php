@@ -35,7 +35,7 @@ class UserRegistered
         $user->attachRole($role);
 
         // notify / send email to user to confirm account
-        // $user->notify(new NotifyUserRegistered());
+         $user->notify(new NotifyUserRegistered());
 
         log_activity('User Registered', $user->fullname . ' registered as a new user.', $user);
     }

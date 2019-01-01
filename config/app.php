@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'مشعل لتعليم اللغة الانجليزية'),
+    'name' => env('APP_NAME', 'Ironside'),
 
     /*
     |--------------------------------------------------------------------------
@@ -61,7 +61,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://meshalforenglish.test'),
+    'url' => env('APP_URL', 'http://ironside.test'),
 
     /*
     |--------------------------------------------------------------------------
@@ -171,7 +171,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Bpocallaghan\Notify\NotifyServiceProvider::class,
         Aitor24\Localizer\LocalizerServiceProvider::class,
 
         /*
@@ -182,6 +181,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\NotifyServiceProvider::class,
         App\Providers\IronsideServiceProvider::class,
 
     ],
@@ -234,7 +234,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Localizer'   => Aitor24\Localizer\Facades\LocalizerFacade::class,
         'Alert' => Bpocallaghan\Alert\Facades\Alert::class,
-        'Notify' => Bpocallaghan\Notify\Facades\Notify::class,
+        'Notify' => App\Facades\Notify::class,
     ],
 
 ];

@@ -67,6 +67,8 @@ return [
     'createdAt' => 'Created At',
     'registeredAt' => 'Registered At',
     'confirmed_at' => 'Confirmed At',
+    'user_confirmed' => 'User Confirmed',
+    'confirmed_their' => ' confirmed their account',
 
     'action' => 'Action',
     'after' => 'After',

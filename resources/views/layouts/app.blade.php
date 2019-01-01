@@ -33,11 +33,11 @@
 <body class="fix-header fix-sidebar" dir="{{App::isLocale('ar')? 'rtl':'ltr'}}">
 <h1 class="hidden">{{ isset($title) ? $title : config('app.name') }}</h1>
 <!-- Preloader - style you can find in spinners.css -->
-<div class="preloader">
-    <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-    </svg>
-</div>
+{{--<div class="preloader">--}}
+    {{--<svg class="circular" viewBox="25 25 50 50">--}}
+            {{--<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>--}}
+    {{--</svg>--}}
+{{--</div>--}}
 @include('layouts.includes.header')
 
 @include('DH::partials.navigation')
@@ -60,7 +60,7 @@
     </div>
     <!-- Main wrapper  -->
 </div>
-@include('notify::notify')
+@include('partials.notify')
 @include('DH::partials.modals')
 @include('layouts.includes.footer')
 <script src="{{ mix('js/master.js') }}"></script>

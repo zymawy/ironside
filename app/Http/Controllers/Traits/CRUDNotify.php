@@ -29,11 +29,11 @@ trait CRUDNotify
         $row = $model::create($inputs);
 
         if ($row) {
-            notify()->success('Successfully',
-                'A new ' . $this->formatModelName($model) . ' has been created');
+            notify()->success(__('dashboard/general.successfully'),
+                __('dashboard/general.the_msg_create',['model' => $this->formatModelName($model)]));
         }
         else {
-            notify()->error('Oops', 'Something went wrong');
+            notify()->error(__('dashboard/general.oops'), __('dashboard/general.something_went'));
         }
 
         return $row;
@@ -48,8 +48,8 @@ trait CRUDNotify
     {
         $response = $model->update($inputs);
 
-        notify()->success('Successfully',
-            'The ' . $this->formatModelName($model) . ' has been updated');
+        notify()->success(__('dashboard/general.successfully'),
+        __('dashboard/general.the_msg_update',['model' => $this->formatModelName($model)]));
 
         return $model;
     }
@@ -63,17 +63,17 @@ trait CRUDNotify
         // check if ids match (cant type random ids)
         if ($request->get('_id') == $model->id) {
             if ($model->delete() >= 1) {
-                notify()->success('Successfully',
-                    'The ' . $this->formatModelName($model) . ' has been removed');
+                notify()->success(__('dashboard/general.successfully'),
+                    __('dashboard/general.the_msg_remove',['model' => $this->formatModelName($model)]));
             }
             else {
-                notify()->error('Oops',
-                    'We could not find the ' . $this->formatModelName($model) . ' to delete');
+                notify()->error(__('dashboard/general.oops'),
+                    __('dashboard/general.the_msg_could_not_find',['model' => $this->formatModelName($model)]));
             }
         }
         else {
-            notify()->error('Oops',
-                'The ' . $this->formatModelName($model) . ' id does not match');
+            notify()->error(__('dashboard/general.oops'),
+                __('dashboard/general.the_msg_not_match',['model' => $this->formatModelName($model)]));
         }
     }
 }

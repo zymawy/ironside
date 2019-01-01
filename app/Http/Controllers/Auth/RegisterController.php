@@ -52,10 +52,10 @@ class RegisterController extends AuthController
         // log activity
         event(new UserRegistered($user, input('token')));
 
-        alert()->success('Thank you,',
-            'your account has been created, please check your inbox for further instructions.');
+        notify()->success(__('dashboard/mail.thank_you'),
+            __('dashboard/mail.msg_to_check_your_mail'));
 
-        log_activity('Register', $user->fullname . ' registered.');
+        log_activity(__('auth.register.title.page'), $user->fullname . __('dashboard/mail.registered'));
 
         return redirect(route('login'));
     }
@@ -71,8 +71,8 @@ class RegisterController extends AuthController
         $user = User::where('confirmation_token', $token)->first();
         if ($user) {
             if ($user->confirmed_at && strlen($user->confirmed_at) > 6) {
-                alert()->info('Account is Active',
-                    'Your account is already active, please try to sign in.');
+                notify()->info(__('dashboard/mail.active_account'),
+                    __('dashboard/mail.msg_already_active'));
             }
             else {
                 // confirm / activate user
@@ -83,16 +83,16 @@ class RegisterController extends AuthController
                 // notify
                 $user->notify(new UserConfirmedAccount());
 
-                alert()->success('Success',
-                    '<br/>Congratulations, your account has been activated. Please Sign In below.');
+                notify()->success(__('dashboard/mail.success'),
+                    __('dashboard/mail.congratulations'));
 
-                log_activity('User Confirmed', $user->fullname . ' confirmed their account', $user);
+                log_activity(__('dashboard/indexes.user_confirmed'), $user->fullname . __('dashboard/indexes.confirmed_their'), $user);
             }
         }
         else {
-            alert()->error('Whoops!', 'Sorry, the token does not exist.');
+            notify()->error(__('dashboard/general.whoops'), __('dashboard/general.sorry_token_not_exist'));
 
-            log_activity('User Confirmed', 'INVALID TOKEN');
+            log_activity(__('dashboard/indexes.user_confirmed'), __('dashboard/general.invalid_token'));
         }
 
         return redirect(route('login'));
