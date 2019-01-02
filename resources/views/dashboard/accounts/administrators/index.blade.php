@@ -48,7 +48,7 @@
                                     <div class="">
                                         @if($item->confirmed_at)
                                             <div class="btn-group">
-                                                <form class="text-white" id="impersonate-login-form-{{ $item->id }}" action="{{ route('impersonate.login', $item->id) }}" method="post">
+                                                <form class="text-white" id="impersonate-login-form-{{ $item->id }}" action="{{ route('dashboard.impersonate.login', $item->id) }}" method="post">
                                                     <input name="_token" type="hidden" value="{{ csrf_token() }}">
                                                     <a data-form="impersonate-login-form-{{ $item->id }}"
                                                        class="btn bttn-slant bttn-xs bttn-warning m-b-10 m-l-5 btn-confirm-modal-row"

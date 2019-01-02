@@ -183,6 +183,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\NotifyServiceProvider::class,
         App\Providers\AlertServiceProvider::class,
+        App\Providers\ImpersonateServiceProvider::class,
         App\Providers\IronsideServiceProvider::class,
 
     ],

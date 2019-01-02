@@ -47,7 +47,7 @@ return [
     'email_to_send_text' => 'Email address of the user you would like to invite',
     'last_login' => 'Last Login',
     'send_invite' => 'Send Invite',
-    'impersonate' => 'Impersonate',
+    'impersonate' => 'Impersonate ',
     'invited_by' => 'Invited By',
     'confirmed' => 'Confirmed ',
     'confirm' => 'confirm ',

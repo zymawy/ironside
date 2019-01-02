@@ -60,14 +60,13 @@
     </div>
     <!-- Main wrapper  -->
 </div>
+@include('DH::partials.modals')
 @include('layouts.includes.footer')
 <script src="{{ mix('js/master.js') }}"></script>
 <script src="{{ mix('js/theme.js') }}"></script>
 <script type="text/javascript" charset="utf-8" src="{{ mix('js/dashboard.js') }}"></script>
 
 @include('partials.notify')
-@include('DH::partials.modals')
-
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {

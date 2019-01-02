@@ -146,26 +146,29 @@
                     </div>
                 </li>
                 <!-- End Messages -->
-                {{--@if (impersonate()->isActive())--}}
-                    {{--<li>--}}
-                        {{--<a href="{{ route('impersonate.logout') }}"--}}
-                           {{--onclick="event.preventDefault(); document.getElementById('impersonate-logout-form').submit();">--}}
-                            {{--Return to original user--}}
-                        {{--</a>--}}
+                @if (impersonate()->isActive())
+                    <li>
+                        <a href="{{ route('dashboard.impersonate.logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('impersonate-logout-form').submit();">
+                            <button class="btn bttn-fill bttn-warning bttn-xs m-t-10">
+                                Return to original user
+                            </button>
+                        </a>
 
-                        {{--<form id="impersonate-logout-form" action="{{ route('impersonate.logout') }}" method="post"--}}
-                              {{--style="display: none;">--}}
-                            {{--{{ csrf_field() }}--}}
-                        {{--</form>--}}
-                    {{--</li>--}}
-            {{--@endif--}}
+                        <form id="impersonate-logout-form" action="{{ route('dashboard.impersonate.logout') }}" method="post"
+                              style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+            @endif
             <!-- Profile -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">
-                        <img src="/images/1.png" alt="user"
+                        <img src="{{ profile_image() }}" alt="user"
                              class="profile-pic"
                         />
+                        <span class="hidden-xs">{!! user()->fullname !!}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                         <ul class="dropdown-user">

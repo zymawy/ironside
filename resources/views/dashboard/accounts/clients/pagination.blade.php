@@ -74,15 +74,15 @@
                 @if ($item->confirmed_at)
                     <div class="btn-group">
                         <form id="impersonate-login-form-{{$item->id}}"
-                              action="{{route('impersonate.login', $item->id)}}" method="post">
+                              action="{{route('dashboard.impersonate.login', $item->id)}}" method="post">
                             <input name="_token" type="hidden" value="{{csrf_token()}}">
                             <input name="redirect_to" type="hidden" value="/{{$item->logged_in_as}}">
-                            <a data-form="impersonate-login-form-{{$item->id}}"
-                               class="btn bttn-material-flat bttn-xs bttn-warning btn-confirm-modal-row text-white"
+                            <button type="button" data-form="impersonate-login-form-{{$item->id}}"
+                               class="btn bttn-material-flat bttn-xs bttn-warning text-white"
                                data-toggle="tooltip"
                                title="{{trans('dashboard/indexes.impersonate') . $item->fullname }}">
                                 <i class="fa fa-user-secret"></i>
-                            </a>
+                            </button>
                         </form>
                     </div>
                 @endif

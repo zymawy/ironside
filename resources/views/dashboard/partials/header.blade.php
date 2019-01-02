@@ -16,12 +16,12 @@
             <ul class="nav navbar-nav">
                 @if (impersonate()->isActive())
                     <li>
-                        <a href="{{ route('impersonate.logout') }}"
+                        <a href="{{ route('dashboard.impersonate.logout') }}"
                            onclick="event.preventDefault(); document.getElementById('impersonate-logout-form').submit();">
                             {{ trans('dashboard/general.return-to-original-user') }}
                         </a>
 
-                        <form id="impersonate-logout-form" action="{{ route('impersonate.logout') }}" method="post" style="display: none;">
+                        <form id="impersonate-logout-form" action="{{ route('dashboard.impersonate.logout') }}" method="post" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     </li>

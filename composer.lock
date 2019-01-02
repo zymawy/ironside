@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6fbc2f8127a7d7deeae43b387a6d1e71",
+    "content-hash": "18d456811d8560d1dc5305d8a6718372",
     "packages": [
         {
             "name": "aitor24/localizer",
@@ -4911,60 +4911,6 @@
                 "laravel-dump-server"
             ],
             "time": "2018-10-04T07:22:24+00:00"
-        },
-        {
-            "name": "bpocallaghan/impersonate",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bpocallaghan/impersonate.git",
-                "reference": "e7404b94fe464782abe297ace8f1211fea7c41b0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bpocallaghan/impersonate/zipball/e7404b94fe464782abe297ace8f1211fea7c41b0",
-                "reference": "e7404b94fe464782abe297ace8f1211fea7c41b0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Bpocallaghan\\Impersonate\\ImpersonateServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Bpocallaghan\\Impersonate\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ben-Piet O'Callaghan",
-                    "email": "bpocallaghan@gmail.com"
-                }
-            ],
-            "description": "Debugging a problem and need to login as one of your customers? This allows you to authenticate as any of your customers.",
-            "keywords": [
-                "Users",
-                "development",
-                "impersonate",
-                "impersonation",
-                "laravel",
-                "login as"
-            ],
-            "time": "2017-09-20T07:35:08+00:00"
         },
         {
             "name": "doctrine/instantiator",
