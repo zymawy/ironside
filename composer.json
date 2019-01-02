@@ -11,9 +11,11 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
+        "nao-pon/flysystem-google-drive": "~1.1",
         "paypal/rest-api-sdk-php": "^1.13",
         "santigarcor/laratrust": "5.0.*",
         "spatie/laravel-analytics": "^3.6",
+        "spatie/laravel-backup": "^6.0",
         "spatie/laravel-sitemap": "^5.2",
         "spatie/laravel-translatable": "^3.1",
         "yajra/laravel-datatables-oracle": "^8.13"

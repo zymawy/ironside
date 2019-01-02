@@ -185,6 +185,7 @@ return [
         App\Providers\AlertServiceProvider::class,
         App\Providers\ImpersonateServiceProvider::class,
         App\Providers\IronsideServiceProvider::class,
+        App\Providers\GoogleDriveServiceProvider::class,
 
     ],
 

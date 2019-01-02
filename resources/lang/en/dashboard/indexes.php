@@ -43,6 +43,7 @@ return [
 
     'user' => 'User',
     'invite_admin_test' => 'Invite Administrator',
+    'backup_tool' => 'Backups ',
     'invite_admin_test_inside' => 'Invite an Administrator',
     'email_to_send_text' => 'Email address of the user you would like to invite',
     'last_login' => 'Last Login',

@@ -47,6 +47,21 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        'backup_google' => [
+            'driver' => 'google',
+            'clientId' => env('BACKUP_GOOGLE_DRIVE_CLIENT_ID'),
+            'clientSecret' => env('BACKUP_GOOGLE_DRIVE_CLIENT_SECRET'),
+            'refreshToken' => env('BACKUP_GOOGLE_DRIVE_REFRESH_TOKEN'),
+            'folderId' => env('BACKUP_GOOGLE_DRIVE_FOLDER_ID'),
+            'name' => env('BACKUP_GOOGLE_DRIVE_FOLDER_ID', '3WT3ha54Isy1Ktx_E0rBGGCXzpxWG31Cp'),
+        ],
+        'google' => [
+            'driver' => 'google',
+            'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
+            'clientSecret' => env('GOOGLE_DRIVE_CLIENT_SECRET'),
+            'refreshToken' => env('GOOGLE_DRIVE_REFRESH_TOKEN'),
+            'folderId' => env('GOOGLE_DRIVE_FOLDER_ID'),
+        ],
 
         'public' => [
             'driver' => 'local',
@@ -64,6 +79,10 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+    ],
+    'backups' => [
+        'driver' => 'local',
+        'root'   => storage_path('backups'), // that's where your backups are stored by default: storage/backups
     ],
 
 ];
