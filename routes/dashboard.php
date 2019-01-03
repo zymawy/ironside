@@ -191,22 +191,22 @@ Route::middleware('localizer')->group(function () {
             ;
         });
 
+        Route::namespace('Developer')->prefix('developer/area')->group(function () {
 
-        /*
-|--------------------------------------------------------------------------
-| Backpack\BackupManager Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are
-| handled by the Backpack\BackupManager package.
-|
-*/
-        Route::prefix('developer/area')->group(function () {
+            //Backup Area
             Route::get('backup', 'BackupController@index');
             Route::put('backup/create', 'BackupController@create');
             Route::get('backup/download/{file_name?}', 'BackupController@download');
             Route::delete('backup/delete/{file_name?}', 'BackupController@delete')->where('file_name', '(.*)');
-        });
+
+            // Logs Area
+            Route::get('log', 'LogController@index');
+            Route::get('log/preview/{file_name}', 'LogController@preview');
+            Route::get('log/download/{file_name}', 'LogController@download');
+            Route::delete('log/delete/{file_name}', 'LogController@delete');
+
+        }); // Developer Area
+
 
     }); // End Auth
 });

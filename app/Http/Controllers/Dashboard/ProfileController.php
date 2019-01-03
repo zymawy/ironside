@@ -78,7 +78,7 @@ class ProfileController extends AdminController
         $imageTmp = Image::make($file->getRealPath());
 
         if (!$imageTmp) {
-            return notify()->error('Oops', 'Something went wrong', 'warning shake animated');
+            return notify()->error(__('dashboard/general.oops'), __('dashboard/general.something_went'), 'warning shake animated');
         }
 
         $path = upload_path_images();

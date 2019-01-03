@@ -47,6 +47,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        'storage' => [
+            'driver' => 'local',
+            'root'   => storage_path(),
+        ],
         'backup_google' => [
             'driver' => 'google',
             'clientId' => env('BACKUP_GOOGLE_DRIVE_CLIENT_ID'),

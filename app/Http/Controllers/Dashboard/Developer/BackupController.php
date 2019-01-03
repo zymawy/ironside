@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Developer;
 
+use App\Http\Controllers\Dashboard\AdminController;
 use Request;
-use App\Http\Controllers\Controller;
 use Artisan;
 use Exception;
 use League\Flysystem\Adapter\Local;
