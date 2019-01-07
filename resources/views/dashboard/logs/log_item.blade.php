@@ -13,7 +13,7 @@
         <div class="card-body">
             @include('DH::partials.info')
             <div class="m-t-10 m-b-10">
-                <a class="btn bttn-fill bttn-danger" href="/dashboard/developer/area/log"><i class="fa fa-angle-double-left"></i> {{ trans('dashboard/log.back_to_all_logs') }}</a><br><br>
+                <a class="btn bttn-slant bttn-danger" href="/dashboard/developer/area/log"><i class="fa fa-angle-double-left"></i> {{ trans('dashboard/log.back_to_all_logs') }}</a><br><br>
             </div>
             <h3>{{ $file_name }}:</h3>
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

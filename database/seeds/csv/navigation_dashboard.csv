@@ -48,3 +48,4 @@ id,ar_title,en_title,ar_description,en_description,slug,url,icon,ar_help_index_t
 47,المحافظات,provinces,provinces,provinces,provinces,/dashboard/general/locations/provinces,map-marker,,,,,,,,,,,,,4,0,43,43
 48,منطقة المطورين,Developers Area,منطقة المطورين,Developers Area,news-and-events,/dashboard/developer/area,code,,,,,,,,,,,,,41,0,0,0
 49,النسخة الاحتياطية,Backups,النسخة الاحتياطية,Backups,backup,/dashboard/developer/area/backup,cloud-download,,,,,,,,,,,,,41,0,48,48
+50,السجل,Logs,السجل,Logs,Logs,/dashboard/developer/area/log,history,,,,,,,,,,,,,42,0,48,48
