@@ -7,6 +7,6 @@
  */
 
 [
-    'contact-us' => 'Contact Us',
-    'contact-us-submitted' => ' submitted Contact Us.',
+    'contact-us' => 'تواصل معنا',
+    'contact-us-submitted' => ' تم ارسال البيانات.',
 ];

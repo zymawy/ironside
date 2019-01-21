@@ -13,10 +13,10 @@ return [
         'Created' => '',
     ],
     'document' => [
-        'insert-document-link' => 'Insert Document Link',
-        'document' => 'Document',
-        'insert-document' => 'Insert Document',
-        'insert-document-link-to-doc' => 'Insert link to a document',
+        'insert-document-link' => 'إدراج وثيقة صلة',
+        'document' => 'مستندات',
+        'insert-document' => 'اضافة مستند',
+        'insert-document-link-to-doc' => 'اضافة رابط للمستند',
     ],
     'name' => 'الاسم',
     'cancel' => 'الغاء',
@@ -51,16 +51,16 @@ return [
 
     //Document
 
-    'view_document' => 'View Document',
-    'text_to_display_placeholder' => 'Text to display',
-    'select_document_placeholder' => 'Please select a Document',
+    'view_document' => 'عرض المستند',
+    'text_to_display_placeholder' => 'نصوص لعرضها',
+    'select_document_placeholder' => 'نرجو اختيار مستند',
 
     // pagination
 
     'showing' => 'اظهار',
     'to' => 'الى',
     'of' => 'من ',
-    'entries' => 'entries',
+    'entries' => 'الموديل',
 
 
     'activities' => 'النشاطات',
@@ -70,4 +70,24 @@ return [
 
     'create' => 'انشاء',
     'order' => 'ترتيب',
+
+
+    'dashboard' => 'لوحة التحكم',
+    'oops' => 'للاسف',
+    'something_went' => 'هناك خلل نرجو التأكد',
+    'woops_missed' => 'للاسف. لم يتم العثور على الملاحة - يرجى معرفة ما إذا كان عنوان url في قاعدة البيانات (navigation_dashboard)',
+    'we_cant_upload' => 'حدث خطأ ما ، تعذر تحميل الملف. حاول مرة اخرى.',
+
+    'table' => [
+        'title' => 'العنوان',
+        'description' => 'الوصف',
+        'created' => 'تاريخ الاضافة',
+        'action' => 'اجراءات',
+    ],
+
+    'sorry_token_not_exist' => 'عذرًا ، الرمز المميز غير موجود.',
+    'invalid_token' => 'INVALID TOKEN (رمز غير صحيح)',
+    'successfully-updated-document' =>  'تم تحميل المستند وحفظه في قاعدة البيانات.',
+    'successfully-updated-document-name' =>  'تم تحديث اسم المستند.',
+    'list_all' => 'قائمة بجميع ',
 ];
