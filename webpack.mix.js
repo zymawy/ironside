@@ -53,5 +53,47 @@ mix.combine([
 ],'public/js/dashboard.js');
 
 
+mix.styles([
+    '~bootstrap//bootstrap/dist/css/bootstrap.css',
+    'resources/assets/css/vendor.css',
+    'resources/assets/css/vendor/animate.css',
+    'resources/assets/css/vendor/fancybox.css',
+    'resources/assets/css/vendor/font-awesome.css',
+    'resources/assets/css/vendor/jquery.fancybox.css',
+
+    'resources/assets/css/website/faq.css',
+    'resources/assets/css/website/colors.css',
+    'resources/assets/css/website/pricing.css',
+    'resources/assets/css/website/utilities.css',
+    'resources/assets/css/website/testimonials.css',
+
+    'resources/assets/css/website/website.css',
+],'public/css/website.css');
+
+// website javascripts
+mix.scripts([
+    '~jquery/dist/jquery.min.js',
+    'resources/assets/js/vendor/popper.js', // bootstrap dependency
+    '~bootstrap//bootstrap/dist/js/bootstrap.js',
+
+    'resources/assets/js/vendor/jquery.fancybox.min.js',
+    'resources/assets/js/vendor/lazysizes.min.js',
+    //pathJS + 'vendor/owl.carousel.min.js',
+
+    'resources/js/dashboard/ironside.js',
+    'resources/js/dashboard/buttons.js',
+    'resources/js/dashboard/notify.js',
+    'resources/js/dashboard/alerts.js',
+    'resources/js/dashboard/notifications.js',
+    'resources/js/dashboard/forms.js',
+    'resources/js/dashboard/social_media.js',
+    'resources/js/dashboard/datatables.js',
+    'resources/js/dashboard/pagination.js',
+    'resources/js/dashboard/google_maps.js',
+    'resources/js/dashboard/utils.js',
+
+    'resources/assets/js/website.js',
+],'public/js/website.js');
+
 mix.copy('resources/assets/lang','public/lang')
 mix.version();

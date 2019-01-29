@@ -18,5 +18,5 @@
         </div>
     </div>
 
-    @include('ironside::website.partials.side_news')
+    @include('website.partials.side_news')
 </div>

@@ -1,19 +1,19 @@
-@extends('ironside::layouts.website')
+@extends('layouts.website')
 
 @section('content')
     <section class="content bg-default padding padding-top padding-bottom">
-        @include('ironside::website.partials.page_header')
+        @include('website.partials.page_header')
 
         <div class="row">
             <div class="body col-sm-7 col-lg-8">
-                @include('ironside::website.partials.breadcrumb')
+                @include('website.partials.breadcrumb')
 
                 @foreach($activePage->components as $content)
-                    @include('ironside::website.pages.page_heading')
-                    @include('ironside::website.pages.page_content')
+                    @include('website.pages.page_heading')
+                    @include('website.pages.page_content')
 
-                    @include('ironside::website.pages.page_gallery')
-                    @include('ironside::website.pages.page_documents')
+                    @include('website.pages.page_gallery')
+                    @include('website.pages.page_documents')
                 @endforeach
 
                 @if($childrenPages && $childrenPages->count() > 0)
@@ -35,7 +35,7 @@
                 @endif
             </div>
 
-            @include('ironside::website.partials.page_side')
+            @include('website.partials.page_side')
         </div>
     </section>
 @endsection

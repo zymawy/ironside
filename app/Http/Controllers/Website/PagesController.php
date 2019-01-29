@@ -30,7 +30,7 @@ class PagesController extends WebsiteController
         }
         // find out if its a 'main page' and get the children
         $children = $this->findChildrenPages($page);
-        return $this->view('ironside::pages.page')
+        return $this->view('pages.page')
             ->with('activePage', $page)
             ->with('childrenPages', $children);
     }

@@ -20,149 +20,49 @@
 
     @include('partials.favicons')
 
-    <title>{{ config('app.name') }}</title>
+    <title>{{ isset($title) ? $title : config('app.name') }}</title>
 
-    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css" />
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.css" />
-    <style>
-        .hero-content {
-            position: absolute;
-            top: -39px;
-            z-index: 9990;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            color: black !important;
-        }
+    @if(config('app.env') != 'local')
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    @endif
+    <link rel="stylesheet" href="/css/website.css?v=2">
 
-        /* banner */
-        .banner-container .banner-image{
-            display: inline-block;
-            background: no-repeat center center;
-            width: 800px;
-            height: 600px;
-            max-width: 800px !important;
-            max-height: 362px !important;
-            background-size: cover;
-        }
-
-        .carousel.banners .carousel-control span {
-            width: 0px;
-            height: 100px;
-            margin-top: -50px;
-            font-size: 100px;
-        }
-        .owl-stage-outer {
-            width: 100%;
-            height: 100%;
-        }
-
-        .carousel-control-next, .carousel-control-prev {
-            top: 0;
-            right: 0;
-            bottom: 0;
-            position: absolute;
-            z-index: 9;
-            position: absolute;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            width: 15%;
-            color: #fff;
-            text-align: center;
-            opacity: .5;
-        }
-
-        .carousel-control-prev {
-            left: 0;
-        }
-        .label-featuered {
-            background: #00CFEB;
-            display: -webkit-inline-box;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            font-size: 13px;
-            letter-spacing: 0px;
-            font-weight: 700;
-            line-height: 16px;
-            text-transform: uppercase;
-            text-decoration: none !important;
-            border: none;
-            border-radius: 2px;
-            cursor: pointer;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            padding: 16px 32px;
-            height: 48px;
-            text-align: center;
-            white-space: nowrap;
-        }
-    </style>
-    @yield('css')
+    @yield('styles')
 </head>
 
-    <body id="top" class="is-boxed has-animations">
-        <h1 class="d-none" style="display: none">{{ isset($title) ? $title : config('app.name') }}</h1>
+<body id="top" class="d-flex flex-column align-items-end">
+<h1 class="d-none">{{ isset($title) ? $title : config('app.name') }}</h1>
 
-        @if(config('app.env') != 'local')
-            @include('partials.facebook')
-        @endif
+@if(config('app.env') != 'local')
+    @include('partials.facebook')
+@endif
 
-        <div class="body-wrap boxed-container">
+@include('website.partials.header')
 
-            @yield('content')
-        </div>
+@include('website.partials.navigation')
 
-        {{--@include('ironside::website.partials.footer')--}}
+@if(isset($showPageBanner) && $showPageBanner == true || !isset($showPageBanner))
+    @include('website.partials.banner')
+@endif
 
-        {{--@include('ironside::website.partials.popups')--}}
+<div class="container mb-5">
+    @yield('content')
+</div>
 
-        {{-- back to top --}}
-        <a href="#top" class="back-to-top jumper btn btn-secondary">
-            <i class="fa fa-angle-up"></i>
-        </a>
+@include('website.partials.footer')
 
-        @if(config('app.env') != 'local')
-            @include('partials.analytics')
-        @endif
-        <script
-                src="https://code.jquery.com/jquery-3.3.1.js"
-                integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-                crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
-        {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.css"></script>--}}
-        <script src="/js/main.js"></script>
-        @include('notify::notify')
-        <script type="text/javascript">
+@include('website.partials.popups')
 
-            $(document).ready(function(){
-                var owl = $('.owl-carousel');
-                owl.owlCarousel({
-                    rtl:true,
-                    nav:true,
-                    items:1,
-                    loop:true,
-                    center:true,
-                    autoWidth:true,
-                    dots:true,
-                    lazyLoad:true,
-                    autoplay:true,
-                    autoplayTimeout:6000,
-                    autoplayHoverPause:true
-                });
-            });
-        </script>
-        @yield('js')
-    </body>
+{{-- back to top --}}
+<a href="#top" class="back-to-top jumper btn btn-secondary">
+    <i class="fa fa-angle-up"></i>
+</a>
+<script type="text/javascript" charset="utf-8" src="/js/website.js?v=2"></script>
+
+@yield('js')
+
+@if(config('app.env') != 'local')
+    @include('partials.analytics')
+@endif
+</body>
 </html>
