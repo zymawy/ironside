@@ -1,5 +1,5 @@
 <?php
-namespace Database\Seeds;
+// namespace Database\Seeds;
 use Illuminate\Database\Seeder;
 use App\Models\Settings;
 
@@ -13,7 +13,7 @@ class SettingTableSeeder extends Seeder
         foreach ($items as $key => $item)
         {
             Settings::create([
-                                
+
             ]);
         }
 	}

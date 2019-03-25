@@ -1,7 +1,7 @@
 <?php
-namespace Database\Seeds;
+// namespace Database\Seeds;
 use Illuminate\Database\Seeder;
-use Artisan;
+
 class DatabaseSeeder extends Seeder
 {
     /**

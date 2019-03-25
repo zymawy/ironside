@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeds;
+// namespace Database\Seeds;
 
 use App\Models\PageContent;
 use App\Models\Photo;
@@ -99,6 +99,7 @@ class PageTableSeeder extends Seeder
 
     private function pageContent($page, $faker)
     {
+        if($page)
         $component = PageContent::create([
             'page_id'         => $page->id,
             'heading'         => $faker->sentence(2),

@@ -1,8 +1,8 @@
 <?php
-namespace Database\Seeds;
+// namespace Database\Seeds;
 use App\Models\NavigationDashboard;
 use Illuminate\Database\Seeder;
-use Storage;
+// use Storage;
 class NavigationDashboardTableSeeder extends Seeder
 {
     public function run()

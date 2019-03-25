@@ -1,5 +1,5 @@
 <?php
-namespace Database\Seeds;
+// namespace Database\Seeds;
 use App\Models\NewsCategory;
 use Illuminate\Database\Seeder;
 use App\Models\News;

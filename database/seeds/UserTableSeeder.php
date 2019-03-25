@@ -1,11 +1,11 @@
 <?php
-namespace Database\Seeds;
+// namespace Database\Seeds;
 use App\User;
 use Zymawy\Ironside\Commands\InstallCommand;
 use Carbon\Carbon;
 use App\Role;
 use Illuminate\Database\Seeder;
-use DB;
+// use DB;
 use Illuminate\Support\Facades\Schema;
 class UserTableSeeder extends Seeder
 {
