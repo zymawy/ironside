@@ -33,6 +33,7 @@ mix.combine([
     'resources/assets/js/vendor/daterangepicker.js',
     // 'resources/assets/js/vendor/bootstrap-datetimepicker.js',
     'node_modules/moment/locale/ar-sa.js',
+    'node_modules/moment/locale/ar-kw.js',
     'node_modules/moment/locale/ar.js',
     'node_modules/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js',
     'resources/assets/js/vendor/jquery.dataTables.js',
