@@ -39,7 +39,6 @@ mix.combine([
     'resources/assets/js/vendor/jquery.dataTables.js',
     'resources/assets/js/vendor/datatables.bootstrap.js',
     'resources/assets/js/vendor/datatables.responsive.js',
-
     'resources/js/dashboard/ironside.js',
     'resources/js/dashboard/buttons.js',
     'resources/js/dashboard/notify.js',
