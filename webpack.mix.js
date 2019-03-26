@@ -31,8 +31,10 @@ mix.combine([
 
     'resources/assets/js/vendor/moment.js',
     'resources/assets/js/vendor/daterangepicker.js',
-    'resources/assets/js/vendor/bootstrap-datetimepicker.js',
-
+    // 'resources/assets/js/vendor/bootstrap-datetimepicker.js',
+    'node_modules/moment/locale/ar-sa.js',
+    'node_modules/moment/locale/ar.js',
+    'node_modules/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js',
     'resources/assets/js/vendor/jquery.dataTables.js',
     'resources/assets/js/vendor/datatables.bootstrap.js',
     'resources/assets/js/vendor/datatables.responsive.js',
@@ -96,4 +98,6 @@ mix.scripts([
 ],'public/js/website.js');
 
 mix.copy('resources/assets/lang','public/lang')
-mix.version();
+if(mix.inProduction()) {
+    mix.version();
+}

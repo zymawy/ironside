@@ -18,7 +18,6 @@
 					<form method="POST" action="{{$selectedNavigation->url . (isset($item)? "/{$item->id}" : '')}}" accept-charset="UTF-8" enctype="multipart/form-data">
                         <input name="_token" type="hidden" value="{{ csrf_token() }}">
                         <input name="_method" type="hidden" value="{{isset($item)? 'PUT':'POST'}}">
-
                         <fieldset>
                             <div class="row">
                                 <div class="col col-6">
@@ -59,9 +58,13 @@
                                         <label for="active_from">
                                             {{ trans('dashboard/forms.active_from') }}
                                         </label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="active_from"
+                                        <div class="input-group date"  data-target-input="nearest">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="active_from"
+                                                   data-target="#active_from"
                                                    data-date-format="YYYY-MM-DD HH:mm:ss"
+                                                   data-toggle="datetimepicker"
                                                    name="active_from"
                                                    autocomplete="off"
                                                    placeholder="{{ trans('dashboard/forms.active_from_placeholder') }}"
@@ -77,10 +80,12 @@
                                         <label for="active_to">
                                             {{ trans('dashboard/forms.active_to') }}
                                         </label>
-                                        <div class="input-group">
+                                        <div class="input-group date"  data-target-input="nearest">
                                             <input type="text"
                                                    class="form-control"
                                                    id="active_to"
+                                                   data-target="#active_to"
+                                                   data-toggle="datetimepicker"
                                                    autocomplete="off"
                                                    data-date-format="YYYY-MM-DD HH:mm:ss"
                                                    name="active_to"
@@ -103,7 +108,28 @@
                                 {!! form_error_message('content', $errors) !!}
                             </div>
                         </fieldset>
-
+                        <div class="container">
+                            <div class='col-md-5'>
+                                <div class="form-group">
+                                    <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker7"/>
+                                        <div class="input-group-append" data-target="#datetimepicker7" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-md-5'>
+                                <div class="form-group">
+                                    <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker8"/>
+                                        <div class="input-group-append" data-target="#datetimepicker8" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 						@include('DH::partials.form_footer')
                     </form>
                 </div>
@@ -118,15 +144,17 @@
     <script type="text/javascript" charset="utf-8">
         $(function ()
         {
-            setDateTimePickerRange('#active_from', '#active_to');
 
             initSummerNote('.summernote',400,"{!!  isRTL() ? "ar-AR":"en-US"  !!}");
+            dateTimePickerRange('#active_from', '#active_to','ar');
 
             $('#form-edit').on('submit', function ()
             {
                 $('#article-content').html($('.summernote').val());
                 return true;
             });
+
+            setDateTimePickerRange('#active_from', '#active_to','ar');
         })
     </script>
 @endsection

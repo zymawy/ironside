@@ -85,6 +85,19 @@ function initToolbarDateRange(selector, callback)
  * Give from and to datetimepicker inputs,
  * This will automatically set min / max date on the fields
  */
+function dateTimePickerRange(from, to, lang = 'ar') {
+
+    $(from).datetimepicker({ locale: lang });
+
+    $(to).datetimepicker({useCurrent: false,  locale: lang });
+
+    $(from).on("change.datetimepicker", function (e) {
+        $(to).datetimepicker('minDate', e.date);
+    });
+    $(to).on("change.datetimepicker", function (e) {
+        $(from).datetimepicker('maxDate', e.date);
+    });
+}
 function setDateTimePickerRange(from, to)
 {
     $(from).datetimepicker();
@@ -100,6 +113,7 @@ function setDateTimePickerRange(from, to)
 
 function initSummerNote(selector, height,lang)
 {
+    console.log(lang);
     $(selector).summernote({
         tabsize: 2,
         focus: false,

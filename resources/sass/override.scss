@@ -55,3 +55,17 @@ body {
     top: 33px;
     left: 18px;
 }
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    width: auto
+}
+
+.datepicker-months .table-condensed tbody tr td:last-child,
+.datepicker-decades .table-condensed tbody tr td:last-child,
+.datepicker-years .table-condensed tbody tr td:last-child {
+    text-align: center
+}
+
+.bootstrap-datetimepicker-widget .picker-switch tbody tr td:last-child {
+    text-align: center;
+}

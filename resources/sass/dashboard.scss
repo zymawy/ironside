@@ -3,14 +3,14 @@
 @import "variables";
 @import '_gradients';
 // Bootstrap
-@import "~bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap";
 @import "../assets/css/vendor/select2.css";
 @import "../assets/css/vendor/lightbox.css";
 @import "../assets/css/vendor/dropzone.css";
 @import "../assets/css/vendor/summernote-bs4.css";
 @import "../assets/css/vendor/daterangepicker.css";
 @import "../assets/css/vendor/pace-theme-flash.css";
-@import "../assets/css/vendor/bootstrap-datetimepicker.css";
+@import "~tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css";
 @import "~datatables.net-bs4/css/dataTables.bootstrap4.min.css";
 @import "~datatables.net-rowgroup-bs4/css/rowGroup.bootstrap4.min.css";
 @import "~datatables.net-keytable-bs4/css/keyTable.bootstrap4.min.css";

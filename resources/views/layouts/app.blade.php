@@ -69,6 +69,16 @@
 @include('partials.notify')
 
 <script type="text/javascript" charset="utf-8">
+    $(document).ajaxStart(function() { Pace.restart(); });
+
+    function initDashboard()
+    {
+        initIronside();
+
+        $(".select2").select2();
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+
     $(document).ready(function () {
         initDashboard();
     });
