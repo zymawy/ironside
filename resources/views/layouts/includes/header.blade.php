@@ -168,7 +168,7 @@
                         <img src="{{ profile_image() }}" alt="user"
                              class="profile-pic"
                         />
-                        <span class="hidden-xs">{!! user()->fullname !!}</span>
+                        <span class="hidden-xs">{!! str_limit(user()->fullname,7,'..') !!}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                         <ul class="dropdown-user">

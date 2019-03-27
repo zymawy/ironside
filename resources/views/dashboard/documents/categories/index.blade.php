@@ -13,11 +13,13 @@
                     </h3>
                 </div>
 
+                <div class="margin-20 m-t-20">
+                        @include('DH::partials.info')
+
+                        @include('DH::partials.toolbar')
+                </div>
+
                 <div class="card-body">
-
-                    @include('DH::partials.info')
-
-                    @include('DH::partials.toolbar')
 
                     <table id="tbl-list" data-server="false" class="dt-table table" cellspacing="0" width="100%">
                         <thead>

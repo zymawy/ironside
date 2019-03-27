@@ -1141,15 +1141,16 @@ function initActionDeleteClick(element)
     function onActionDeleteClick(e)
     {
         e.preventDefault();
+
         var formId = $(this).attr('data-form');
         var title = $(this).attr('data-original-title');
         if (title.length > 7) {
-            title = '<strong>' + title.substring(0, 6).toLowerCase() + '</strong> the <strong>' + title.slice(7) + '</strong>';
+            title = '<strong>' + title.substring(0, 6).toLowerCase() + title.slice(7) + '</strong>';
         }
-
         var content = "Are you sure you want to " + title + " entry? ";
+
         $('#modal-confirm').find('.modal-body').find('p').html(content);
-        $('#modal-confirm').find('.modal-footer').find('.btn-primary').on('click', function (e)
+        $('#modal-confirm').find('.modal-footer').find('.btn-submit').on('click', function (e)
         {
             $('#' + formId).submit();
         });
@@ -1167,7 +1168,7 @@ function initActionDeleteClick(element)
 
         var content = "Are you sure you want to " + title + "? ";
         $('#modal-confirm').find('.modal-body').find('p').html(content);
-        $('#modal-confirm').find('.modal-footer').find('.btn-primary').on('click', function (e)
+        $('#modal-confirm').find('.modal-footer').find('.btn-submit').on('click', function (e)
         {
             $('#' + formId).submit();
         });
@@ -1175,6 +1176,7 @@ function initActionDeleteClick(element)
         return false;
     }
 }
+
 /*
  * PaginationClass
  */

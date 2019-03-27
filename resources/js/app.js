@@ -8,8 +8,6 @@ import BootstrapVue from 'bootstrap-vue'
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-// Assets
-import './plugins'
 // import 'tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js'
 
 Vue.use(BootstrapVue);

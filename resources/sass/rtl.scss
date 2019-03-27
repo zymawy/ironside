@@ -2240,13 +2240,7 @@ textarea {
   background: #1976d2 none repeat scroll 100% 0;
   color: #ffffff;
 }
-.modal-dialog {
-  margin: 30px auto;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%) !important;
-  width: 70%;
-}
+
 .modal-header .close {
   font-size: 14px;
   margin-left: 15px;
@@ -5664,16 +5658,9 @@ tbody tr td:last-child {
 .callout-help .title {
   color: #3c8dbc;
 }
-
 .callout-help p {
   color: #333;
 }
-.sidebar-nav {
-  border-left: 1px solid transparent;
-  border-image: linear-gradient(150deg, #f05138 15%, #ee3a5b 70%, #ed1375 94%);
-  border-image-slice: 1;
-}
-
 .btn-label {
   right: -12px;
 }

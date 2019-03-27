@@ -1,5 +1,5 @@
 {{-- confirm modal --}}
-<div class="modal" id="modal-confirm" tabindex="-1" role="dialog">
+<div class="modal fade" id="modal-confirm" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header alert-warning">

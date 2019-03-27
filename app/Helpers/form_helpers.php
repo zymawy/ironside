@@ -52,7 +52,8 @@ if (!function_exists('action_row')) {
                         <input name="_method" type="hidden" value="DELETE">
                         <input name="_token" type="hidden" value="' . csrf_token() . '">
                         <input name="_id" type="hidden" value="' . $id . '">
-                        <a data-form="form-delete-row' . $id . '" class="btn bttn-material-flat bttn-xs bttn-danger m-b-10 m-l-5 btn-delete-row text-white" 
+                        <a data-form="form-delete-row' . $id . '" 
+                        class="btn bttn-material-flat bttn-xs bttn-danger m-b-10 m-l-5 btn-delete-row text-white" 
                         data-toggle="tooltip" title="' .  __('dashboard/indexes.delete') . $title . '">
                             <i class="fa fa-trash"></i>
                         </a>

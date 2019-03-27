@@ -68,7 +68,7 @@ class UserTableSeeder extends Seeder
                 'telephone'    => '123456789',
                 'gender'       => 'nigga',
                 'born_at'       => '1995-10-06',
-                'image'       => '/uploads/images/default.png',
+                'image'       => 'default.png',
             ]);
 
             $user->attachRole($role);
@@ -92,7 +92,7 @@ class UserTableSeeder extends Seeder
                         'cellphone'    => '123456789',
                         'telephone'    => '123456789',
                         'gender'       => 'nigga',
-                        'image'       => '/uploads/images/default.png',
+                        'image'       => 'default.png',
                         'born_at'       => '1995-10-06',
                     ]);
                     $permissions = [];

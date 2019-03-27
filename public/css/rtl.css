@@ -6984,15 +6984,6 @@ textarea {
   color: #ffffff;
 }
 
-.modal-dialog {
-  margin: 30px auto;
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%) !important;
-          transform: translateY(-50%) !important;
-  width: 70%;
-}
-
 .modal-header .close {
   font-size: 14px;
   margin-left: 15px;
@@ -11098,13 +11089,6 @@ tbody tr td:last-child {
 
 .callout-help p {
   color: #333;
-}
-
-.sidebar-nav {
-  border-left: 1px solid transparent;
-  -o-border-image: linear-gradient(150deg, #f05138 15%, #ee3a5b 70%, #ed1375 94%);
-     border-image: linear-gradient(150deg, #f05138 15%, #ee3a5b 70%, #ed1375 94%);
-  border-image-slice: 1;
 }
 
 .btn-label {

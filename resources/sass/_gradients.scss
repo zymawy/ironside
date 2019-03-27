@@ -1422,13 +1422,6 @@
 .hidden {
   display: none;
 }
-
-.header {
-  border-bottom: 1px solid transparent;
-  border-image: linear-gradient(150deg, #f05138 15%, #ee3a5b 70%, #ed1375 94%);
-  border-image-slice: 1;
-}
-
 /*
 |------------------------------------------
 | NOTIFY While Refactorying
