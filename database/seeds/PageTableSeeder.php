@@ -2,10 +2,10 @@
 
 // namespace Database\Seeds;
 
+use App\Models\Page;
 use App\Models\PageContent;
 use App\Models\Photo;
 use Illuminate\Database\Seeder;
-use App\Models\Page;
 
 class PageTableSeeder extends Seeder
 {
@@ -18,7 +18,7 @@ class PageTableSeeder extends Seeder
         PageContent::truncate();
 
         //$csvPath = database_path() . DIRECTORY_SEPARATOR . 'seeds' . DIRECTORY_SEPARATOR . 'csv' . DIRECTORY_SEPARATOR . 'pages.csv';
-        $csvPath = __DIR__ . DIRECTORY_SEPARATOR . 'csv' . DIRECTORY_SEPARATOR . 'pages.csv';
+        $csvPath = __DIR__.DIRECTORY_SEPARATOR.'csv'.DIRECTORY_SEPARATOR.'pages.csv';
         $items = csv_to_array($csvPath);
 
         foreach ($items as $key => $item) {
@@ -99,13 +99,14 @@ class PageTableSeeder extends Seeder
 
     private function pageContent($page, $faker)
     {
-        if($page)
-        $component = PageContent::create([
+        if ($page) {
+            $component = PageContent::create([
             'page_id'         => $page->id,
             'heading'         => $faker->sentence(2),
             'heading_element' => 'h2',
             'content'         => "<p>{$faker->paragraph(5)}</p>",
         ]);
+        }
         // $page->attachComponent($component);
     }
 

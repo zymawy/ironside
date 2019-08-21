@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
@@ -12,18 +11,18 @@ class Country extends IronsideCMSModel
     protected $table = 'countries';
     protected $guarded = ['id'];
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'title' => 'required|min:3:max:255',
     ];
 
-
     public $translatable = [
-        'title'
+        'title',
     ];
+
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */

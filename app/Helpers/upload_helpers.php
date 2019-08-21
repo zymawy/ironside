@@ -4,16 +4,17 @@ if (!function_exists('upload_path')) {
     /**
      * Get the path to the public folder.
      *
-     * @param  string $path
+     * @param string $path
+     *
      * @return string
      */
     function upload_path($path = '')
     {
         // path
-        $path = env('PUBLIC_FOLDER', 'public') . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $path;
+        $path = env('PUBLIC_FOLDER', 'public').DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.$path;
         // remove trailing seperators (incase more than 1)
         // add 1 trailing seperator (to add file in directory)
-        return rtrim(base_path($path), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        return rtrim(base_path($path), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
     }
 }
 
@@ -21,12 +22,13 @@ if (!function_exists('upload_path_images')) {
     /**
      * Get the path to the public images folder.
      *
-     * @param  string $path
+     * @param string $path
+     *
      * @return string
      */
     function upload_path_images($path = '')
     {
-        return upload_path('images' . DIRECTORY_SEPARATOR . $path . DIRECTORY_SEPARATOR);
+        return upload_path('images'.DIRECTORY_SEPARATOR.$path.DIRECTORY_SEPARATOR);
     }
 }
 
@@ -58,8 +60,7 @@ function get_min_width_height($width, $height, $minWidth = 100, $minHeight = 100
         $ratio = $width / $height;
         $height = $minHeight;
         $width = round($height * $ratio);
-    }
-    else {
+    } else {
         $ratio = $height / $width;
         $width = $minWidth;
         $height = round($width * $ratio);
@@ -70,5 +71,5 @@ function get_min_width_height($width, $height, $minWidth = 100, $minHeight = 100
 
 function uploaded_images_url($name)
 {
-    return '/uploads/images/' . $name;
+    return '/uploads/images/'.$name;
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Requests;
-
 class AnalyticsController extends AdminController
 {
     public function summary()

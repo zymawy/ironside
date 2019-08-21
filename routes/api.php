@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 12/26/18
- * Time: 5:25 AM
+ * Time: 5:25 AM.
  */
-
 use Illuminate\Http\Request;
 
 /*
@@ -30,7 +29,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 */
 //Route::group(['namespace' => 'Api'], function () { // 'middleware' => ['auth:api'],
     // notifications
-    Route::group(['prefix' => 'notifications',], function () {
+    Route::group(['prefix' => 'notifications'], function () {
         Route::post('/{user}', 'NotificationsController@index');
         Route::post('/{user}/unread', 'NotificationsController@unread');
         Route::post('/{user}/read/{notification}', 'NotificationsController@read');
@@ -64,4 +63,3 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::post('/newsletter/subscribe', 'NewsletterController@subscribe');
 //});
-

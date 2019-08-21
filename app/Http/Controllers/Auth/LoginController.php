@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Auth;
 use Carbon\Carbon;
-use App\Models\LogLogin;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
 
 class LoginController extends AuthController
 {
@@ -21,13 +20,15 @@ class LoginController extends AuthController
     public function showLoginForm()
     {
         $this->showPageBanner = false;
+
         return $this->view('login');
     }
 
     /**
      * Handle a registration request for the application.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function login(Request $request)
@@ -75,7 +76,8 @@ class LoginController extends AuthController
     /**
      * Send the response after the user was authenticated.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     private function sendLoginResponse(Request $request)
@@ -85,12 +87,11 @@ class LoginController extends AuthController
         // notify message
         if ($user->getAttribute('logged_in_at')) {
             notify()->info('Info',
-                'Last time you logged in was ' . $user->logged_in_at->diffForHumans(),
+                'Last time you logged in was '.$user->logged_in_at->diffForHumans(),
                 'clock-o rotateIn animated', 8000);
-        }
-        else {
+        } else {
             notify()->info('Welcome',
-                'Hi ' . $user->fullname . '. Welcome to ' . config('app.name'),
+                'Hi '.$user->fullname.'. Welcome to '.config('app.name'),
                 'bell swing animated', 8000);
         }
 
@@ -104,7 +105,7 @@ class LoginController extends AuthController
 
         $this->clearLoginAttempts($request);
 
-        log_activity('Login', $user->fullname . ' logged in.');
+        log_activity('Login', $user->fullname.' logged in.');
 
 //        // if admin - go to admin - else website
 //        $url = $user->hasRole('admin') ? "/d" : "/";
@@ -120,7 +121,8 @@ class LoginController extends AuthController
     /**
      * Log the user out of the application.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)
@@ -147,8 +149,9 @@ class LoginController extends AuthController
     /**
      * Get the failed login response instance.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param string                    $message
+     * @param \Illuminate\Http\Request $request
+     * @param string                   $message
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     private function sendFailedLoginResponse(Request $request, $message = '')

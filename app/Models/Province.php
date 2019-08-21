@@ -10,14 +10,15 @@ class Province extends IronsideCMSModel
     protected $table = 'provinces';
     protected $guarded = ['id'];
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'title'       => 'required|min:3:max:255',
-        'country_id' => 'required|exists:countries,id',
+        'country_id'  => 'required|exists:countries,id',
     ];
+
     /**
-     * Get the country
+     * Get the country.
      */
     public function country()
     {
@@ -25,7 +26,7 @@ class Province extends IronsideCMSModel
     }
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */
@@ -33,5 +34,4 @@ class Province extends IronsideCMSModel
     {
         return self::orderBy('title')->get()->pluck('title', 'id')->toArray();
     }
-
 }

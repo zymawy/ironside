@@ -15,9 +15,9 @@ class IronsideServiceProvider extends ServiceProvider
     {
 
         // load Views
-        $this->loadViewsFrom(resource_path('views/dashboard'), "DH");
-        $this->loadViewsFrom(resource_path('views/website'), "WS");
-        $this->loadViewsFrom(resource_path('views/layouts'), "LY");
+        $this->loadViewsFrom(resource_path('views/dashboard'), 'DH');
+        $this->loadViewsFrom(resource_path('views/website'), 'WS');
+        $this->loadViewsFrom(resource_path('views/layouts'), 'LY');
     }
 
     /**

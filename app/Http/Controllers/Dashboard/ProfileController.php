@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use Image;
 use App\User;
-use App\Http\Requests;
 use Illuminate\Http\Request;
+use Image;
 
 class ProfileController extends AdminController
 {
@@ -19,6 +18,7 @@ class ProfileController extends AdminController
      *
      * @param User    $user
      * @param Request $request
+     *
      * @return Response
      */
     public function update(User $user, Request $request)
@@ -34,8 +34,7 @@ class ProfileController extends AdminController
         // submit without a file
         if (is_null($request->file('photo'))) {
             $this->validate($request, array_except(User::$rulesProfile, 'photo'));
-        }
-        else {
+        } else {
             $this->validate($request, User::$rulesProfile);
 
             $photo = $this->uploadProfilePicture($request->file('photo'));
@@ -50,7 +49,7 @@ class ProfileController extends AdminController
             'cellphone',
             'telephone',
             'born_at',
-            'image'
+            'image',
         ]));
 
         // update user  password
@@ -64,9 +63,10 @@ class ProfileController extends AdminController
     }
 
     /**
-     * Upload the profile picture image
+     * Upload the profile picture image.
      *
-     * @param        $file
+     * @param $file
+     *
      * @return string|void
      */
     private function uploadProfilePicture($file)
@@ -74,7 +74,7 @@ class ProfileController extends AdminController
         $name = token();
         $extension = $file->guessClientExtension();
 
-        $filename = $name . '.' . $extension;
+        $filename = $name.'.'.$extension;
         $imageTmp = Image::make($file->getRealPath());
 
         if (!$imageTmp) {
@@ -84,7 +84,7 @@ class ProfileController extends AdminController
         $path = upload_path_images();
 
         // save the image
-        $imageTmp->fit(250, 250)->save($path . $filename);
+        $imageTmp->fit(250, 250)->save($path.$filename);
 
         return $filename;
     }

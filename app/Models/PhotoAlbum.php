@@ -4,11 +4,11 @@ namespace App\Models;
 
 use App\Models\Traits\HasSlug;
 use App\Models\Traits\Photoable;
-use App\Models\IronsideCMSModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class PhotoAlbum
+ * Class PhotoAlbum.
+ *
  * @mixin \Eloquent
  */
 class PhotoAlbum extends IronsideCMSModel
@@ -20,14 +20,14 @@ class PhotoAlbum extends IronsideCMSModel
     protected $guarded = ['id'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'name' => 'required|min:3:max:255',
     ];
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */

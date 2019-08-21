@@ -6,10 +6,10 @@ use App\Models\Traits\PageHelper;
 use Bpocallaghan\Sluggable\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\IronsideCMSModel;
 
 /**
- * Class Page
+ * Class Page.
+ *
  * @mixin \Eloquent
  */
 class Page extends IronsideCMSModel
@@ -21,11 +21,11 @@ class Page extends IronsideCMSModel
     protected $guarded = ['id'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      *
      * @var array
      */
-    static public $rules = [
+    public static $rules = [
         'name'          => 'required|min:3:max:255',
         'title'         => 'required|min:3:max:255',
         'description'   => 'required|min:3:max:255',
@@ -47,17 +47,17 @@ class Page extends IronsideCMSModel
     ];
 
     /**
-     * Get a the title + url concatenated
+     * Get a the title + url concatenated.
      *
      * @return string
      */
     public function getTitleUrlAttribute()
     {
-        return $this->attributes['title'] . ' ( ' . $this->attributes['url'] . ' )';
+        return $this->attributes['title'].' ( '.$this->attributes['url'].' )';
     }
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */
@@ -67,7 +67,7 @@ class Page extends IronsideCMSModel
     }
 
     /**
-     * Get the sections
+     * Get the sections.
      */
     public function sections()
     {
@@ -75,7 +75,7 @@ class Page extends IronsideCMSModel
     }
 
     /**
-     * Get the components
+     * Get the components.
      */
     public function components()
     {
@@ -83,7 +83,7 @@ class Page extends IronsideCMSModel
     }
 
     /**
-     * Get the Banner many to many
+     * Get the Banner many to many.
      */
     public function banners()
     {
@@ -91,7 +91,7 @@ class Page extends IronsideCMSModel
     }
 
     /**
-     * Get the PageContent many to many
+     * Get the PageContent many to many.
      */
     public function pageContent()
     {

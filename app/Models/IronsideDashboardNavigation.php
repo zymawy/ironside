@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use App\Role;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Traits\RecursiveParent;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
 class IronsideDashboardNavigation extends IronsideCMSModel
@@ -18,7 +17,7 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     protected $table = 'navigation_dashboard';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
@@ -28,7 +27,6 @@ class IronsideDashboardNavigation extends IronsideCMSModel
 
     // prefix path
     protected $prefixPath = '/dashboard';
-
 
     public $translatable = [
         'title',
@@ -40,15 +38,15 @@ class IronsideDashboardNavigation extends IronsideCMSModel
         'help_create_title',
         'help_create_content',
         'help_edit_title',
-        'help_edit_content'
+        'help_edit_content',
     ];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      *
      * @var array
      */
-    static public $rules = [
+    public static $rules = [
         'icon'        => 'required|min:1',
         'title'       => 'required|min:3:max:255',
         'description' => 'required|min:3:max:255',
@@ -56,7 +54,8 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     ];
 
     /**
-     * Remove the ending '/'
+     * Remove the ending '/'.
+     *
      * @return string
      */
     public function getUrlAttribute()
@@ -65,17 +64,17 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     }
 
     /**
-     * Get a the title + url concatenated
+     * Get a the title + url concatenated.
      *
      * @return string
      */
     public function getTitleUrlAttribute()
     {
-        return $this->attributes['title'] . ' ( ' . $this->attributes['url'] . ' )';
+        return $this->attributes['title'].' ( '.$this->attributes['url'].' )';
     }
 
     /**
-     * Get the parent
+     * Get the parent.
      *
      * @return \Eloquent
      */
@@ -85,7 +84,7 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     }
 
     /**
-     * Get the parent
+     * Get the parent.
      *
      * @return \Eloquent
      */
@@ -95,13 +94,14 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     }
 
     /**
-     * Get All navigation where parent id, and not hidden
+     * Get All navigation where parent id, and not hidden.
      *
      * @param      $id
      * @param bool $hidden (if we need to include hidden)
+     *
      * @return mixed
      */
-    static public function whereParentIdORM($id, $hidden = false)
+    public static function whereParentIdORM($id, $hidden = false)
     {
         $builder = self::whereParentId($id);
         if (!$hidden) {
@@ -114,7 +114,7 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     /**
      * Get the url from db
      * If true given, we generate a new one,
-     * This us usefull if parent_id updated, etc
+     * This us usefull if parent_id updated, etc.
      *
      * @return \Eloquent
      */
@@ -122,7 +122,7 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     {
         $this->url = '';
         $this->generateCompleteUrl($this);
-        $this->url = $this->prefixPath . $this->url;
+        $this->url = $this->prefixPath.$this->url;
 
         if (strlen($this->slug) > 1) {
             $this->url .= "/{$this->slug}";
@@ -132,9 +132,10 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     }
 
     /**
-     * Generate the new nav based on parent_id
+     * Generate the new nav based on parent_id.
      *
      * @param $nav
+     *
      * @return \Illuminate\Support\Collection|static
      */
     private function generateCompleteUrl($nav)
@@ -143,7 +144,7 @@ class IronsideDashboardNavigation extends IronsideCMSModel
 
         if ($row) {
             if (strlen($row->slug) > 1) {
-                $this->url = "/{$row->slug}" . ("{$this->url}");
+                $this->url = "/{$row->slug}".("{$this->url}");
             }
 
             return $this->generateCompleteUrl($row);
@@ -153,7 +154,7 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     }
 
     /**
-     * Get All his parents and himself
+     * Get All his parents and himself.
      *
      * @return mixed
      */
@@ -163,10 +164,11 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     }
 
     /**
-     * Recursive find his parents
+     * Recursive find his parents.
      *
      * @param $nav
      * @param $parents
+     *
      * @return mixed
      */
     private function getParentsRecursive($nav, $parents)
@@ -181,7 +183,7 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     }
 
     /**
-     * Get All his parents and himself
+     * Get All his parents and himself.
      *
      * @return mixed
      */
@@ -191,10 +193,11 @@ class IronsideDashboardNavigation extends IronsideCMSModel
     }
 
     /**
-     * Recursive find his parents
+     * Recursive find his parents.
      *
      * @param $nav
      * @param $parents
+     *
      * @return mixed
      */
     private function getUrlParentsRecursive($nav, $parents)
@@ -212,7 +215,8 @@ class IronsideDashboardNavigation extends IronsideCMSModel
      * Get all the navigation to render
      * Hide hidden
      * Order by list order
-     * Group by parent_id
+     * Group by parent_id.
+     *
      * @return mixed
      */
     public static function getAllByParentGrouped()

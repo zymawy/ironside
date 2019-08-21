@@ -3,10 +3,11 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 12/28/18
- * Time: 5:43 PM
+ * Time: 5:43 PM.
  */
 
 namespace App\Models\Traits;
+
 use App\Classes\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +15,7 @@ trait HasSlug
 {
     /** @var \Ironside\Sluggable\SlugOptions */
     protected $slugOptions;
+
     /**
      * Get the options for generating the slug.
      */
@@ -21,6 +23,7 @@ trait HasSlug
     {
         return SlugOptions::create();
     }
+
     /**
      * Boot the trait.
      */
@@ -33,8 +36,9 @@ trait HasSlug
             $model->generateSlugOnUpdate();
         });
     }
+
     /**
-     * Generate a slug on create
+     * Generate a slug on create.
      */
     protected function generateSlugOnCreate()
     {
@@ -44,6 +48,7 @@ trait HasSlug
         }
         $this->createSlug();
     }
+
     /**
      * Handle adding slug on model update.
      */
@@ -67,6 +72,7 @@ trait HasSlug
         }
         $this->createSlug();
     }
+
     /**
      * Handle setting slug on explicit request.
      */
@@ -75,6 +81,7 @@ trait HasSlug
         $this->slugOptions = $this->getSlugOptions();
         $this->createSlug();
     }
+
     /**
      * Add the slug to the model.
      */
@@ -86,14 +93,17 @@ trait HasSlug
         }
         $this->attributes[$this->slugOptions->slugField] = $slug;
     }
+
     /**
      * Generate a non unique slug for this record.
      */
     protected function generateNonUniqueSlug()
     {
         $slug = $this->getSlugSourceString();
+
         return slugifyMe($slug, $this->slugOptions->slugSeparator);
     }
+
     /**
      * Get the string that should be used as base for the slug.
      */
@@ -102,17 +112,22 @@ trait HasSlug
         // if callback given
         if (is_callable($this->slugOptions->generateSlugFrom)) {
             $slug = call_user_func($this->slugOptions->generateSlugFrom, $this);
+
             return substr($slug, 0, $this->slugOptions->maximumLength);
         }
         // concatenate on the fields and implode on seperator
         $slug = collect($this->slugOptions->generateSlugFrom)->map(function ($fieldName = '') {
             return $this->$fieldName;
         })->implode($this->slugOptions->slugSeparator);
+
         return substr($slug, 0, $this->slugOptions->maximumLength);
     }
+
     /**
-     * Make the slug unique with suffix
+     * Make the slug unique with suffix.
+     *
      * @param $slug
+     *
      * @return string
      */
     protected function makeSlugUnique($slug)
@@ -131,17 +146,20 @@ trait HasSlug
         }
         // loop through the list and add suffix
         while (!$slugIsUnique) {
-            $uniqueSlug = $slug . $this->slugOptions->slugSeparator . ($i++);
+            $uniqueSlug = $slug.$this->slugOptions->slugSeparator.($i++);
             if (!in_array($uniqueSlug, $list)) {
                 $slugIsUnique = true;
             }
         }
+
         return $uniqueSlug;
     }
+
     /**
-     * Get existing slugs matching slug
+     * Get existing slugs matching slug.
      *
      * @param $slug
+     *
      * @return \Illuminate\Support\Collection|static
      */
     protected function getExistingSlugs($slug)
@@ -153,12 +171,14 @@ trait HasSlug
             ->get()
             ->pluck($this->slugOptions->slugField);
     }
+
     /**
      * Check if we are updating
      * Find entries with same slug
-     * Exlude current model's entry
+     * Exlude current model's entry.
      *
      * @param $slug
+     *
      * @return bool
      */
     private function checkUpdatingSlug($slug)

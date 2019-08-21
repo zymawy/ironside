@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\IronsideCMSModel;
 
 /**
- * Class Setting
+ * Class Setting.
+ *
  * @mixin \Eloquent
  */
 class Settings extends IronsideCMSModel
@@ -19,10 +19,10 @@ class Settings extends IronsideCMSModel
     protected $guarded = ['id'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
-    	'name' => 'required|min:3:max:255',
-    	'description' => 'required|min:3:max:2000',
+    public static $rules = [
+        'name'        => 'required|min:3:max:255',
+        'description' => 'required|min:3:max:2000',
     ];
 }

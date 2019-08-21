@@ -2,8 +2,8 @@
 
 namespace App\Models\Traits;
 
-use ReflectionClass;
 use App\Models\LogDashboardActivity;
+use ReflectionClass;
 
 trait LogsActivity
 {
@@ -33,7 +33,8 @@ trait LogsActivity
     /**
      * Record activity for the model.
      *
-     * @param  string $event
+     * @param string $event
+     *
      * @return void
      */
     public function logActivity($event)
@@ -57,8 +58,9 @@ trait LogsActivity
     /**
      * Prepare the appropriate activity name.
      *
-     * @param  mixed  $model
-     * @param  string $action
+     * @param mixed  $model
+     * @param string $action
+     *
      * @return string
      */
     protected function getActivityName($model, $action)
@@ -82,7 +84,7 @@ trait LogsActivity
         return [
             'created',
             'deleted',
-            'updated'
+            'updated',
         ];
     }
 

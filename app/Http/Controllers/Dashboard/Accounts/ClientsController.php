@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\Dashboard\Accounts;
 
-use Carbon\Carbon;
-use Illuminate\Validation\Rule;
-use Password;
-use App\User;
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Role;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App\Http\Controllers\Dashboard\AdminController;
+use Illuminate\Validation\Rule;
+use Password;
 
 class ClientsController extends AdminController
 {
     /**
      * Display a listing of client.
      *
-     * @return Response
      * @throws \Throwable
+     *
+     * @return Response
      */
     public function index()
     {
@@ -41,7 +42,7 @@ class ClientsController extends AdminController
 
         save_resource_url();
 
-        return $this->view("accounts.clients.index")->with('paginator', $paginator);
+        return $this->view('accounts.clients.index')->with('paginator', $paginator);
     }
 
     /**
@@ -59,27 +60,30 @@ class ClientsController extends AdminController
 
     /**
      * @param User $user
+     *
      * @return $this
      */
     public function create()
     {
         $roles = Role::getAllLists();
 
-        return $this->view("accounts.clients.create_edit")
+        return $this->view('accounts.clients.create_edit')
             ->with('roles', $roles);
     }
 
     /**
      * @param User $user
+     *
      * @return $this
      */
     public function show(User $user)
     {
-        return $this->view("accounts.clients.show", compact('user'));
+        return $this->view('accounts.clients.show', compact('user'));
     }
 
     /**
      * @param User $user
+     *
      * @return $this
      */
     public function edit(User $user)
@@ -96,6 +100,7 @@ class ClientsController extends AdminController
      * Update the specified client in storage.
      *
      * @param User $user
+     *
      * @return Response
      */
     public function store()
@@ -108,8 +113,8 @@ class ClientsController extends AdminController
             'cellphone' => 'required',
             'telephone' => 'nullable',
             'born_at'   => 'nullable',
-            'tokens'   => 'nullable',
-            'email'     => 'required|email|' . Rule::unique('users')->ignore(user()->id),
+            'tokens'    => 'nullable',
+            'email'     => 'required|email|'.Rule::unique('users')->ignore(user()->id),
             'roles'     => 'required|array',
         ]);
 
@@ -117,8 +122,7 @@ class ClientsController extends AdminController
 
         $user = User::create($attributes);
 
-        if(\request()->active_user == 'on')
-        {
+        if (\request()->active_user == 'on') {
             $user->confirmed_at = Carbon::now();
             $user->save();
         }
@@ -127,11 +131,9 @@ class ClientsController extends AdminController
         $user->roles()->sync(input('roles'));
 
         if ($user) {
-
             notify()->success('Successfully',
                 'A new  has been created');
-        }
-        else {
+        } else {
             notify()->error('Oops', 'Something went wrong');
         }
 
@@ -142,6 +144,7 @@ class ClientsController extends AdminController
      * Update the specified client in storage.
      *
      * @param User $user
+     *
      * @return Response
      */
     public function update($user)
@@ -157,8 +160,8 @@ class ClientsController extends AdminController
             'cellphone' => 'required',
             'telephone' => 'nullable',
             'born_at'   => 'nullable',
-            'tokens'   => 'nullable',
-            'email'     => 'required|email|' . Rule::unique('users')->ignore($user->id),
+            'tokens'    => 'nullable',
+            'email'     => 'required|email|'.Rule::unique('users')->ignore($user->id),
             'roles'     => 'required|array',
         ]);
 
@@ -175,6 +178,7 @@ class ClientsController extends AdminController
      * Remove the specified client from storage.
      *
      * @param User $user
+     *
      * @return Response
      */
     public function destroy($user)
@@ -192,7 +196,8 @@ class ClientsController extends AdminController
     /**
      * Send a reset link to the given user.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function sendResetLinkEmail(Request $request)
@@ -206,8 +211,7 @@ class ClientsController extends AdminController
 
         if ($response == 'passwords.sent') {
             notify()->success('Success!', 'Password email sent to client.');
-        }
-        else {
+        } else {
             notify()->error('Oops', 'Something went wrong', 'warning shake animated');
         }
 
@@ -215,7 +219,8 @@ class ClientsController extends AdminController
     }
 
     /**
-     * Fetch the client paginator
+     * Fetch the client paginator.
+     *
      * @return LengthAwarePaginator
      */
     private function getPaginator()
@@ -225,7 +230,7 @@ class ClientsController extends AdminController
         $itemsObj = $this->fetchEntries();
         $items = $itemsObj['items'];
         $total = $itemsObj['total'];
-        $baseUrl = config('app.url') . "/dashboard/accounts/clients";
+        $baseUrl = config('app.url').'/dashboard/accounts/clients';
 
         // paginator
         $paginator = new LengthAwarePaginator($items->forPage($page, $perPage), count($items),
@@ -235,7 +240,7 @@ class ClientsController extends AdminController
     }
 
     /**
-     * Fetch the users
+     * Fetch the users.
      */
     private function fetchEntries()
     {
@@ -252,21 +257,21 @@ class ClientsController extends AdminController
             $client = session('filter_fullname', '');
             if (strlen($client) >= 2) {
                 $items = $items->filter(function ($item) use ($client) {
-                    return (stristr($item->fullname, $client) !== false);
+                    return stristr($item->fullname, $client) !== false;
                 });
             }
 
             $cellphone = session('filter_cellphone', '');
             if (strlen($cellphone) >= 2) {
                 $items = $items->filter(function ($item) use ($cellphone) {
-                    return (stristr($item->cellphone, $cellphone) !== false);
+                    return stristr($item->cellphone, $cellphone) !== false;
                 });
             }
 
             $email = session('filter_email', '');
             if (strlen($email) >= 2) {
                 $items = $items->filter(function ($item) use ($email) {
-                    return (stristr($item->email, $email) !== false);
+                    return stristr($item->email, $email) !== false;
                 });
             }
         }

@@ -2,8 +2,8 @@
 
 namespace App\Events;
 
-use Illuminate\Support\Facades\Event;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Event;
 
 class BaseEvent extends Event
 {

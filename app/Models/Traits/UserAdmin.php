@@ -8,7 +8,8 @@ trait UserAdmin
 {
     /**
      * If User is base admin
-     * On /admin login validation and all /admin navigation
+     * On /admin login validation and all /admin navigation.
+     *
      * @return bool
      */
     public function isAdmin()
@@ -17,7 +18,8 @@ trait UserAdmin
     }
 
     /**
-     * If User is admin
+     * If User is admin.
+     *
      * @return bool
      */
     public function isSuperAdmin()
@@ -26,7 +28,8 @@ trait UserAdmin
     }
 
     /**
-     * If User is admin
+     * If User is admin.
+     *
      * @return bool
      */
     public function isUser()

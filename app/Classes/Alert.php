@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 1/1/19
- * Time: 5:02 AM
+ * Time: 5:02 AM.
  */
 
 namespace App\Classes;
@@ -18,15 +18,17 @@ class Alert
      * @var SessionStore
      */
     private $session;
+
     /**
      * Create a new flash notifier instance.
      *
      * @param Store $session
      */
-    function __construct(Store $session)
+    public function __construct(Store $session)
     {
         $this->session = $session;
     }
+
     /**
      * @param             $title
      * @param             $content
@@ -36,6 +38,7 @@ class Alert
     {
         $this->message($title, $content, $icon, 'info');
     }
+
     /**
      * @param             $title
      * @param             $content
@@ -45,6 +48,7 @@ class Alert
     {
         $this->message($title, $content, $icon, 'success');
     }
+
     /**
      * @param             $title
      * @param             $content
@@ -54,6 +58,7 @@ class Alert
     {
         $this->message($title, $content, $icon, 'danger');
     }
+
     /**
      * @param             $title
      * @param             $content
@@ -63,6 +68,7 @@ class Alert
     {
         $this->message($title, $content, $icon, 'warning');
     }
+
     /**
      * @param             $title
      * @param             $content

@@ -4,14 +4,15 @@ namespace App\Models\Traits;
 
 trait ImageThumb
 {
-    static public $thumbAppend = '-tn';
+    public static $thumbAppend = '-tn';
 
-    static public $originalAppend = '-o';
+    public static $originalAppend = '-o';
 
     //protected $appends = ['thumb', 'original'];
 
     /**
-     * Get the thumb path (append -tn at the end)
+     * Get the thumb path (append -tn at the end).
+     *
      * @return mixed
      */
     public function getImageThumbAttribute()
@@ -20,7 +21,8 @@ trait ImageThumb
     }
 
     /**
-     * Get the thumb path (append -tn at the end)
+     * Get the thumb path (append -tn at the end).
+     *
      * @return mixed
      */
     public function getImageOriginalAttribute()
@@ -29,8 +31,10 @@ trait ImageThumb
     }
 
     /**
-     * Apends a string before the extension
+     * Apends a string before the extension.
+     *
      * @param $append
+     *
      * @return mixed
      */
     private function appendBeforeExtension($append)
@@ -40,7 +44,8 @@ trait ImageThumb
     }
 
     /**
-     * Get the url to the photo
+     * Get the url to the photo.
+     *
      * @return string
      */
     public function getImageUrlAttribute()
@@ -59,17 +64,20 @@ trait ImageThumb
     }
 
     /**
-     * Get the url for the file name (specify thumb, default, original)
+     * Get the url for the file name (specify thumb, default, original).
+     *
      * @param $name
+     *
      * @return string
      */
     public function urlForName($name)
     {
-        return config('app.url') . '/uploads/images/' . $name;
+        return config('app.url').'/uploads/images/'.$name;
     }
 
     /**
-     * Get the value for the image
+     * Get the value for the image.
+     *
      * @return mixed
      */
     private function getImageAttributeName()

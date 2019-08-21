@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Request;
 
 class IronsideController extends Controller
@@ -10,9 +9,9 @@ class IronsideController extends Controller
     protected $baseViewPath = '';
 
     // html meta headers
-    protected $title = "";
+    protected $title = '';
 
-    protected $description = "";
+    protected $description = '';
 
     protected $image = 'images/logo.png';
 
@@ -23,27 +22,27 @@ class IronsideController extends Controller
     protected $selectedNavigation = false;
 
     /**
-     * Get the HTML Title
+     * Get the HTML Title.
      *
      * @return string
      */
     protected function getTitle()
     {
-        return trim($this->title . (strlen($this->title) < 2 ? '' : ' | ') . config('app.name'));
+        return trim($this->title.(strlen($this->title) < 2 ? '' : ' | ').config('app.name'));
     }
 
     /**
-     * Get the HTML Description
+     * Get the HTML Description.
      *
      * @return string
      */
     protected function getDescription()
     {
-        return trim($this->description . (strlen($this->description) < 2 ? '' : ' | ') . config('app.description'));
+        return trim($this->description.(strlen($this->description) < 2 ? '' : ' | ').config('app.description'));
     }
 
     /**
-     * Get the HTML Share Image
+     * Get the HTML Share Image.
      *
      * @return string
      */
@@ -53,22 +52,23 @@ class IronsideController extends Controller
     }
 
     /**
-     * Return / Render the view
+     * Return / Render the view.
      *
-     * @param            $path
-     * @param array      $data
+     * @param       $path
+     * @param array $data
+     *
      * @return $this
      */
     protected function view($path, $data = [])
     {
-        $view = $this->baseViewPath . $path;
+        $view = $this->baseViewPath.$path;
 
         // explode on package prefix
         // format view path
-        $pieces = explode("::", $path);
+        $pieces = explode('::', $path);
         if (count($pieces) >= 2) {
-            $view = $pieces[0] . "::";
-            $view .= $this->baseViewPath . $pieces[1];
+            $view = $pieces[0].'::';
+            $view .= $this->baseViewPath.$pieces[1];
         }
 
         return view($view, $data)
@@ -78,9 +78,10 @@ class IronsideController extends Controller
     }
 
     /**
-     * Get the slug from the url (url inside website)
+     * Get the slug from the url (url inside website).
      *
      * @param string $prefix
+     *
      * @return string
      */
     protected function getCurrentUrl($prefix = '/')
@@ -88,13 +89,13 @@ class IronsideController extends Controller
         //$url = substr(request()->url(), strlen(config('app.url')));
         // prefix (request can be http://xx and app.url is https)
         $url = request()->path();
-        $url = $prefix . ltrim($url, $prefix);
+        $url = $prefix.ltrim($url, $prefix);
 
         return $url;
     }
 
     /**
-     * Explode the url into slug pieces
+     * Explode the url into slug pieces.
      *
      * @return array
      */

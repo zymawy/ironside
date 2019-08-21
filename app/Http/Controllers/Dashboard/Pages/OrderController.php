@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\Pages;
 
+use App\Http\Controllers\Dashboard\IronsideDashboardController;
 use App\Models\Page;
-use App\Models\SportType;
-use App\Models\NavigationWebsite;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use  App\Http\Controllers\Dashboard\IronsideDashboardController;
+use  Illuminate\Http\Request;
 
 class OrderController extends IronsideDashboardController
 {
@@ -22,13 +18,14 @@ class OrderController extends IronsideDashboardController
     {
         $this->defaultParent = 0;
         $this->navigationType = $type;
-        $this->orderProperty = $type . '_order';
+        $this->orderProperty = $type.'_order';
     }
 
     /**
      * Display a listing of the resource.
      *
      * @param string $type
+     *
      * @return Response
      */
     public function index($type = 'list')
@@ -41,10 +38,11 @@ class OrderController extends IronsideDashboardController
     }
 
     /**
-     * Update the order of navigation
+     * Update the order of navigation.
      *
      * @param string  $type
      * @param Request $request
+     *
      * @return array
      */
     public function updateOrder(Request $request, $type = 'list')
@@ -54,7 +52,6 @@ class OrderController extends IronsideDashboardController
         $navigation = json_decode($request->get('list'), true);
 
         foreach ($navigation as $key => $nav) {
-
             $idd = $this->defaultParent ? $this->defaultParent->id : 0;
             $row = $this->updateNavigationListOrder($nav['id'], ($key + 1), $idd);
 
@@ -65,7 +62,7 @@ class OrderController extends IronsideDashboardController
     }
 
     /**
-     * Generate the nestable html
+     * Generate the nestable html.
      *
      * @param null $parent
      *
@@ -79,11 +76,11 @@ class OrderController extends IronsideDashboardController
         $items = Page::whereParentIdORM($parentId, $this->navigationType, $this->orderProperty);
 
         foreach ($items as $key => $nav) {
-            $html .= '<li class="dd-item" data-id="' . $nav->id . '">';
-            $html .= '<div class="dd-handle">' . '<i class="fa-fw fa fa-' . $nav->icon . '"></i> ';
-            $html .= $nav->title . ' ' . ($nav->is_hidden == 1 ? '(HIDDEN)' : '') . ' <span style="float:right"> ' . $nav->url . ' </span></div>';
+            $html .= '<li class="dd-item" data-id="'.$nav->id.'">';
+            $html .= '<div class="dd-handle">'.'<i class="fa-fw fa fa-'.$nav->icon.'"></i> ';
+            $html .= $nav->title.' '.($nav->is_hidden == 1 ? '(HIDDEN)' : '').' <span style="float:right"> '.$nav->url.' </span></div>';
             // featured - ignore parent_id (only one level)
-            if ($this->orderProperty != "featured_order") {
+            if ($this->orderProperty != 'featured_order') {
                 $html .= $this->getNavigationHtml($nav);
             }
 
@@ -92,11 +89,11 @@ class OrderController extends IronsideDashboardController
 
         $html .= '</ol>';
 
-        return (count($items) >= 1 ? $html : '');
+        return count($items) >= 1 ? $html : '';
     }
 
     /**
-     * Loop through children and update list order (recursive)
+     * Loop through children and update list order (recursive).
      *
      * @param $nav
      */
@@ -113,7 +110,7 @@ class OrderController extends IronsideDashboardController
     }
 
     /**
-     * Update Navigation Item, with new list order and parent id (list and parent can change)
+     * Update Navigation Item, with new list order and parent id (list and parent can change).
      *
      * @param     $id
      * @param     $listOrder

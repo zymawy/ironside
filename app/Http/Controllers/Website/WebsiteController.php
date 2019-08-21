@@ -3,12 +3,13 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 12/26/18
- * Time: 6:24 AM
+ * Time: 6:24 AM.
  */
 
 namespace App\Http\Controllers\Website;
-use App\Models\Page;
+
 use App\Models\Banner;
+use App\Models\Page;
 
 class WebsiteController extends IronsideWebsiteController
 {
@@ -19,7 +20,8 @@ class WebsiteController extends IronsideWebsiteController
     protected $navigationFeatured = [];
     protected $popularPages = [];
     protected $activePageTiers = [];
-    function __construct()
+
+    public function __construct()
     {
         parent::__construct();
         // as soon as controller is ready -  get the navigation
@@ -30,13 +32,17 @@ class WebsiteController extends IronsideWebsiteController
             $this->footerNavigation = Page::getFooterNavigationRight();
             $this->popularPages = Page::getPopularPages();
             $this->activePageTiers = $this->findActivePageTiers();
+
             return $next($request);
         });
     }
+
     /**
-     * Return / Render the view
+     * Return / Render the view.
+     *
      * @param       $view
      * @param array $data
+     *
      * @return $this
      */
     protected function view($view, $data = [])
@@ -50,6 +56,7 @@ class WebsiteController extends IronsideWebsiteController
             ->with('banners', $this->getBanners())
             ->with('showPageBanner', $this->showPageBanner);
     }
+
     protected function getBanners()
     {
         $items = $this->page->banners;
@@ -60,10 +67,13 @@ class WebsiteController extends IronsideWebsiteController
                 ->orderBy('list_order')
                 ->get();
         }
+
         return $items;
     }
+
     /**
-     * Get the active page tiers and the parent
+     * Get the active page tiers and the parent.
+     *
      * @return object
      */
     private function findActivePageTiers()
@@ -83,6 +93,7 @@ class WebsiteController extends IronsideWebsiteController
                 $name = $this->page->parent->name;
             }
         }
+
         return (object) [
             'name'  => $name,
             'items' => $items,

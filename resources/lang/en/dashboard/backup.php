@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 1/2/19
- * Time: 7:26 AM
+ * Time: 7:26 AM.
  */
 
 return [

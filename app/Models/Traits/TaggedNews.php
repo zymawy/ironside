@@ -2,17 +2,19 @@
 
 namespace App\Models\Traits;
 
-use DB;
 use App\Models\News;
 use App\Models\NewsTag;
+use DB;
 
 trait TaggedNews
 {
     public $newsLatest = [];
 
     /**
-     * Get the news entries tagged to me
+     * Get the news entries tagged to me.
+     *
      * @param int $limit
+     *
      * @return \Eloquent
      */
     public function news($limit = 5)
@@ -29,12 +31,11 @@ trait TaggedNews
             INNER JOIN news ON news.id = news_tag.news_id
             WHERE $this->table.id = ? AND news_tag.subject_type LIKE ?
             GROUP BY news.id
-            ORDER BY news.created_at DESC", [$this->id, '%' . $parent]);
+            ORDER BY news.created_at DESC", [$this->id, '%'.$parent]);
 
         $news = collect();
         // filter active and get photos for entry
         foreach ($rows as $k => $row) {
-
             $item = News::where('id', $row->id)->active()->first();
             if ($item) {
                 $item->images; // get the images

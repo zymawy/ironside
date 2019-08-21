@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\Photos;
 
-use Redirect;
-use App\Http\Requests;
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Models\PhotoAlbum;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Dashboard\AdminController;
 
 class AlbumsController extends AdminController
 {
@@ -38,6 +36,7 @@ class AlbumsController extends AdminController
      * Store a newly created photo_album in storage.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
@@ -53,6 +52,7 @@ class AlbumsController extends AdminController
      * Show the form for editing the specified photo_album.
      *
      * @param PhotoAlbum $album
+     *
      * @return Response
      */
     public function edit(PhotoAlbum $album)
@@ -65,6 +65,7 @@ class AlbumsController extends AdminController
      *
      * @param PhotoAlbum $album
      * @param Request    $request
+     *
      * @return Response
      */
     public function update(PhotoAlbum $album, Request $request)
@@ -81,6 +82,7 @@ class AlbumsController extends AdminController
      *
      * @param PhotoAlbum $album
      * @param Request    $request
+     *
      * @return Response
      */
     public function destroy(PhotoAlbum $album, Request $request)

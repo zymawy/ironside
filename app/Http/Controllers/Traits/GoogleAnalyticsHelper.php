@@ -4,116 +4,115 @@ namespace App\Http\Controllers\Traits;
 
 use Analytics;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Spatie\Analytics\Period;
 
 /**
  * https://github.com/spatie/laravel-analytics
- * http://www.colorhexa.com
+ * http://www.colorhexa.com.
  *
  * Class Analytics
- * @package ironside\Controllers\Traits
  */
 trait GoogleAnalyticsHelper
 {
     protected $datasets = [
         [
-            'label'                => "",
-            'fillColor'            => "rgba(60, 141, 188, 0.1)",
-            'strokeColor'          => "rgba(60, 141, 188, 1)",
-            'pointColor'           => "#3b8bba",
-            'pointStrokeColor'     => "rgba(60,141,188,1)",
-            'pointHighlightFill'   => "#fff",
-            'pointHighlightStroke' => "rgba(220, 220, 220, 1)",
+            'label'                => '',
+            'fillColor'            => 'rgba(60, 141, 188, 0.1)',
+            'strokeColor'          => 'rgba(60, 141, 188, 1)',
+            'pointColor'           => '#3b8bba',
+            'pointStrokeColor'     => 'rgba(60,141,188,1)',
+            'pointHighlightFill'   => '#fff',
+            'pointHighlightStroke' => 'rgba(220, 220, 220, 1)',
             'data'                 => [],
         ],
         [
-            'label'                => "",
-            'fillColor'            => "rgba(0, 141, 76, 0.1)",
-            'strokeColor'          => "rgba(0, 141, 76, 1)",
-            'pointColor'           => "rgba(0, 141, 76, 1)",
-            'pointStrokeColor'     => "#fff",
-            'pointHighlightFill'   => "#fff",
-            'pointHighlightStroke' => "rgba(220, 220, 220, 1)",
+            'label'                => '',
+            'fillColor'            => 'rgba(0, 141, 76, 0.1)',
+            'strokeColor'          => 'rgba(0, 141, 76, 1)',
+            'pointColor'           => 'rgba(0, 141, 76, 1)',
+            'pointStrokeColor'     => '#fff',
+            'pointHighlightFill'   => '#fff',
+            'pointHighlightStroke' => 'rgba(220, 220, 220, 1)',
             'data'                 => [],
         ],
         [
-            'label'                => "",
-            'fillColor'            => "rgba(60, 141, 188, 0.1)",
-            'strokeColor'          => "rgba(60, 141, 188, 1)",
-            'pointColor'           => "#3b8bba",
-            'pointStrokeColor'     => "rgba(60,141,188,1)",
-            'pointHighlightFill'   => "#fff",
-            'pointHighlightStroke' => "rgba(220, 220, 220, 1)",
+            'label'                => '',
+            'fillColor'            => 'rgba(60, 141, 188, 0.1)',
+            'strokeColor'          => 'rgba(60, 141, 188, 1)',
+            'pointColor'           => '#3b8bba',
+            'pointStrokeColor'     => 'rgba(60,141,188,1)',
+            'pointHighlightFill'   => '#fff',
+            'pointHighlightStroke' => 'rgba(220, 220, 220, 1)',
             'data'                 => [],
-        ]
+        ],
     ];
 
     protected $pieData = [
         [
             // red
-            'color'     => "#dd4b39",
-            'highlight' => "#e15f4f",
+            'color'     => '#dd4b39',
+            'highlight' => '#e15f4f',
         ],
         [
             // green
-            'color'     => "#00a65a",
-            'highlight' => "#00c068",
+            'color'     => '#00a65a',
+            'highlight' => '#00c068',
         ],
         [
             // orange
-            'color'     => "#f39c12",
-            'highlight' => "#f4a62a",
+            'color'     => '#f39c12',
+            'highlight' => '#f4a62a',
         ],
         [
             // blue
-            'color'     => "#00c0ef",
-            'highlight' => "#09cfff",
+            'color'     => '#00c0ef',
+            'highlight' => '#09cfff',
         ],
         [
             // pink
-            'color'     => "#f012be",
-            'highlight' => "#f012be",
+            'color'     => '#f012be',
+            'highlight' => '#f012be',
         ],
         [
             // dark blue
-            'color'     => "#307095",
-            'highlight' => "#367ea8",
+            'color'     => '#307095',
+            'highlight' => '#367ea8',
         ],
         [
             // gray
-            'color'     => "#d2d6de",
-            'highlight' => "#c3c9d3",
+            'color'     => '#d2d6de',
+            'highlight' => '#c3c9d3',
         ],
         [
             // navy
-            'color'     => "#001f3f",
-            'highlight' => "#001f3f",
+            'color'     => '#001f3f',
+            'highlight' => '#001f3f',
         ],
         [
             // purple
-            'color'     => "#605ca8",
-            'highlight' => "#605ca8",
+            'color'     => '#605ca8',
+            'highlight' => '#605ca8',
         ],
         [
             // dark red
-            'color'     => "#3d9970",
-            'highlight' => "#3d9970",
+            'color'     => '#3d9970',
+            'highlight' => '#3d9970',
         ],
         [
             // fuchsia
-            'color'     => "#f012be",
-            'highlight' => "#f012be",
+            'color'     => '#f012be',
+            'highlight' => '#f012be',
         ],
         [
             // olive
-            'color'     => "#3d9970",
-            'highlight' => "#3d9970",
+            'color'     => '#3d9970',
+            'highlight' => '#3d9970',
         ],
     ];
 
     /**
-     * Get this months Visitors
+     * Get this months Visitors.
+     *
      * @return \Illuminate\Http\JsonResponse|int
      */
     public function getVisitors()
@@ -122,7 +121,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get this months Unique Visitors
+     * Get this months Unique Visitors.
+     *
      * @return int|string
      */
     public function getUniqueVisitors()
@@ -131,7 +131,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get this months Visitors
+     * Get this months Visitors.
+     *
      * @return \Illuminate\Http\JsonResponse|int
      */
     public function getBounceRate()
@@ -140,7 +141,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get this months average page load time
+     * Get this months average page load time.
+     *
      * @return \Illuminate\Http\JsonResponse|int
      */
     public function getAvgPageLoad()
@@ -149,7 +151,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the top keywords for duration
+     * Get the top keywords for duration.
+     *
      * @return \Spatie\Analytics\Collection
      */
     public function getKeywords()
@@ -175,7 +178,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the top referrers for duration
+     * Get the top referrers for duration.
+     *
      * @return \Spatie\Analytics\Collection
      */
     public function getReferrers()
@@ -188,7 +192,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the active users currently viewing the website
+     * Get the active users currently viewing the website.
+     *
      * @return int
      */
     public function getActiveVisitors()
@@ -206,7 +211,8 @@ trait GoogleAnalyticsHelper
 
     /**
      * Get the visitors and page views for duration
-     * Format result for CartJS
+     * Format result for CartJS.
+     *
      * @return string
      */
     public function getVisitorsAndPageViews()
@@ -231,7 +237,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the most visited pages for duration
+     * Get the most visited pages for duration.
+     *
      * @return \Spatie\Analytics\Collection
      */
     public function getVisitedPages()
@@ -244,7 +251,8 @@ trait GoogleAnalyticsHelper
 
     /**
      * Get the top browsers for duration
-     * Format results for pie chart
+     * Format results for pie chart.
+     *
      * @return \Spatie\Analytics\Collection
      */
     public function getBrowsers()
@@ -262,7 +270,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the gender comparisons
+     * Get the gender comparisons.
+     *
      * @return array
      */
     public function getUsersGender()
@@ -285,7 +294,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the users' age comparisons
+     * Get the users' age comparisons.
+     *
      * @return array
      */
     public function getUsersAge()
@@ -312,7 +322,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the the users interests - affinity
+     * Get the the users interests - affinity.
+     *
      * @return \Spatie\Analytics\Collection
      */
     public function getInterestsAffinity()
@@ -321,7 +332,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the the users interests - market
+     * Get the the users interests - market.
+     *
      * @return \Spatie\Analytics\Collection
      */
     public function getInterestsMarket()
@@ -330,7 +342,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the the users interests - affinity
+     * Get the the users interests - affinity.
+     *
      * @return \Spatie\Analytics\Collection
      */
     public function getInterestsOther()
@@ -339,7 +352,8 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get all the devices by sessions
+     * Get all the devices by sessions.
+     *
      * @return mixed
      */
     public function getDevices()
@@ -349,7 +363,7 @@ trait GoogleAnalyticsHelper
         $data = Analytics::performQuery($period, 'ga:sessions', [
             'dimensions'  => 'ga:mobileDeviceInfo',
             'sort'        => '-ga:sessions',
-            'max-results' => 30
+            'max-results' => 30,
         ]);
 
         if ($data->rows) {
@@ -360,14 +374,14 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the desktop vs mobile vs tablet
+     * Get the desktop vs mobile vs tablet.
      */
     public function getDeviceCategory()
     {
         $period = $this->analyticsDuration();
 
         $data = Analytics::performQuery($period, 'ga:sessions', [
-            'dimensions' => 'ga:deviceCategory'
+            'dimensions' => 'ga:deviceCategory',
         ]);
 
         $items = [];
@@ -379,8 +393,10 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the the users interests
+     * Get the the users interests.
+     *
      * @param $dimensions
+     *
      * @return \Spatie\Analytics\Collection
      */
     public function getInterests($dimensions)
@@ -390,7 +406,7 @@ trait GoogleAnalyticsHelper
         $data = Analytics::performQuery($period, 'ga:sessions', [
             'dimensions'  => $dimensions,
             'sort'        => '-ga:sessions',
-            'max-results' => 30
+            'max-results' => 30,
         ]);
 
         if (is_null($data->rows)) {
@@ -401,9 +417,11 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Helper to get the months analytics
+     * Helper to get the months analytics.
+     *
      * @param string $metrics
      * @param string $month
+     *
      * @return \Illuminate\Http\JsonResponse|int
      */
     private function monthlySummary($metrics = 'ga:users', $month = 'month')
@@ -411,8 +429,7 @@ trait GoogleAnalyticsHelper
         if ($month == '-month_1') {
             $end = Carbon::now()->subMonth()->endOfMonth();
             $start = Carbon::now()->subMonth()->startOfMonth();
-        }
-        else {
+        } else {
             $end = Carbon::now();
             $start = Carbon::now()->startOfMonth();
         }
@@ -429,8 +446,10 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get this and last month of the metrics for a comparison
+     * Get this and last month of the metrics for a comparison.
+     *
      * @param string $metrics
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     private function monthlyComparison($metrics = 'ga:users')
@@ -441,21 +460,22 @@ trait GoogleAnalyticsHelper
         return json_response([
             'month'      => [
                 'value'     => $thisMonth,
-                'color'     => "#00c0ef",
-                'highlight' => "#00a7d0",
-                'label'     => "Current"
+                'color'     => '#00c0ef',
+                'highlight' => '#00a7d0',
+                'label'     => 'Current',
             ],
             'last_month' => [
                 'value'     => $lastMonth,
-                'color'     => "#00a65a",
-                'highlight' => "#008d4c",
-                'label'     => "Previous"
-            ]
+                'color'     => '#00a65a',
+                'highlight' => '#008d4c',
+                'label'     => 'Previous',
+            ],
         ]);
     }
 
     /**
-     * Get the duration for the analytics
+     * Get the duration for the analytics.
+     *
      * @return Period
      */
     private function analyticsDuration()
@@ -475,10 +495,12 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the line dataset opbject
+     * Get the line dataset opbject.
+     *
      * @param     $label
      * @param     $data
      * @param int $index
+     *
      * @return mixed
      */
     private function getDataSet($label, $data, $index = 0)
@@ -491,10 +513,12 @@ trait GoogleAnalyticsHelper
     }
 
     /**
-     * Get the pie chart data
+     * Get the pie chart data.
+     *
      * @param     $label
      * @param     $data
      * @param int $index
+     *
      * @return mixed
      */
     private function getPieDataSet($label, $data, $index = -1)

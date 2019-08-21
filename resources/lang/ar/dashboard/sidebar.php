@@ -16,21 +16,19 @@ return [
     //  Users Translate
 
     'nav-label-users' => 'ادارة المستخدمين',
-    'all-users' => 'المستخدمين',
-    'users-add' => 'اضافة مستخدم',
+    'all-users'       => 'المستخدمين',
+    'users-add'       => 'اضافة مستخدم',
 
     //  Roles Translate
 
     'nav-label-roles' => 'ادارة الصلاحيات',
-    'all-roles' => 'الصلاحيات',
-    'roles-add' => 'اضافة صلاحية',
+    'all-roles'       => 'الصلاحيات',
+    'roles-add'       => 'اضافة صلاحية',
 
     //  Permissions Translate
 
     'nav-label-permissions' => 'ادارة الاذونات',
-    'all-permissions' => 'الاذونات',
-    'permissions-add' => 'اضافة اذونة',
-
-
+    'all-permissions'       => 'الاذونات',
+    'permissions-add'       => 'اضافة اذونة',
 
 ];

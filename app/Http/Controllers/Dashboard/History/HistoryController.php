@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\History;
 
-use App\Http\Requests;
+use App\Http\Controllers\Dashboard\IronsideDashboardController;
 use App\Models\LogActivity;
 use App\Models\LogDashboardActivity;
-use App\Http\Controllers\Dashboard\IronsideDashboardController;
 
 class HistoryController extends IronsideDashboardController
 {

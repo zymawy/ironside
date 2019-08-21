@@ -23,7 +23,8 @@ trait URLFromCategory
     }
 
     /**
-     * Get the prefix for the url
+     * Get the prefix for the url.
+     *
      * @return string
      */
     private function getURLPrefix()
@@ -36,7 +37,8 @@ trait URLFromCategory
     }
 
     /**
-     * Get the postifx for the url
+     * Get the postifx for the url.
+     *
      * @return string
      */
     private function getURLPosfix()
@@ -51,31 +53,32 @@ trait URLFromCategory
     /**
      * Get the url from db
      * If true given, we generate a new one,
-     * This us usefull if parent_id updated, etc
+     * This us usefull if parent_id updated, etc.
      *
      * @param $model
+     *
      * @return \Eloquent
      */
-
     public function updateUrl($model)
     {
         $this->url = '';
         $category = $this->eloqent()->where('id', $model->category_id)->first();
 
         if ($category) {
-            $this->url = $this->getURLPrefix() . $category->url . '/' . $this->slug . $this->getURLPosfix();
+            $this->url = $this->getURLPrefix().$category->url.'/'.$this->slug.$this->getURLPosfix();
         }
 
         return $this;
     }
 
     /**
-     * Get the Eloquent Class
+     * Get the Eloquent Class.
+     *
      * @return object
      */
     private function eloqent()
     {
-        $resource = property_exists($this, 'categoryResource')? $this->categoryResource : 'App\Models\Category';
+        $resource = property_exists($this, 'categoryResource') ? $this->categoryResource : 'App\Models\Category';
 
         return (new ReflectionClass($resource))->newInstanceArgs();
     }

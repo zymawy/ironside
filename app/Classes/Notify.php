@@ -3,10 +3,11 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 1/1/19
- * Time: 1:55 AM
+ * Time: 1:55 AM.
  */
 
 namespace App\Classes;
+
 use Illuminate\Session\Store;
 
 class Notify
@@ -17,17 +18,19 @@ class Notify
      * @var SessionStore
      */
     private $session;
+
     /**
      * Create a new flash notifier instance.
      *
      * @param Store $session
      */
-    function __construct(Store $session)
+    public function __construct(Store $session)
     {
         $this->session = $session;
     }
+
     /**
-     * Flash an info notification
+     * Flash an info notification.
      *
      * @param             $title
      * @param             $content
@@ -38,8 +41,9 @@ class Notify
     {
         $this->message('info', $title, $content, $icon, $iconSmall);
     }
+
     /**
-     * Flash a success notification
+     * Flash a success notification.
      *
      * @param             $title
      * @param             $content
@@ -50,8 +54,9 @@ class Notify
     {
         $this->message('success', $title, $content, $icon, $iconSmall);
     }
+
     /**
-     * Flash an error notification
+     * Flash an error notification.
      *
      * @param             $title
      * @param             $content
@@ -62,8 +67,9 @@ class Notify
     {
         $this->message('danger', $title, $content, $icon, $iconSmall);
     }
+
     /**
-     * Flash an danger notification
+     * Flash an danger notification.
      *
      * @param             $title
      * @param             $content
@@ -74,8 +80,9 @@ class Notify
     {
         $this->message('danger', $title, $content, $icon, $iconSmall);
     }
+
     /**
-     * Flash a warning notification
+     * Flash a warning notification.
      *
      * @param             $title
      * @param             $content
@@ -86,8 +93,9 @@ class Notify
     {
         $this->message('warning', $title, $content, $icon, $iconSmall);
     }
+
     /**
-     * Flash a notification message
+     * Flash a notification message.
      *
      * @param string      $level
      * @param             $title
@@ -97,7 +105,7 @@ class Notify
      * @param int         $timeout
      */
     public function message(
-        $level = 'info',
+        $level,
         $title,
         $content,
         $icon,
@@ -110,12 +118,12 @@ class Notify
         // if icon == true, get icon from level, else if icon is string, set icon
         if ((is_bool($icon) && $icon == true) || strlen($icon) > 1) {
             $icon = is_string($icon) ? $icon : notify_icon($level);
-            $this->session->flash('notify.icon', $icon . ' animated');
+            $this->session->flash('notify.icon', $icon.' animated');
         }
         // if icon == true, get icon from level, else if icon is string, set icon
         if ((is_bool($iconSmall) && $iconSmall == true) || strlen($iconSmall) > 1) {
             $iconSmall = is_string($iconSmall) ? $iconSmall : notify_icon_small($level);
-            $this->session->flash('notify.iconSmall', $iconSmall . ' animated');
+            $this->session->flash('notify.iconSmall', $iconSmall.' animated');
         }
         if ($timeout > 0) {
             $this->session->flash('notify.timeout', $timeout);

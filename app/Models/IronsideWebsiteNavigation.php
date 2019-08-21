@@ -2,7 +2,6 @@
 
 namespace Ironside\Titan\Models;
 
-use Ironside\Titan\Models\NavigationWebsite;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class IronsideWebsiteNavigation extends IronsideCMSModel
@@ -17,7 +16,7 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
     protected $table = 'navigation_website';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
@@ -26,37 +25,37 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
     protected $guarded = ['id'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      *
      * @var array
      */
-    static public $rules = [
+    public static $rules = [
         'title'            => 'required|min:3:max:255',
         'html_title'       => 'required|min:3:max:255',
         'html_description' => 'required|min:3:max:255',
     ];
 
     /**
-     * Validation custom messages for this model
+     * Validation custom messages for this model.
      *
      * @var array
      */
-    static public $messages = [
+    public static $messages = [
 
     ];
 
     /**
-     * Get a the title + url concatenated
+     * Get a the title + url concatenated.
      *
      * @return string
      */
     public function getTitleUrlAttribute()
     {
-        return $this->attributes['title'] . ' ( ' . $this->attributes['url'] . ' )';
+        return $this->attributes['title'].' ( '.$this->attributes['url'].' )';
     }
 
     /**
-     * Get the parent
+     * Get the parent.
      *
      * @return \Eloquent
      */
@@ -66,7 +65,7 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
     }
 
     /**
-     * Get the parent
+     * Get the parent.
      *
      * @return \Eloquent
      */
@@ -76,15 +75,16 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
     }
 
     /**
-     * Get All navigation where parent id, and not hidden
+     * Get All navigation where parent id, and not hidden.
      *
      * @param        $id
      * @param string $type
      * @param string $order
      * @param int    $hidden
+     *
      * @return mixed
      */
-    static public function whereParentIdORM(
+    public static function whereParentIdORM(
         $id,
         $type = 'main',
         $order = 'list_main_order',
@@ -93,7 +93,7 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
         $query = self::whereParentId($id);
 
         switch ($type) {
-            case 'footer';
+            case 'footer':
                 $query->where('is_footer', 1);
                 break;
             default:
@@ -106,7 +106,7 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
     /**
      * Get the url from db
      * If true given, we generate a new one,
-     * This us usefull if parent_id updated, etc
+     * This us usefull if parent_id updated, etc.
      *
      * @return \Eloquent
      */
@@ -120,16 +120,17 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
         //    $this->url .= "/{$this->slug}";
         //}
         if (strlen($this->slug) > 1) {
-            $this->url .= (is_slug_url($this->slug) ? "" : "/") . $this->slug;
+            $this->url .= (is_slug_url($this->slug) ? '' : '/').$this->slug;
         }
 
         return $this;
     }
 
     /**
-     * Generate the new nav based on parent_id
+     * Generate the new nav based on parent_id.
      *
      * @param $nav
+     *
      * @return \Illuminate\Support\Collection|static
      */
     private function generateCompleteUrl($nav)
@@ -138,7 +139,7 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
 
         if ($row) {
             if (strlen($row->slug) > 1) {
-                $this->url = "/{$row->slug}" . ("{$this->url}");
+                $this->url = "/{$row->slug}".("{$this->url}");
             }
 
             return $this->generateCompleteUrl($row);
@@ -148,7 +149,7 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
     }
 
     /**
-     * Get All his parents and himself
+     * Get All his parents and himself.
      *
      * @return mixed
      */
@@ -158,10 +159,11 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
     }
 
     /**
-     * Recursive find his parents
+     * Recursive find his parents.
      *
      * @param $nav
      * @param $parents
+     *
      * @return mixed
      */
     private function getParentsRecursive($nav, $parents)
@@ -176,7 +178,7 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
     }
 
     /**
-     * Get All his parents and himself
+     * Get All his parents and himself.
      *
      * @return mixed
      */
@@ -186,10 +188,11 @@ class IronsideWebsiteNavigation extends IronsideCMSModel
     }
 
     /**
-     * Recursive find his parents
+     * Recursive find his parents.
      *
      * @param $nav
      * @param $parents
+     *
      * @return mixed
      */
     private function getUrlParentsRecursive($nav, $parents)

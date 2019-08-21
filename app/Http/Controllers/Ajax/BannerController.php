@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Ajax;
 use App\Http\Controllers\Dashboard\IronsideDashboardController;
 use App\Http\Controllers\Traits\ReportChartTable;
 use App\Models\Banner;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class BannerController extends IronsideDashboardController
 {
     use ReportChartTable;
+
     public function getChartData()
     {
         // get all items between dates

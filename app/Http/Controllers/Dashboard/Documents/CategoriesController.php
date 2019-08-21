@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\Documents;
 
-use Redirect;
-use App\Http\Requests;
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Models\DocumentCategory;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Dashboard\AdminController;
 
 class CategoriesController extends AdminController
 {
@@ -50,6 +48,7 @@ class CategoriesController extends AdminController
      * Show the form for editing the specified document_category.
      *
      * @param DocumentCategory $category
+     *
      * @return Response
      */
     public function edit(DocumentCategory $category)
@@ -61,6 +60,7 @@ class CategoriesController extends AdminController
      * Update the specified document_category in storage.
      *
      * @param DocumentCategory $category
+     *
      * @return Response
      */
     public function update(DocumentCategory $category)
@@ -76,6 +76,7 @@ class CategoriesController extends AdminController
      * Remove the specified document_category from storage.
      *
      * @param DocumentCategory $category
+     *
      * @return Response
      */
     public function destroy(DocumentCategory $category)

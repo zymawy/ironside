@@ -1,8 +1,9 @@
 <?php
+
 // namespace Database\Seeds;
+use App\Models\Article;
 use App\Models\ArticleCategory;
 use Illuminate\Database\Seeder;
-use App\Models\Article;
 
 class ArticleTableSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class ArticleTableSeeder extends Seeder
 
         for ($i = 0; $i < 5; $i++) {
             $category = ArticleCategory::create([
-                'name' => $faker->sentence(2)
+                'name' => $faker->sentence(2),
             ]);
         }
 
@@ -24,7 +25,7 @@ class ArticleTableSeeder extends Seeder
                 'active_from' => $faker->dateTimeBetween('-5 weeks', '-1 weeks')->format('Y-m-d'),
                 //'active_to' => $faker->dateTimeBetween('+5 weeks')
                 'category_id' => $faker->numberBetween(1, 5),
-                'slug'        => 'asd'
+                'slug'        => 'asd',
             ]);
 
             for ($a = 0; $a < $faker->numberBetween(2, 4); $a++) {

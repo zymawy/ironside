@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\IronsideCMSModel;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Traits\HasSlug;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 /**
- * Class NewsCategory
+ * Class NewsCategory.
+ *
  * @mixin \Eloquent
  */
 class NewsCategory extends IronsideCMSModel
@@ -18,14 +19,14 @@ class NewsCategory extends IronsideCMSModel
     protected $guarded = ['id'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'name' => 'required|min:3:max:255',
     ];
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */
@@ -35,7 +36,7 @@ class NewsCategory extends IronsideCMSModel
     }
 
     /**
-     * Get the articles
+     * Get the articles.
      */
     public function news()
     {

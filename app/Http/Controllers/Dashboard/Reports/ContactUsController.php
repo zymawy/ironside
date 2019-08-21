@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers\Dashboard\Reports;
 
-use App\Http\Requests;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Dashboard\IronsideDashboardController;
+use App\Http\Controllers\Traits\ReportChartTable;
 use App\Models\FeedbackContactUs;
 use Yajra\DataTables\Facades\DataTables;
-use App\Http\Controllers\Traits\ReportChartTable;
-use App\Http\Controllers\Dashboard\IronsideDashboardController;
 
 class ContactUsController extends IronsideDashboardController
 {
     use ReportChartTable;
 
     /**
-     * Return the view
+     * Return the view.
+     *
      * @return $this
      */
     public function index()
@@ -24,14 +22,15 @@ class ContactUsController extends IronsideDashboardController
     }
 
     /**
-     * Return the data formatted for chart
+     * Return the data formatted for chart.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function getChartData()
     {
         // get all items between dates
-        $rows = FeedbackContactUs::where('created_at', '>=', $this->inputDateFrom() . '%')
-            ->where('created_at', '<=', $this->inputDateTo() . '  23:59:59')
+        $rows = FeedbackContactUs::where('created_at', '>=', $this->inputDateFrom().'%')
+            ->where('created_at', '<=', $this->inputDateTo().'  23:59:59')
             ->orderBy('created_at')
             ->get();
 
@@ -56,14 +55,15 @@ class ContactUsController extends IronsideDashboardController
     }
 
     /**
-     * Get the data - datatables
+     * Get the data - datatables.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function getTableData()
     {
         $items = FeedbackContactUs::selectRaw('*, DATE_FORMAT(created_at, "%d %b, %Y ") as date')
-            ->where('created_at', '>=', $this->inputDateFrom() . '%')
-            ->where('created_at', '<=', $this->inputDateTo() . '  23:59:59')
+            ->where('created_at', '>=', $this->inputDateFrom().'%')
+            ->where('created_at', '<=', $this->inputDateTo().'  23:59:59')
             ->orderBy('created_at')
             ->get();
 

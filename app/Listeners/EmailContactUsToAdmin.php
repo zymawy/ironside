@@ -4,15 +4,14 @@ namespace App\Listeners;
 
 use App\Events\ContactUsFeedback;
 use App\Notifications\ContactUsSubmitted;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EmailContactUsToAdmin
 {
     /**
      * Handle the event.
      *
-     * @param  ContactUsFeedback $event
+     * @param ContactUsFeedback $event
+     *
      * @return void
      */
     public function handle(ContactUsFeedback $event)
@@ -23,7 +22,7 @@ class EmailContactUsToAdmin
 
         log_activity(
             trans('dashboard/listener.contact-us'),
-            $data->fullname . trans('dashboard/listener.contact-us-submitted'),
+            $data->fullname.trans('dashboard/listener.contact-us-submitted'),
             $data);
     }
 }

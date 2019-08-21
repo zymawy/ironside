@@ -2,22 +2,22 @@
 
 namespace App\Models;
 
-use DB;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Traits\LogsActivity;
 use App\Models\Traits\ModifyBy;
+use DB;
+use Illuminate\Database\Eloquent\Model;
 
 class IronsideCMSModel extends Model
 {
     use LogsActivity, ModifyBy;
 
     /**
-     * Validation custom messages for this model
+     * Validation custom messages for this model.
      */
-    static public $messages = [];
+    public static $messages = [];
 
     /**
-     * query scope nPerGroup
+     * query scope nPerGroup.
      *
      * @param     $query
      * @param     $group
@@ -37,8 +37,8 @@ class IronsideCMSModel extends Model
         }
 
         // make sure column aliases are unique
-        $groupAlias = 'group_' . md5(time());
-        $rankAlias = 'rank_' . md5(time());
+        $groupAlias = 'group_'.md5(time());
+        $rankAlias = 'rank_'.md5(time());
 
         // apply mysql variables
         $query->addSelect(DB::raw("@rank := IF(@group = {$group}, @rank+1, 1) as {$rankAlias}, @group := {$group} as {$groupAlias}"));

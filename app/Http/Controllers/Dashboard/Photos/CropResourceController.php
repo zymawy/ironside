@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\Photos;
 
-use Image;
-use App\Models\Banner;
-use App\Http\Requests;
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Models\Banner;
+use Image;
 
 class CropResourceController extends AdminController
 {
@@ -14,7 +13,8 @@ class CropResourceController extends AdminController
     private $THUMB_SIZE = [400, 400];
 
     /**
-     * @param       $photoable
+     * @param $photoable
+     *
      * @return this
      */
     private function showCropper($photoable)
@@ -24,6 +24,7 @@ class CropResourceController extends AdminController
 
     /**
      * @param Banner $banner
+     *
      * @return this
      */
     public function showBanner(Banner $banner)
@@ -32,7 +33,8 @@ class CropResourceController extends AdminController
     }
 
     /**
-     * Crop a photo
+     * Crop a photo.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function cropPhoto()
@@ -48,8 +50,7 @@ class CropResourceController extends AdminController
         if (isset($photoable::$LARGE_SIZE)) {
             $largeSize = $photoable::$LARGE_SIZE;
             $thumbSize = $photoable::$THUMB_SIZE;
-        }
-        else {
+        } else {
             $largeSize = $this->LARGE_SIZE;
             $thumbSize = $this->THUMB_SIZE;
         }
@@ -70,12 +71,12 @@ class CropResourceController extends AdminController
         // resize the image to large size
         $imageTmp->resize($largeSize[0], null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save($path . $photoable->image);
+        })->save($path.$photoable->image);
 
         // resize the image to thumb size
         $imageTmp->resize($thumbSize[0], null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save($path . $photoable->image_thumb);
+        })->save($path.$photoable->image_thumb);
 
         return json_response('success');
     }

@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\IronsideCMSModel;
 use App\Models\Traits\HasSlug;
-use App\Models\Traits\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ArticleCategory extends IronsideCMSModel
@@ -16,24 +14,24 @@ class ArticleCategory extends IronsideCMSModel
     protected $guarded = ['id'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
-    	'name' => 'required|min:3:max:255',
+    public static $rules = [
+        'name' => 'required|min:3:max:255',
     ];
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */
     public static function getAllList()
     {
-    	return self::orderBy('name')->get()->pluck('name', 'id')->toArray();
+        return self::orderBy('name')->get()->pluck('name', 'id')->toArray();
     }
 
     /**
-     * Get the articles
+     * Get the articles.
      */
     public function articles()
     {

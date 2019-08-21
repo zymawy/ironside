@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard\Documents;
 
-use App\Models\DocumentCategory;
-use Illuminate\Http\UploadedFile;
-use Redirect;
-use App\Http\Requests;
-use App\Models\Document;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Models\Document;
+use App\Models\DocumentCategory;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class DocumentsController extends AdminController
 {
@@ -27,9 +25,11 @@ class DocumentsController extends AdminController
 
     /**
      * Show the Documentable's photos
-     * Create / Edit / Delete the photos
+     * Create / Edit / Delete the photos.
+     *
      * @param $documentable
      * @param $documents
+     *
      * @return mixed
      */
     private function showDocumentable($documentable, $documents)
@@ -42,8 +42,10 @@ class DocumentsController extends AdminController
     }
 
     /**
-     * Show the category's documents
+     * Show the category's documents.
+     *
      * @param DocumentCategory $category
+     *
      * @return mixed
      */
     public function showCategory(DocumentCategory $category)
@@ -54,7 +56,8 @@ class DocumentsController extends AdminController
     }
 
     /**
-     * Upload a new photo to the album
+     * Upload a new photo to the album.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function upload()
@@ -80,8 +83,10 @@ class DocumentsController extends AdminController
     }
 
     /**
-     * Update the photo's name
+     * Update the photo's name.
+     *
      * @param Document $document
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function updateName(Document $document)
@@ -95,6 +100,7 @@ class DocumentsController extends AdminController
      * Remove the specified photo from storage.
      *
      * @param Document $document
+     *
      * @return Response
      */
     public function destroy(Document $document)
@@ -105,21 +111,23 @@ class DocumentsController extends AdminController
     }
 
     /**
-     * Move document to /uploads/documents
+     * Move document to /uploads/documents.
+     *
      * @param UploadedFile $file
      * @param              $documentable
+     *
      * @return \Illuminate\Http\JsonResponse|static
      */
     private function moveAndCreateDocument(UploadedFile $file, $documentable)
     {
         $name = token();
-        $extension = '.' . $file->extension();
-        $filename = $name . $extension;
+        $extension = '.'.$file->extension();
+        $filename = $name.$extension;
 
         $file->move(upload_path('documents'), $filename);
 
         // file not moved
-        if (!\File::exists(upload_path('documents') . $filename)) {
+        if (!\File::exists(upload_path('documents').$filename)) {
             return false;
         }
 

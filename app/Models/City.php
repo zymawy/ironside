@@ -11,19 +11,19 @@ class City extends IronsideCMSModel
     protected $table = 'cities';
     protected $guarded = ['id'];
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'title'       => 'required|min:3:max:255',
         'province_id' => 'required|exists:provinces,id',
     ];
 
     public $translatable = [
-        'title'
+        'title',
     ];
 
     /**
-     * Get the province
+     * Get the province.
      */
     public function province()
     {
@@ -31,7 +31,7 @@ class City extends IronsideCMSModel
     }
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */

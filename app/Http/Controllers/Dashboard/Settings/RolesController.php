@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\Settings;
 
-use Redirect;
-use App\Http\Requests;
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Role;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Dashboard\AdminController;
 
 class RolesController extends AdminController
 {
@@ -36,6 +34,7 @@ class RolesController extends AdminController
      * Store a newly created role in storage.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
@@ -51,6 +50,7 @@ class RolesController extends AdminController
      * Display the specified role.
      *
      * @param Role $role
+     *
      * @return Response
      */
     public function show(Role $role)
@@ -62,6 +62,7 @@ class RolesController extends AdminController
      * Show the form for editing the specified role.
      *
      * @param Role $role
+     *
      * @return Response
      */
     public function edit(Role $role)
@@ -74,6 +75,7 @@ class RolesController extends AdminController
      *
      * @param Role    $role
      * @param Request $request
+     *
      * @return Response
      */
     public function update(Role $role, Request $request)
@@ -90,6 +92,7 @@ class RolesController extends AdminController
      *
      * @param Role    $role
      * @param Request $request
+     *
      * @return Response
      */
     public function destroy(Role $role, Request $request)

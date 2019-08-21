@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard\Pages;
 
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Models\Banner;
-use Redirect;
-use App\Http\Requests;
 use App\Models\Page;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Dashboard\AdminController;
 
 class PagesController extends AdminController
 {
@@ -67,6 +65,7 @@ class PagesController extends AdminController
      * Display the specified page.
      *
      * @param Page $page
+     *
      * @return Response
      */
     public function show(Page $page)
@@ -78,6 +77,7 @@ class PagesController extends AdminController
      * Show the form for editing the specified page.
      *
      * @param Page $page
+     *
      * @return Response
      */
     public function edit(Page $page)
@@ -98,6 +98,7 @@ class PagesController extends AdminController
      * Update the specified page in storage.
      *
      * @param Page $page
+     *
      * @return Response
      */
     public function update(Page $page)
@@ -120,6 +121,7 @@ class PagesController extends AdminController
      * Remove the specified page from storage.
      *
      * @param Page $page
+     *
      * @return Response
      */
     public function destroy(Page $page)

@@ -4,17 +4,16 @@ namespace App\Http\Controllers\Dashboard\Accounts;
 
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Mail\AdminInvitRegistration;
-use App\Role;
 use App\Models\UserInvite;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Mail;
-use App\Http\Controllers\Dashboard\IronsideDashboardController;
 
 class AdministratorsController extends AdminController
 {
     /**
-     * Show all the administrators
+     * Show all the administrators.
      *
      * @return mixed
      */
@@ -28,7 +27,7 @@ class AdministratorsController extends AdminController
     }
 
     /**
-     * Show the invites
+     * Show the invites.
      *
      * @return mixed
      */
@@ -41,12 +40,13 @@ class AdministratorsController extends AdminController
 
     /**
      * @param \Illuminate\Http\Request $request
+     *
      * @return mixed
      */
     public function postInvite(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email|unique:users' // |unique:user_invites
+            'email' => 'required|email|unique:users', // |unique:user_invites
         ]);
 
         // if already exist - send invite again
@@ -63,7 +63,7 @@ class AdministratorsController extends AdminController
         // send mail to email
         Mail::send(new AdminInvitRegistration($row));
 
-        notify()->success('Success', 'Invitation sent to ' . $row->email,
+        notify()->success('Success', 'Invitation sent to '.$row->email,
             'thumbs-up bounce animated');
 
         return redirect_to_resource();
@@ -73,6 +73,7 @@ class AdministratorsController extends AdminController
      * Show the form for editing the specified faq.
      *
      * @param User $administrator
+     *
      * @return Response
      */
     public function edit(User $administrator)
@@ -85,8 +86,10 @@ class AdministratorsController extends AdminController
 
     /**
      * Update the specified faq in storage.
+     *
      * @param User    $administrator
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(User $administrator, Request $request)
@@ -102,7 +105,7 @@ class AdministratorsController extends AdminController
             'lastname',
             'cellphone',
             'telephone',
-            'born_at'
+            'born_at',
         ]));
 
         $administrator->roles()->sync(input('roles'));
@@ -112,16 +115,17 @@ class AdministratorsController extends AdminController
 
     /**
      * Remove the specified faq from storage.
+     *
      * @param User    $administrator
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(User $administrator, Request $request)
     {
         if ($administrator->id <= 3) {
             notify()->warning('Whoops', 'You can not delete this user.');
-        }
-        else {
+        } else {
             $this->deleteEntry($administrator, $request);
         }
 

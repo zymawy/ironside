@@ -1,7 +1,8 @@
 <?php
+
 // namespace Database\Seeds;
-use Illuminate\Database\Seeder;
 use App\Models\PhotoAlbum;
+use Illuminate\Database\Seeder;
 
 class PhotoAlbumTableSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class PhotoAlbumTableSeeder extends Seeder
 
         for ($i = 0; $i < 6; $i++) {
             $item = PhotoAlbum::create([
-                'name' => $faker->sentence(2)
+                'name' => $faker->sentence(2),
             ]);
 
             for ($a = 0; $a < $faker->numberBetween(4, 8); $a++) {

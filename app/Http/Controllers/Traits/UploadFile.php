@@ -8,9 +8,10 @@ use Notify;
 trait UploadFile
 {
     /**
-     * Upload the profile picture image
+     * Upload the profile picture image.
      *
-     * @param        $file
+     * @param $file
+     *
      * @return string|void
      */
     public function uploadProfilePicture($file)
@@ -18,7 +19,7 @@ trait UploadFile
         $name = token();
         $extension = $file->guessClientExtension();
 
-        $filename = $name . '.' . $extension;
+        $filename = $name.'.'.$extension;
         $imageTmp = Image::make($file->getRealPath());
 
         if (!$imageTmp) {
@@ -28,17 +29,18 @@ trait UploadFile
         $path = upload_path_images();
 
         // save the image
-        $image = $imageTmp->fit(160, 160)->save($path . $filename);
+        $image = $imageTmp->fit(160, 160)->save($path.$filename);
 
         return $filename;
     }
 
     /**
-     * Upload the banner image, create a thumb as well
+     * Upload the banner image, create a thumb as well.
      *
      * @param        $file
      * @param string $path
      * @param array  $size
+     *
      * @return string|void
      */
     public function uploadBanner($file, $path = '', $size = ['o' => [1900, 500], 'tn' => [450, 212]])
@@ -46,8 +48,8 @@ trait UploadFile
         $name = token();
         $extension = $file->guessClientExtension();
 
-        $filename = $name . '.' . $extension;
-        $filenameThumb = $name . '-tn.' . $extension;
+        $filename = $name.'.'.$extension;
+        $filenameThumb = $name.'-tn.'.$extension;
         $imageTmp = Image::make($file->getRealPath());
 
         if (!$imageTmp) {
@@ -57,19 +59,20 @@ trait UploadFile
         $path = upload_path_images($path);
 
         // save the image
-        $image = $imageTmp->fit($size['o'][0], $size['o'][1])->save($path . $filename);
+        $image = $imageTmp->fit($size['o'][0], $size['o'][1])->save($path.$filename);
 
-        $image->fit($size['tn'][0], $size['tn'][1])->save($path . $filenameThumb);
+        $image->fit($size['tn'][0], $size['tn'][1])->save($path.$filenameThumb);
 
         return $filename;
     }
 
     /**
-     * Save Image in Storage, crop image and save in public/uploads/images
+     * Save Image in Storage, crop image and save in public/uploads/images.
      *
      * @param        $file
      * @param string $path
      * @param array  $size
+     *
      * @return array|void
      */
     public function uploadPhoto($file, $path = '', $size = ['o' => [745, 480], 'tn' => [373, 240]])
@@ -77,10 +80,10 @@ trait UploadFile
         $name = token();
         $extension = $file->guessClientExtension();
 
-        $filename = $name . '.' . $extension;
-        $filenameThumb = $name . '-tn.' . $extension;
+        $filename = $name.'.'.$extension;
+        $filenameThumb = $name.'-tn.'.$extension;
 
-        $path = upload_path('images' . DIRECTORY_SEPARATOR . $path) . DIRECTORY_SEPARATOR;
+        $path = upload_path('images'.DIRECTORY_SEPARATOR.$path).DIRECTORY_SEPARATOR;
 
         $imageTmp = Image::make($file->getRealPath());
 
@@ -89,17 +92,19 @@ trait UploadFile
         }
 
         // save the image
-        $image = $imageTmp->fit($size['o'][0], $size['o'][1])->save($path . $filename);
+        $image = $imageTmp->fit($size['o'][0], $size['o'][1])->save($path.$filename);
 
-        $image->fit($size['tn'][0], $size['tn'][1])->save($path . $filenameThumb);
+        $image->fit($size['tn'][0], $size['tn'][1])->save($path.$filenameThumb);
 
         return ['image' => $filename, 'thumb' => $filenameThumb];
     }
 
     /**
-     * Move the tmp file to desired location
+     * Move the tmp file to desired location.
+     *
      * @param        $file
      * @param string $path
+     *
      * @return string|void
      */
     public function moveFile($file, $path = '')
@@ -107,7 +112,7 @@ trait UploadFile
         $name = token();
         $extension = $file->guessClientExtension();
 
-        $filename = $name . '.' . $extension;
+        $filename = $name.'.'.$extension;
         $imageTmp = Image::make($file->getRealPath());
 
         if (!$imageTmp) {
@@ -115,7 +120,7 @@ trait UploadFile
         }
 
         $path = upload_path_images($path);
-        $image = $imageTmp->save($path . $filename);
+        $image = $imageTmp->save($path.$filename);
 
         return $filename;
     }

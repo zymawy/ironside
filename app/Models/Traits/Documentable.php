@@ -7,7 +7,8 @@ use App\Models\Document;
 trait Documentable
 {
     /**
-     * Get the first document
+     * Get the first document.
+     *
      * @return mixed
      */
     public function getDocumentAttribute()

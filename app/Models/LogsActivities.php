@@ -32,10 +32,11 @@ class LogsActivities extends Model
     }
 
     /**
-     * Get the latest activities on the site
+     * Get the latest activities on the site.
+     *
      * @return mixed
      */
-    static public function getLatest()
+    public static function getLatest()
     {
         return self::with('user')
             ->with('subject')

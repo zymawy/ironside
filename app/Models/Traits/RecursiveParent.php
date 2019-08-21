@@ -6,7 +6,8 @@ trait RecursiveParent
 {
     /**
      * Get the top level parents
-     * If the parent_id is null or parent_id = 0
+     * If the parent_id is null or parent_id = 0.
+     *
      * @return mixed
      */
     public static function parents()
@@ -17,7 +18,8 @@ trait RecursiveParent
     }
 
     /**
-     * Get the parents as list (for html selects)
+     * Get the parents as list (for html selects).
+     *
      * @return mixed
      */
     public static function parentsList()
@@ -26,7 +28,8 @@ trait RecursiveParent
     }
 
     /**
-     * Get all the top level parents and their children
+     * Get all the top level parents and their children.
+     *
      * @return mixed
      */
     public static function parentsWithChildren()
@@ -38,7 +41,8 @@ trait RecursiveParent
     }
 
     /**
-     * Get the parent
+     * Get the parent.
+     *
      * @return \Eloquent
      */
     public function parent()
@@ -47,7 +51,8 @@ trait RecursiveParent
     }
 
     /**
-     * Get the models
+     * Get the models.
+     *
      * @return \Eloquent
      */
     public function children()
@@ -56,7 +61,8 @@ trait RecursiveParent
     }
 
     /**
-     * Get the children attribute
+     * Get the children attribute.
+     *
      * @return \Eloquent
      */
     public function getChildrenAttribute()
@@ -65,7 +71,7 @@ trait RecursiveParent
     }
 
     /**
-     * Get All his parents and himself
+     * Get All his parents and himself.
      *
      * @return mixed
      */
@@ -75,10 +81,11 @@ trait RecursiveParent
     }
 
     /**
-     * Recursive find his parents
+     * Recursive find his parents.
      *
      * @param $nav
      * @param $parents
+     *
      * @return mixed
      */
     private function getParentsRecursive($nav, $parents)

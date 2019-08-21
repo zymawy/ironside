@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use App\Models\Traits\Documentable;
-use App\Models\IronsideCMSModel;
 use App\Models\Traits\HasSlug;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class DocumentCategory
+ * Class DocumentCategory.
+ *
  * @mixin \Eloquent
  */
 class DocumentCategory extends IronsideCMSModel
@@ -20,19 +20,19 @@ class DocumentCategory extends IronsideCMSModel
     protected $guarded = ['id'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'name' => 'required|min:3:max:255',
     ];
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */
     public static function getAllList()
     {
-    	return self::orderBy('name')->get()->pluck('name', 'id')->toArray();
+        return self::orderBy('name')->get()->pluck('name', 'id')->toArray();
     }
 }
