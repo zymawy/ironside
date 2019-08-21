@@ -14,7 +14,7 @@ class LocationTableSeeder extends Seeder
         Suburb::truncate();
         Country::truncate();
         Province::truncate();
-        $csvPath = database_path() . DIRECTORY_SEPARATOR . 'seeds' . DIRECTORY_SEPARATOR . 'csv' . DIRECTORY_SEPARATOR . 'countries.csv';
+        $csvPath = database_path().DIRECTORY_SEPARATOR.'seeds'.DIRECTORY_SEPARATOR.'csv'.DIRECTORY_SEPARATOR.'countries.csv';
         $items = csv_to_array($csvPath);
         foreach ($items as $key => $item) {
             Country::create([
@@ -24,7 +24,7 @@ class LocationTableSeeder extends Seeder
                 'longitude'  => $item['longitude'],
             ]);
         }
-        $csvPath = database_path() . DIRECTORY_SEPARATOR . 'seeds' . DIRECTORY_SEPARATOR . 'csv' . DIRECTORY_SEPARATOR . 'provinces.csv';
+        $csvPath = database_path().DIRECTORY_SEPARATOR.'seeds'.DIRECTORY_SEPARATOR.'csv'.DIRECTORY_SEPARATOR.'provinces.csv';
         $items = csv_to_array($csvPath);
         foreach ($items as $key => $item) {
             Province::create([
@@ -35,7 +35,7 @@ class LocationTableSeeder extends Seeder
                 'country_id' => $item['country_id'],
             ]);
         }
-        $csvPath = database_path() . DIRECTORY_SEPARATOR . 'seeds' . DIRECTORY_SEPARATOR . 'csv' . DIRECTORY_SEPARATOR . 'cities.csv';
+        $csvPath = database_path().DIRECTORY_SEPARATOR.'seeds'.DIRECTORY_SEPARATOR.'csv'.DIRECTORY_SEPARATOR.'cities.csv';
         $items = csv_to_array($csvPath);
         foreach ($items as $key => $item) {
             City::create([
@@ -46,7 +46,7 @@ class LocationTableSeeder extends Seeder
                 'province_id' => $item['province_id'],
             ]);
         }
-        $csvPath = database_path() . DIRECTORY_SEPARATOR . 'seeds' . DIRECTORY_SEPARATOR . 'csv' . DIRECTORY_SEPARATOR . 'suburbs.csv';
+        $csvPath = database_path().DIRECTORY_SEPARATOR.'seeds'.DIRECTORY_SEPARATOR.'csv'.DIRECTORY_SEPARATOR.'suburbs.csv';
         $items = csv_to_array($csvPath);
         foreach ($items as $key => $item) {
             Suburb::create([

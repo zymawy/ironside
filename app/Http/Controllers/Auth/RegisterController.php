@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserRegistered;
+use App\Models\UserInvite;
+use App\Notifications\UserConfirmedAccount;
 use App\User;
 use Carbon\Carbon;
-use App\Models\UserInvite;
 use Illuminate\Http\Request;
-use App\Events\UserRegistered;
-use App\Notifications\UserConfirmedAccount;
 
 class RegisterController extends AuthController
 {
@@ -15,12 +15,12 @@ class RegisterController extends AuthController
      * Show the application registration form.
      *
      * @param $token
+     *
      * @return \Illuminate\Http\Response
      */
     public function showRegistrationForm($token = null)
     {
         $this->showPageBanner = false;
-    
 
         // check if token is valid
         $userInvite = UserInvite::whereToken($token)->whereNull('claimed_at')->first();
@@ -31,7 +31,8 @@ class RegisterController extends AuthController
     /**
      * Handle a registration request for the application.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
@@ -55,15 +56,16 @@ class RegisterController extends AuthController
         alert()->success(__('dashboard/mail.thank_you'),
             __('dashboard/mail.msg_to_check_your_mail'));
 
-        log_activity(__('auth.register.title.page'), $user->fullname . __('dashboard/mail.registered'));
+        log_activity(__('auth.register.title.page'), $user->fullname.__('dashboard/mail.registered'));
 
         return redirect(route('login'));
     }
 
     /**
-     * User click on register confirmation link in mail
+     * User click on register confirmation link in mail.
      *
      * @param $token
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function confirmAccount($token)
@@ -73,8 +75,7 @@ class RegisterController extends AuthController
             if ($user->confirmed_at && strlen($user->confirmed_at) > 6) {
                 alert()->info(__('dashboard/mail.active_account'),
                     __('dashboard/mail.msg_already_active'));
-            }
-            else {
+            } else {
                 // confirm / activate user
                 $user->confirmation_token = null;
                 $user->confirmed_at = Carbon::now();
@@ -86,10 +87,9 @@ class RegisterController extends AuthController
                 alert()->success(__('dashboard/mail.success'),
                     __('dashboard/mail.congratulations'));
 
-                log_activity(__('dashboard/indexes.user_confirmed'), $user->fullname . __('dashboard/indexes.confirmed_their'), $user);
+                log_activity(__('dashboard/indexes.user_confirmed'), $user->fullname.__('dashboard/indexes.confirmed_their'), $user);
             }
-        }
-        else {
+        } else {
             alert()->error(__('dashboard/general.whoops'), __('dashboard/general.sorry_token_not_exist'));
 
             log_activity(__('dashboard/indexes.user_confirmed'), __('dashboard/general.invalid_token'));

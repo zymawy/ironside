@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard\Settings;
 
-use App\Http\Requests;
-use App\Models\Notification;
 //use App\Role;
-use Illuminate\Http\Request;
-use App\Models\NavigationDashboard;
-use Yajra\Datatables\Datatables;
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Models\NavigationDashboard;
+use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class NavigationController extends AdminController
 {
@@ -19,7 +17,6 @@ class NavigationController extends AdminController
      */
     public function index()
     {
-
         save_resource_url();
 
         return $this->showIndex('settings.navigation.index');
@@ -32,7 +29,7 @@ class NavigationController extends AdminController
      */
     public function create()
     {
-       $roles = \App\Role::getAllLists();
+        $roles = \App\Role::getAllLists();
         $parents = NavigationDashboard::getAllLists();
 
         return $this->view('settings.navigation.add_edit')
@@ -44,6 +41,7 @@ class NavigationController extends AdminController
      * Store a newly created navigation in storage.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
@@ -62,7 +60,7 @@ class NavigationController extends AdminController
             'help_edit_title',
             'help_edit_content',
             'parent_id',
-            'url_parent_id'
+            'url_parent_id',
         ]);
         $inputs['is_hidden'] = boolval($request->has('is_hidden'));
         $inputs['url_parent_id'] = ($inputs['url_parent_id'] == 0 ? $inputs['parent_id'] : $inputs['url_parent_id']);
@@ -81,6 +79,7 @@ class NavigationController extends AdminController
      * Display the specified navigation.
      *
      * @param $id
+     *
      * @return Response
      */
     public function show($id)
@@ -94,6 +93,7 @@ class NavigationController extends AdminController
      * Show the form for editing the specified navigation.
      *
      * @param $id
+     *
      * @return Response
      */
     public function edit($id)
@@ -112,6 +112,7 @@ class NavigationController extends AdminController
      *
      * @param         $id
      * @param Request $request
+     *
      * @return Response
      */
     public function update($id, Request $request)
@@ -130,7 +131,7 @@ class NavigationController extends AdminController
             'help_edit_title',
             'help_edit_content',
             'parent_id',
-            'url_parent_id'
+            'url_parent_id',
         ]);
         $inputs['is_hidden'] = boolval($request->has('is_hidden'));
 
@@ -147,6 +148,7 @@ class NavigationController extends AdminController
      *
      * @param         $id
      * @param Request $request
+     *
      * @return Response
      */
     public function destroy($id, Request $request)
@@ -158,9 +160,11 @@ class NavigationController extends AdminController
     }
 
     /**
-     * Return the data formatted for the table
-     * @return \Illuminate\Http\JsonResponse
+     * Return the data formatted for the table.
+     *
      * @throws \Exception
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getTableData()
     {
@@ -169,7 +173,7 @@ class NavigationController extends AdminController
         return Datatables::of($items)->editColumn('parent', function ($row) {
             return ($row->parent) ? $row->parent->title : '-';
         })->editColumn('is_hidden', function ($row) {
-            return ($row->is_hidden == 1 ? 'Yes' : '');
+            return $row->is_hidden == 1 ? 'Yes' : '';
         })->addColumn('action', function ($row) {
             return action_row($this->selectedNavigation->url, $row->id, $row->title,
                 ['edit', 'delete']);
@@ -177,7 +181,8 @@ class NavigationController extends AdminController
     }
 
     /**
-     * Get the resource items
+     * Get the resource items.
+     *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     protected function getTableRows()

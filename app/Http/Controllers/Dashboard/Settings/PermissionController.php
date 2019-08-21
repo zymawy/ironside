@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard\Settings;
 
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Permission;
-use Redirect;
-use App\Http\Requests;
 use App\Role;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Dashboard\AdminController;
 
 class PermissionController extends AdminController
 {
@@ -37,6 +35,7 @@ class PermissionController extends AdminController
      * Store a newly created role in storage.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
@@ -52,6 +51,7 @@ class PermissionController extends AdminController
      * Display the specified role.
      *
      * @param Permission $permission
+     *
      * @return Response
      */
     public function show(Permission $permission)
@@ -63,6 +63,7 @@ class PermissionController extends AdminController
      * Show the form for editing the specified role.
      *
      * @param Permission $permission
+     *
      * @return Response
      */
     public function edit(Permission $permission)
@@ -73,8 +74,9 @@ class PermissionController extends AdminController
     /**
      * Update the specified role in storage.
      *
-     * @param Permission    $permission
-     * @param Request $request
+     * @param Permission $permission
+     * @param Request    $request
+     *
      * @return Response
      */
     public function update(Permission $permission, Request $request)
@@ -89,8 +91,9 @@ class PermissionController extends AdminController
     /**
      * Remove the specified role from storage.
      *
-     * @param Permission    $permission
-     * @param Request $request
+     * @param Permission $permission
+     * @param Request    $request
+     *
      * @return Response
      */
     public function destroy(Permission $permission, Request $request)

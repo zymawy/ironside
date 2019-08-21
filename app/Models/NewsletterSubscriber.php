@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class NewsletterSubscriber
+ * Class NewsletterSubscriber.
+ *
  * @mixin \Eloquent
  */
 class NewsletterSubscriber extends IronsideCMSModel
@@ -18,9 +19,9 @@ class NewsletterSubscriber extends IronsideCMSModel
     protected $guarded = ['id'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'fullname' => 'required|max:240',
         'email'    => 'required|email|unique:newsletter_subscribers',
     ];

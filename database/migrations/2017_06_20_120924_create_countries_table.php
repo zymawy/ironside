@@ -3,11 +3,11 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 12/29/18
- * Time: 5:09 AM
+ * Time: 5:09 AM.
  */
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
 class CreateCountriesTable extends Migration
 {
     /**
@@ -32,6 +32,7 @@ class CreateCountriesTable extends Migration
             $table->integer('deleted_by')->unsigned()->nullable();
         });
     }
+
     /**
      * Reverse the migrations.
      *

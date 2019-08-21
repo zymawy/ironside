@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -35,7 +35,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-
         $this->mapDashboardRoutes();
 
         $this->mapWebsiteRoutes();
@@ -45,7 +44,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapAjaxRoutes();
-
     }
 
     /**
@@ -62,7 +60,6 @@ class RouteServiceProvider extends ServiceProvider
              ->group(base_path('routes/web.php'));
     }
 
-
     /**
      * Define the "web" routes for the application.
      *
@@ -73,7 +70,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebsiteRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->namespace . '\Website')
+            ->namespace($this->namespace.'\Website')
             ->group(base_path('routes/web.php'));
     }
 
@@ -88,7 +85,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('api')
              ->middleware('api')
-             ->namespace($this->namespace . '\Api')
+             ->namespace($this->namespace.'\Api')
              ->group(base_path('routes/api.php'));
     }
 
@@ -103,11 +100,10 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('datatable')
             ->middleware('web')
-            ->namespace($this->namespace . '\Datatable')
+            ->namespace($this->namespace.'\Datatable')
             ->as('datatable.')
             ->group(base_path('routes/datatable.php'));
     }
-
 
     /**
      * Define the "web" routes for the application.
@@ -119,11 +115,10 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapDashboardRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->namespace .'\Dashboard')
+            ->namespace($this->namespace.'\Dashboard')
             ->as('dashboard.')
             ->group(base_path('routes/dashboard.php'));
     }
-
 
     /**
      * Define the "Ajax" routes for the application.
@@ -133,11 +128,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapAjaxRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->namespace .'\Ajax')
+            ->namespace($this->namespace.'\Ajax')
             ->as('ajax.')
             ->group(base_path('routes/ajax.php'));
     }
-
-
-
 }

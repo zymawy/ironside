@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard\NewsEvents;
 
-use App\Models\NewsCategory;
-use Redirect;
-use App\Http\Requests;
-use App\Models\News;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Models\News;
+use App\Models\NewsCategory;
+use Illuminate\Http\Request;
 
 class NewsController extends AdminController
 {
@@ -40,6 +38,7 @@ class NewsController extends AdminController
      * Store a newly created news in storage.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
@@ -55,6 +54,7 @@ class NewsController extends AdminController
      * Display the specified news.
      *
      * @param News $news
+     *
      * @return Response
      */
     public function show(News $news)
@@ -66,6 +66,7 @@ class NewsController extends AdminController
      * Show the form for editing the specified news.
      *
      * @param News $news
+     *
      * @return Response
      */
     public function edit(News $news)
@@ -80,6 +81,7 @@ class NewsController extends AdminController
      *
      * @param News    $news
      * @param Request $request
+     *
      * @return Response
      */
     public function update(News $news, Request $request)
@@ -96,6 +98,7 @@ class NewsController extends AdminController
      *
      * @param News    $news
      * @param Request $request
+     *
      * @return Response
      */
     public function destroy(News $news, Request $request)

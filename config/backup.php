@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 1/2/19
- * Time: 8:04 AM
+ * Time: 8:04 AM.
  */
 
 return [
@@ -27,7 +27,7 @@ return [
          * The name of this application. You can use this name to monitor
          * the backups.
          */
-        'name' => '',
+        'name'   => '',
         'source' => [
             'files' => [
                 /*
@@ -85,7 +85,7 @@ return [
          * If you do not want any compressor at all, set it to null.
          */
         'database_dump_compressor' => null,
-        'destination' => [
+        'destination'              => [
             /*
              * The filename prefix used for the backup zip file.
              */
@@ -94,7 +94,7 @@ return [
              * The disk names on which the backups will be stored.
              */
             'disks' => [
-                'local'
+                'local',
             ],
         ],
         /*
@@ -123,7 +123,7 @@ return [
          * notifiable will use the variables specified in this config file.
          */
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
-        'mail' => [
+        'mail'       => [
             'to' => 'zymawy@gmail.com',
         ],
         'slack' => [
@@ -131,9 +131,9 @@ return [
             /*
              * If this is set to null the default channel of the webhook will be used.
              */
-            'channel' => null,
+            'channel'  => null,
             'username' => null,
-            'icon' => null,
+            'icon'     => null,
         ],
     ],
     /*
@@ -143,9 +143,9 @@ return [
      */
     'monitorBackups' => [
         [
-            'name' => config('app.name'),
-            'disks' => ['local'],
-            'newestBackupsShouldNotBeOlderThanDays' => 1,
+            'name'                                   => config('app.name'),
+            'disks'                                  => ['local'],
+            'newestBackupsShouldNotBeOlderThanDays'  => 1,
             'storageUsedMayNotBeHigherThanMegabytes' => 5000,
         ],
         /*
@@ -167,7 +167,7 @@ return [
          * No matter how you configure it the default strategy will never
          * delete the newest backup.
          */
-        'strategy' => \Spatie\Backup\Tasks\Cleanup\Strategies\DefaultStrategy::class,
+        'strategy'        => \Spatie\Backup\Tasks\Cleanup\Strategies\DefaultStrategy::class,
         'defaultStrategy' => [
             /*
              * The number of days for which backups must be kept.

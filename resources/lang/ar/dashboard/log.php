@@ -1,4 +1,5 @@
 <?php
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -26,5 +27,5 @@ return [
     'delete_cancel_message'       => 'لم يتم حذف ملف السجل.',
     'delete_error_message'        => 'لم يتم حذف ملف السجل.',
     'delete_confirmation_message' => 'تم حذف ملف السجل.',
-    'log_file_doesnt_exist'       => "ملف السجل غير موجود.",
+    'log_file_doesnt_exist'       => 'ملف السجل غير موجود.',
 ];

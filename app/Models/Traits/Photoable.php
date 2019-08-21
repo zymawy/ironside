@@ -7,7 +7,8 @@ use App\Models\Photo;
 trait Photoable
 {
     /**
-     * Get the cover photo attribute
+     * Get the cover photo attribute.
+     *
      * @return bool
      */
     public function getCoverPhotoAttribute()

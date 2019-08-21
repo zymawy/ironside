@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Api;
 use App\Models\LogActivity;
 use App\Models\Notification;
 use App\User;
-use Illuminate\Http\Request;
 
 class NotificationsController extends ApiController
 {
     /**
-     * Get all the notifications for a user
+     * Get all the notifications for a user.
+     *
      * @param User $user
      * @param bool $unread
+     *
      * @return array
      */
     public function index(User $user, $unread = false)
@@ -38,8 +39,10 @@ class NotificationsController extends ApiController
     }
 
     /**
-     * Get all the unread notifications
+     * Get all the unread notifications.
+     *
      * @param User $user
+     *
      * @return array
      */
     public function unread(User $user)
@@ -48,9 +51,11 @@ class NotificationsController extends ApiController
     }
 
     /**
-     * Read a notification
+     * Read a notification.
+     *
      * @param User         $user
      * @param Notification $notification
+     *
      * @return array
      */
     public function read(User $user, Notification $notification)
@@ -61,7 +66,8 @@ class NotificationsController extends ApiController
     }
 
     /**
-     * Get the latest Website Actions
+     * Get the latest Website Actions.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function getLatestActions()
@@ -70,7 +76,7 @@ class NotificationsController extends ApiController
 
         $items = [];
         foreach ($activities as $k => $item) {
-            $items [] = [
+            $items[] = [
                 'id'         => $item->id,
                 'title'      => $item->title,
                 'message'    => $item->description,

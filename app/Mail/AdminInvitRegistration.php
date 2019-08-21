@@ -6,7 +6,6 @@ use App\Models\UserInvite;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class AdminInvitRegistration extends Mailable
 {
@@ -35,7 +34,7 @@ class AdminInvitRegistration extends Mailable
     public function build()
     {
         return $this->to($this->userInvite->email)
-            ->subject(__('dashboard/mail.mail_admin_title') . config('app.name'))
+            ->subject(__('dashboard/mail.mail_admin_title').config('app.name'))
             ->markdown('emails.dashboard.invite');
     }
 }

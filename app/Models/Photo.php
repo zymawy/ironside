@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Photo
+ * Class Photo.
+ *
  * @mixin \Eloquent
  */
 class Photo extends Model
 {
     use SoftDeletes, ModifyBy;
 
-    static public $thumbAppend = '-tn';
+    public static $thumbAppend = '-tn';
 
-    static public $originalAppend = '-o';
+    public static $originalAppend = '-o';
 
     protected $table = 'photos';
 
@@ -24,12 +25,12 @@ class Photo extends Model
 
     protected $appends = ['thumb', 'original', 'url'];
 
-    static public $rules = [
-        'file' => 'required|image|max:5000|mimes:jpg,jpeg,png,bmp'
+    public static $rules = [
+        'file' => 'required|image|max:5000|mimes:jpg,jpeg,png,bmp',
     ];
 
     /**
-     * Get the Tag many to many
+     * Get the Tag many to many.
      */
     public function tags()
     {
@@ -42,7 +43,8 @@ class Photo extends Model
     }
 
     /**
-     * Get the thumb path (append -tn at the end)
+     * Get the thumb path (append -tn at the end).
+     *
      * @return mixed
      */
     public function getThumbAttribute()
@@ -51,9 +53,10 @@ class Photo extends Model
     }
 
     /**
-     * Get the thumb path (append -tn at the end)
+     * Get the thumb path (append -tn at the end).
+     *
      * @return mixed
-     * original is reserved (original modal data)
+     *               original is reserved (original modal data)
      */
     public function getOriginalFilenameAttribute()
     {
@@ -66,7 +69,8 @@ class Photo extends Model
     }
 
     /**
-     * Get the url to the photo
+     * Get the url to the photo.
+     *
      * @return string
      */
     public function getUrlAttribute()
@@ -85,18 +89,22 @@ class Photo extends Model
     }
 
     /**
-     * Get the url for the file name (specify thumb, default, original)
+     * Get the url for the file name (specify thumb, default, original).
+     *
      * @param $name
+     *
      * @return string
      */
     public function urlForName($name)
     {
-        return  request()->root() . '/uploads/photos/' . $name;
+        return  request()->root().'/uploads/photos/'.$name;
     }
 
     /**
-     * Apends a string before the extension
+     * Apends a string before the extension.
+     *
      * @param $append
+     *
      * @return mixed
      */
     private function appendBeforeExtension($append)

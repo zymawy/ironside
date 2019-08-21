@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers\Dashboard\General;
 
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Traits\ReportChartTable;
-use Image;
-use Redirect;
-use App\Http\Requests;
 use App\Models\Banner;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Dashboard\AdminController;
+use Image;
 
 class BannersController extends AdminController
 {
-
     use ReportChartTable;
+
     public function getChartData()
     {
         // get all items between dates
-        $rows = Banner::where('created_at', '>=', $this->inputDateFrom() . '%')
-            ->where('created_at', '<=', $this->inputDateTo() . '  23:59:59')
+        $rows = Banner::where('created_at', '>=', $this->inputDateFrom().'%')
+            ->where('created_at', '<=', $this->inputDateTo().'  23:59:59')
             ->orderBy('created_at')
             ->get();
 
@@ -42,17 +40,16 @@ class BannersController extends AdminController
         return json_encode($response);
     }
 
-
-
     /**
-     * Get the data - datatables
+     * Get the data - datatables.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function getTableData()
     {
         $items = Banner::selectRaw('*, DATE_FORMAT(created_at, "%d %b, %Y ") as date')
-            ->where('created_at', '>=', $this->inputDateFrom() . '%')
-            ->where('created_at', '<=', $this->inputDateTo() . '  23:59:59')
+            ->where('created_at', '>=', $this->inputDateFrom().'%')
+            ->where('created_at', '<=', $this->inputDateTo().'  23:59:59')
             ->orderBy('created_at')
             ->get();
 
@@ -111,6 +108,7 @@ class BannersController extends AdminController
      * Display the specified banner.
      *
      * @param Banner $banner
+     *
      * @return Response
      */
     public function show(Banner $banner)
@@ -122,6 +120,7 @@ class BannersController extends AdminController
      * Show the form for editing the specified banner.
      *
      * @param Banner $banner
+     *
      * @return Response
      */
     public function edit(Banner $banner)
@@ -134,6 +133,7 @@ class BannersController extends AdminController
      *
      * @param Banner  $banner
      * @param Request $request
+     *
      * @return Response
      */
     public function update(Banner $banner, Request $request)
@@ -141,8 +141,7 @@ class BannersController extends AdminController
         if (is_null($request->file('photo'))) {
             $attributes = request()->validate(array_except(Banner::$rules, 'photo'),
                 Banner::$messages);
-        }
-        else {
+        } else {
             $attributes = request()->validate(Banner::$rules, Banner::$messages);
 
             $photo = $this->uploadBanner($attributes['photo']);
@@ -165,6 +164,7 @@ class BannersController extends AdminController
      *
      * @param Banner  $banner
      * @param Request $request
+     *
      * @return Response
      */
     public function destroy(Banner $banner, Request $request)
@@ -178,11 +178,12 @@ class BannersController extends AdminController
     }
 
     /**
-     * Upload the banner image, create a thumb as well
+     * Upload the banner image, create a thumb as well.
      *
      * @param        $file
      * @param string $path
      * @param array  $size
+     *
      * @return string|void
      */
     public function uploadBanner(
@@ -193,8 +194,8 @@ class BannersController extends AdminController
         $name = token();
         $extension = $file->guessClientExtension();
 
-        $filename = $name . '.' . $extension;
-        $filenameThumb = $name . '-tn.' . $extension;
+        $filename = $name.'.'.$extension;
+        $filenameThumb = $name.'-tn.'.$extension;
         $imageTmp = Image::make($file->getRealPath());
 
         if (!$imageTmp) {
@@ -204,12 +205,12 @@ class BannersController extends AdminController
         $path = upload_path_images($path);
 
         // original
-        $imageTmp->save($path . $name . '-o.' . $extension);
+        $imageTmp->save($path.$name.'-o.'.$extension);
 
         // save the image
-        $image = $imageTmp->fit($size['o'][0], $size['o'][1])->save($path . $filename);
+        $image = $imageTmp->fit($size['o'][0], $size['o'][1])->save($path.$filename);
 
-        $image->fit($size['tn'][0], $size['tn'][1])->save($path . $filenameThumb);
+        $image->fit($size['tn'][0], $size['tn'][1])->save($path.$filenameThumb);
 
         return $filename;
     }

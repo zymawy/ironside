@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard\Photos;
 
-use Image;
-use App\Http\Requests;
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Models\Article;
 use App\Models\News;
 use App\Models\Photo;
-use App\Models\Product;
 use App\Models\PhotoAlbum;
-use App\Http\Controllers\Dashboard\AdminController;
+use Image;
 
 class CropperController extends AdminController
 {
@@ -20,6 +18,7 @@ class CropperController extends AdminController
     /**
      * @param       $photoable
      * @param Photo $photo
+     *
      * @return this
      */
     private function showCropper($photoable, Photo $photo)
@@ -30,6 +29,7 @@ class CropperController extends AdminController
     /**
      * @param News  $news
      * @param Photo $photo
+     *
      * @return this
      */
     public function showNewsPhoto(News $news, Photo $photo)
@@ -40,6 +40,7 @@ class CropperController extends AdminController
     /**
      * @param PhotoAlbum $album
      * @param Photo      $photo
+     *
      * @return this
      */
     public function showAlbumsPhoto(PhotoAlbum $album, Photo $photo)
@@ -50,6 +51,7 @@ class CropperController extends AdminController
     /**
      * @param Article $article
      * @param Photo   $photo
+     *
      * @return this
      */
     public function showArticlesPhoto(Article $article, Photo $photo)
@@ -58,8 +60,10 @@ class CropperController extends AdminController
     }
 
     /**
-     * Crop a photo
+     * Crop a photo.
+     *
      * @param Photo $photo
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function cropPhoto(Photo $photo)
@@ -75,8 +79,7 @@ class CropperController extends AdminController
         if (isset($photoable::$LARGE_SIZE)) {
             $largeSize = $photoable::$LARGE_SIZE;
             $thumbSize = $photoable::$THUMB_SIZE;
-        }
-        else {
+        } else {
             $largeSize = $this->LARGE_SIZE;
             $thumbSize = $this->THUMB_SIZE;
         }
@@ -97,12 +100,12 @@ class CropperController extends AdminController
         // resize the image to large size
         $imageTmp->resize($largeSize[0], null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save($path . $photo->filename);
+        })->save($path.$photo->filename);
 
         // resize the image to thumb size
         $imageTmp->resize($thumbSize[0], null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save($path . $photo->thumb);
+        })->save($path.$photo->thumb);
 
         return json_response('success');
     }

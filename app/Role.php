@@ -1,47 +1,48 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laratrust\Models\LaratrustRole;
+
 class Role extends LaratrustRole
 {
     use SoftDeletes;
-    
-    public static $USER = 'user'; 
-    
+
+    public static $USER = 'user';
+
     public static $SUPERADMINISTRATOR = 'superadministrator';
 
     public static $ADMINISTRATOR = 'administrator';
-    
+
     protected $table = 'roles';
     protected $guarded = ['id'];
 
-
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'name' => 'required|min:3:max:255',
     ];
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $messages = [
+    public static $messages = [
         'name.required' => 'dasfas',
     ];
 
     public function getIconTitleAttribute()
     {
-        return '<i class="fa fa-' . $this->attributes['icon'] . '"</i> ' . $this->attributes['name'];
+        return '<i class="fa fa-'.$this->attributes['icon'].'"</i> '.$this->attributes['name'];
     }
 
     public function getTitleSlugAttribute()
     {
-        return $this->attributes['name'] . ' (' . $this->attributes['slug'] . ')';
+        return $this->attributes['name'].' ('.$this->attributes['slug'].')';
     }
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */
@@ -49,5 +50,4 @@ class Role extends LaratrustRole
     {
         return self::orderBy('name')->get()->pluck('name', 'id')->toArray();
     }
-
 }

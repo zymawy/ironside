@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\IronsideCMSModel;
 use Bpocallaghan\Sluggable\HasSlug;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -15,17 +14,17 @@ class Tag extends IronsideCMSModel
     protected $guarded = ['id'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'name' => 'required|min:2:max:255',
     ];
 
-	/**
-	 * Get the Photo many to many
-	 */
-	public function photos()
-	{
-		return $this->belongsToMany(Photo::class);
-	}
+    /**
+     * Get the Photo many to many.
+     */
+    public function photos()
+    {
+        return $this->belongsToMany(Photo::class);
+    }
 }

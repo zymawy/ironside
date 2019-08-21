@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 12/29/18
- * Time: 5:06 AM
+ * Time: 5:06 AM.
  */
 
 namespace App\Http\Controllers\Dashboard\Locations;
-
 
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Models\City;
@@ -24,8 +23,10 @@ class SuburbsController extends AdminController
     public function index()
     {
         save_resource_url();
+
         return $this->view('locations.suburbs.index')->with('items', Suburb::all());
     }
+
     /**
      * Show the form for creating a new suburb.
      *
@@ -34,65 +35,79 @@ class SuburbsController extends AdminController
     public function create()
     {
         $cities = City::getAllLists();
+
         return $this->view('locations.suburbs.add_edit', compact('cities'));
     }
+
     /**
      * Store a newly created suburb in storage.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
     {
         $this->validate($request, Suburb::$rules, Suburb::$messages);
         $this->createEntry(Suburb::class, $request->all());
+
         return redirect_to_resource();
     }
+
     /**
      * Display the specified suburb.
      *
      * @param Suburb $suburb
+     *
      * @return Response
      */
     public function show(Suburb $suburb)
     {
         return $this->view('locations.suburbs.show')->with('item', $suburb);
     }
+
     /**
      * Show the form for editing the specified suburb.
      *
      * @param Suburb $suburb
+     *
      * @return Response
      */
     public function edit(Suburb $suburb)
     {
         $cities = City::getAllLists();
+
         return $this->view('locations.suburbs.add_edit', compact('cities'))->with('item', $suburb);
     }
+
     /**
      * Update the specified suburb in storage.
      *
      * @param Suburb  $suburb
      * @param Request $request
+     *
      * @return Response
      */
     public function update(Suburb $suburb, Request $request)
     {
         $this->validate($request, Suburb::$rules, Suburb::$messages);
         $this->updateEntry($suburb, $request->all());
+
         return redirect_to_resource();
     }
+
     /**
      * Remove the specified suburb from storage.
      *
      * @param Suburb  $suburb
      * @param Request $request
+     *
      * @return Response
      */
     public function destroy(Suburb $suburb, Request $request)
     {
         $this->deleteEntry($suburb, $request);
+
         return redirect_to_resource();
     }
-
 }

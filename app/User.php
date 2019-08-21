@@ -3,8 +3,9 @@
 namespace App;
 
 use App\Models\IronsideUser;
-use Creativeorange\Gravatar\Gravatar;
 use Auth;
+use Creativeorange\Gravatar\Gravatar;
+
 class User extends IronsideUser
 {
     protected $appends = ['fullname'];
@@ -44,15 +45,15 @@ class User extends IronsideUser
         'deleted_at',
         'logged_in_at',
         'confirmation_token',
-        'disabled_at'
+        'disabled_at',
     ];
 
     protected $dates = ['confirmed_at', 'deleted_at', 'logged_in_at', 'activated_at'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'firstname' => 'required',
         'lastname'  => 'required',
         //'gender'    => 'required|in:male,female',
@@ -63,9 +64,9 @@ class User extends IronsideUser
         //'photo'     => 'required|image|max:6000|mimes:jpg,jpeg,png,bmp',
     ];
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rulesProfile = [
+    public static $rulesProfile = [
         'firstname' => 'required',
         'lastname'  => 'required',
         'gender'    => 'required|in:male,female',
@@ -78,5 +79,4 @@ class User extends IronsideUser
 //    {
 //        return ($this->image)  ? "/images/$this->image" : Gravatar::get(Auth::user()->email);
 //    }
-
 }

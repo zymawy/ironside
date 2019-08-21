@@ -2,16 +2,8 @@
 
 namespace App\Http\Controllers\Dashboard\Reports;
 
-use App\Http\Requests;
-use App\Models\FAQ;
-use App\Models\FeedbackPurchase;
-use Illuminate\Http\Request;
-use App\Models\FeedbackArtwork;
-use App\Models\FeedbackGigapan;
-use App\Models\FeedbackPackage;
-use App\Models\FeedbackContactUs;
-use App\Models\FeedbackWeddingPackage;
 use App\Http\Controllers\Dashboard\IronsideDashboardController;
+use App\Models\FeedbackContactUs;
 
 class SummaryController extends IronsideDashboardController
 {

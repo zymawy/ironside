@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard\Photos;
 
-use Image;
-use Redirect;
+use App\Http\Controllers\Dashboard\AdminController;
+use App\Models\Article;
 use App\Models\News;
 use App\Models\Photo;
-use App\Http\Requests;
-use App\Models\Article;
 use App\Models\PhotoAlbum;
+use App\Models\Traits\ImageThumb;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use App\Models\Traits\ImageThumb;
-use App\Http\Controllers\Dashboard\AdminController;
+use Image;
 
 class PhotosController extends AdminController
 {
@@ -32,9 +30,11 @@ class PhotosController extends AdminController
 
     /**
      * Show the Photoable's photos
-     * Create / Edit / Delete the photos
+     * Create / Edit / Delete the photos.
+     *
      * @param $photoable
      * @param $photos
+     *
      * @return mixed
      */
     private function showPhotoable($photoable, $photos)
@@ -47,8 +47,10 @@ class PhotosController extends AdminController
     }
 
     /**
-     * Show the News' photos
+     * Show the News' photos.
+     *
      * @param News $news
+     *
      * @return mixed
      */
     public function showNewsPhotos(News $news)
@@ -57,8 +59,10 @@ class PhotosController extends AdminController
     }
 
     /**
-     * Show the album's photos
+     * Show the album's photos.
+     *
      * @param PhotoAlbum $album
+     *
      * @return mixed
      */
     public function showAlbumPhotos(PhotoAlbum $album)
@@ -67,8 +71,10 @@ class PhotosController extends AdminController
     }
 
     /**
-     * Show the article's photos
+     * Show the article's photos.
+     *
      * @param Article $article
+     *
      * @return mixed
      */
     public function showArticlePhotos(Article $article)
@@ -77,7 +83,8 @@ class PhotosController extends AdminController
     }
 
     /**
-     * Upload a new photo to the album
+     * Upload a new photo to the album.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function uploadPhotos()
@@ -103,8 +110,10 @@ class PhotosController extends AdminController
     }
 
     /**
-     * Update the photo's name
+     * Update the photo's name.
+     *
      * @param Photo $photo
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function updatePhotoName(Photo $photo)
@@ -115,8 +124,10 @@ class PhotosController extends AdminController
     }
 
     /**
-     * Update the album's cover image
+     * Update the album's cover image.
+     *
      * @param Photo $photo
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function updatePhotoCover(Photo $photo)
@@ -139,6 +150,7 @@ class PhotosController extends AdminController
      * Remove the specified photo from storage.
      *
      * @param Photo $photo
+     *
      * @return Response
      */
     public function destroy(Photo $photo)
@@ -151,10 +163,12 @@ class PhotosController extends AdminController
     }
 
     /**
-     * Save Image in Storage, crop image and save in public/uploads/images
+     * Save Image in Storage, crop image and save in public/uploads/images.
+     *
      * @param UploadedFile $file
      * @param              $photoable
      * @param array        $size
+     *
      * @return \Illuminate\Http\JsonResponse|static
      */
     private function moveAndCreatePhoto(
@@ -162,10 +176,10 @@ class PhotosController extends AdminController
         $photoable,
         $size = ['l' => [1024, 800], 's' => [250, 195]]
     ) {
-        $extension = '.' . $file->extension();
+        $extension = '.'.$file->extension();
 
         $name = token();
-        $filename = $name . $extension;
+        $filename = $name.$extension;
 
         $path = upload_path('photos');
         $imageTmp = Image::make($file->getRealPath());
@@ -177,8 +191,7 @@ class PhotosController extends AdminController
         if (isset($photoable::$LARGE_SIZE)) {
             $largeSize = $photoable::$LARGE_SIZE;
             $thumbSize = $photoable::$THUMB_SIZE;
-        }
-        else {
+        } else {
             $largeSize = $size['l'];
             $thumbSize = $size['s'];
         }
@@ -190,7 +203,7 @@ class PhotosController extends AdminController
         //}
 
         // save original
-        $imageTmp->save($path . $name . Photo::$originalAppend . $extension);
+        $imageTmp->save($path.$name.Photo::$originalAppend.$extension);
 
         /*// save large
         $imageTmp->fit($largeSize[0], $largeSize[1])->save($path . $filename);
@@ -205,23 +218,22 @@ class PhotosController extends AdminController
             // resize the image to the large height and constrain aspect ratio (auto width)
             $imageTmp->resize(null, $largeSize[1], function ($constraint) {
                 $constraint->aspectRatio();
-            })->save($path . $filename);
+            })->save($path.$filename);
 
             // resize the image to the thumb height and constrain aspect ratio (auto width)
             $imageTmp->resize(null, $thumbSize[1], function ($constraint) {
                 $constraint->aspectRatio();
-            })->save($path . $name . ImageThumb::$thumbAppend . $extension);
-        }
-        else {
+            })->save($path.$name.ImageThumb::$thumbAppend.$extension);
+        } else {
             // resize the image to the large width and constrain aspect ratio (auto height)
             $imageTmp->resize($largeSize[0], null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save($path . $filename);
+            })->save($path.$filename);
 
             // resize the image to the thumb width and constrain aspect ratio (auto width)
             $imageTmp->resize($thumbSize[0], null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save($path . $name . ImageThumb::$thumbAppend . $extension);
+            })->save($path.$name.ImageThumb::$thumbAppend.$extension);
         }
 
         $originalName = $file->getClientOriginalName();

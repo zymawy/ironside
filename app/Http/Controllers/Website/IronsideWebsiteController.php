@@ -3,59 +3,69 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 12/26/18
- * Time: 6:26 AM
+ * Time: 6:26 AM.
  */
 
 namespace App\Http\Controllers\Website;
-use App\Models\Page;
+
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 
 class IronsideWebsiteController extends Controller
 {
     protected $baseViewPath = 'website.';
     // html meta headers
-    protected $pageTitle = "";
-    protected $title = "";
-    protected $description = "";
+    protected $pageTitle = '';
+    protected $title = '';
+    protected $description = '';
     protected $image = '/images/share.jpg';
     protected $parentPages = [];
     protected $urlParentPages = [];
     protected $page = false;
     protected $navigation = [];
     protected $breadcrumbItems = [];
-    function __construct()
+
+    public function __construct()
     {
         $this->findCurrentPage();
         $this->setPageBreadcrumb();
         // as soon as controller is ready -  get the navigation
         $this->middleware(function ($request, $next) {
             $this->navigation = Page::getHeaderNavigation();
+
             return $next($request);
         });
     }
+
     /**
-     * Get the HTML Title
+     * Get the HTML Title.
+     *
      * @return string
      */
     protected function getPageTitle()
     {
-        return (strlen($this->pageTitle) < 2 ? $this->page['title'] : $this->pageTitle);
+        return strlen($this->pageTitle) < 2 ? $this->page['title'] : $this->pageTitle;
     }
+
     /**
-     * Get the HTML Title
+     * Get the HTML Title.
+     *
      * @return string
      */
     protected function getTitle()
     {
         $navigation = array_reverse($this->urlParentPages);
-        $this->title = strlen($this->title) > 5 ? $this->title . ' - ' : '';
+        $this->title = strlen($this->title) > 5 ? $this->title.' - ' : '';
         foreach ($navigation as $key => $nav) {
-            $this->title .= $nav['title'] . ($key + 1 < count($navigation) ? ' - ' : '');
+            $this->title .= $nav['title'].($key + 1 < count($navigation) ? ' - ' : '');
         }
-        return trim($this->title . (strlen($this->title) < 2 ? '' : ' | ') . config('app.name'));
+
+        return trim($this->title.(strlen($this->title) < 2 ? '' : ' | ').config('app.name'));
     }
+
     /**
-     * Get the HTML Description
+     * Get the HTML Description.
+     *
      * @return string
      */
     protected function getDescription()
@@ -64,10 +74,12 @@ class IronsideWebsiteController extends Controller
         if (strlen($this->description) <= 5) {
             $this->description = $this->page['description'];
         }
-        return trim($this->description . (strlen($this->description) < 2 ? '' : ' | ') . config('app.description'));
+
+        return trim($this->description.(strlen($this->description) < 2 ? '' : ' | ').config('app.description'));
     }
+
     /**
-     * Get the HTML Share Image
+     * Get the HTML Share Image.
      *
      * @return string
      */
@@ -75,27 +87,30 @@ class IronsideWebsiteController extends Controller
     {
         return $this->image;
     }
+
     /**
-     * Return / Render the view
+     * Return / Render the view.
      *
-     * @param            $path
-     * @param array      $data
+     * @param       $path
+     * @param array $data
+     *
      * @return $this
      */
     protected function view($path, $data = [])
     {
-        $view = $this->baseViewPath . $path;
+        $view = $this->baseViewPath.$path;
         // if view has package name (dont prefix)
         //if(strpos($path, "::") !== false) {
         //    $view = $path;
         //}
         // explode on package prefix
         // format view path
-        $pieces = explode("::", $path);
+        $pieces = explode('::', $path);
         if (count($pieces) >= 2) {
-            $view = $pieces[0] . "::";
-            $view .= $this->baseViewPath . $pieces[1];
+            $view = $pieces[0].'::';
+            $view .= $this->baseViewPath.$pieces[1];
         }
+
         return view($view, $data)
             ->with('image', $this->getImage())
             ->with('title', $this->getTitle())
@@ -106,10 +121,12 @@ class IronsideWebsiteController extends Controller
             ->with('breadcrumbItems', $this->breadcrumbItems)
             ->with('navigation', $this->navigation);
     }
+
     /**
-     * Get the slug from the url (url inside website)
+     * Get the slug from the url (url inside website).
      *
      * @param string $prefix
+     *
      * @return string
      */
     protected function getCurrentUrl($prefix = '/')
@@ -117,11 +134,13 @@ class IronsideWebsiteController extends Controller
         //$url = substr(request()->url(), strlen(config('app.url')));
         // prefix (request can be http://xx and app.url is https)
         $url = request()->path();
-        $url = $prefix . ltrim($url, $prefix);
+        $url = $prefix.ltrim($url, $prefix);
+
         return $url;
     }
+
     /**
-     * Explode the url into slug pieces
+     * Explode the url into slug pieces.
      *
      * @return array
      */
@@ -129,8 +148,10 @@ class IronsideWebsiteController extends Controller
     {
         return explode('/', $this->getCurrentUrl());
     }
+
     /**
-     * Get the selected navigation
+     * Get the selected navigation.
+     *
      * @return mixed
      */
     protected function findCurrentPage()
@@ -140,8 +161,7 @@ class IronsideWebsiteController extends Controller
         // laravel removes last / get home / dashboard
         if ($url === false) {
             $page = Page::where('slug', '/')->get()->first();
-        }
-        else {
+        } else {
             // find nav with url - get last (parent can have same url)
             $page = Page::where('url', $url)
                 ->orderBy('is_hidden', 'DESC')
@@ -176,10 +196,12 @@ class IronsideWebsiteController extends Controller
         // get all navigations -> ON url_parent_id
         $this->urlParentPages = $page->getUrlParentsAndYou();
         $this->page->increment('views');
+
         return $this->page;
     }
+
     /**
-     * Init and Generate the website's breadcrumb nav bar
+     * Init and Generate the website's breadcrumb nav bar.
      */
     private function setPageBreadcrumb()
     {
@@ -194,8 +216,10 @@ class IronsideWebsiteController extends Controller
             $prevTitle = $page->title;
         }
     }
+
     /**
-     * Add a link to the breadcrumb
+     * Add a link to the breadcrumb.
+     *
      * @param        $title
      * @param        $url
      * @param string $class

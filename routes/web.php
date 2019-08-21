@@ -1,6 +1,5 @@
 <?php
 
-
 /*
 |------------------------------------------
 | Localization
@@ -42,7 +41,6 @@ Route::middleware('localizer')->group(function () {
             Route::post('/profile', 'Account\ProfileController@update');
         });
 
-
     Route::prefix('auth')->namespace('Auth')->group(function () {
         // logout (get or post)
         Route::any('logout', 'LoginController@logout')->name('logout');
@@ -73,5 +71,4 @@ Route::middleware('localizer')->group(function () {
     Route::namespace('Website')->group(function () {
         Route::get('{slug1}/{slug2?}/{slug3?}', 'PagesController@index');
     });
-
 });

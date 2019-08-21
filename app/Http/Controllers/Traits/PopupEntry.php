@@ -3,12 +3,8 @@
 namespace App\Http\Controllers\Traits;
 
 use ReflectionClass;
-use Zymawy\Ironside\Models\Video;
-use Zymawy\Ironside\Models\Gigapan;
-use Zymawy\Ironside\Models\Video360;
-use Zymawy\Ironside\Models\VirtualTour;
 use Zymawy\Ironside\Models\Photography;
-use Zymawy\Ironside\Models\Illustration;
+use Zymawy\Ironside\Models\Video;
 
 trait PopupEntry
 {
@@ -21,19 +17,17 @@ trait PopupEntry
 
         $popup = false;
         foreach ($classes as $k => $resource) {
-
             $item = $this->getPopupEloquentEntry($resource);
             if ($item) {
-
-                if(!$popup) {
+                if (!$popup) {
                     $popup = $item;
-                } else if($item->active_from->gt($popup->active_from)) {
+                } elseif ($item->active_from->gt($popup->active_from)) {
                     $popup = $item;
                 }
             }
         }
 
-        if($popup) {
+        if ($popup) {
             $type = str_replace('App\Models\\', '', get_class($popup));
             if ($type == 'Video360') {
                 $type = '360 Video';
@@ -46,10 +40,12 @@ trait PopupEntry
     }
 
     /**
-     * Get a featured item
+     * Get a featured item.
+     *
      * @param     $resource
      * @param int $limit
      * @param int $offset
+     *
      * @return mixed
      */
     private function getPopupEloquentEntry($resource, $limit = 1, $offset = 0)
@@ -68,10 +64,12 @@ trait PopupEntry
     }
 
     /**
-     * Get a featured item
+     * Get a featured item.
+     *
      * @param     $resource
      * @param int $limit
      * @param int $offset
+     *
      * @return mixed
      */
     private function featuredItems($resource, $limit = 1, $offset = 0)
@@ -90,8 +88,10 @@ trait PopupEntry
     }
 
     /**
-     * Get the Eloquent Class
+     * Get the Eloquent Class.
+     *
      * @param $resource
+     *
      * @return object
      */
     private function eloqent($resource)

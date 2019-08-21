@@ -1,8 +1,9 @@
 <?php
+
 // namespace Database\Seeds;
+use App\Models\News;
 use App\Models\NewsCategory;
 use Illuminate\Database\Seeder;
-use App\Models\News;
 
 class NewsTableSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class NewsTableSeeder extends Seeder
 
         for ($i = 0; $i < 5; $i++) {
             $category = NewsCategory::create([
-                'name' => $faker->sentence(2)
+                'name' => $faker->sentence(2),
             ]);
         }
 

@@ -4,9 +4,9 @@ namespace App\Notifications;
 
 use App\Models\FeedbackContactUs;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class ContactUsSubmitted extends Notification implements ShouldQueue
 {
@@ -19,6 +19,7 @@ class ContactUsSubmitted extends Notification implements ShouldQueue
 
     /**
      * Create a new notification instance.
+     *
      * @param FeedbackContactUs $contactUs
      */
     public function __construct(FeedbackContactUs $contactUs)
@@ -29,7 +30,8 @@ class ContactUsSubmitted extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed $notifiable
+     * @param mixed $notifiable
+     *
      * @return array
      */
     public function via($notifiable)
@@ -40,16 +42,17 @@ class ContactUsSubmitted extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed $notifiable
+     * @param mixed $notifiable
+     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->subject('Contact Us')
+        return (new MailMessage())->subject('Contact Us')
             ->greeting("Dear {$notifiable->firstname}")
-            ->line("The following information was submitted from the <strong>Contact Us</strong>.")
+            ->line('The following information was submitted from the <strong>Contact Us</strong>.')
             ->line('&nbsp;')
-            ->line("<strong>Contact Us Details</strong>")
+            ->line('<strong>Contact Us Details</strong>')
             ->line("Fullname: {$this->contactUs->fullname}")
             ->line("Email: {$this->contactUs->email}")
             ->line("Phone: {$this->contactUs->phone}")
@@ -58,14 +61,16 @@ class ContactUsSubmitted extends Notification implements ShouldQueue
     }
 
     /**
-     * Notify via Database
+     * Notify via Database.
+     *
      * @param $notifiable
+     *
      * @return array
      */
     public function toDatabase($notifiable)
     {
         return [
-            'message' => $this->contactUs->fullname . ' submitted contact us.',
+            'message' => $this->contactUs->fullname.' submitted contact us.',
             'id'      => $this->contactUs->id,
             'type'    => get_class($this->contactUs),
         ];

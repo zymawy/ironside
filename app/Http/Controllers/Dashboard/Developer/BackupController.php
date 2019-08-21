@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Dashboard\Developer;
 
 use App\Http\Controllers\Dashboard\AdminController;
-use Request;
 use Artisan;
 use Exception;
 use League\Flysystem\Adapter\Local;
 use Log;
+use Request;
 use Response;
 use Storage;
 
@@ -15,7 +15,6 @@ class BackupController extends AdminController
 {
     public function index()
     {
-
         if (!count(config('backup.backup.destination.disks'))) {
             dd(trans('dashboard/backup.no_disks_configured'));
         }
@@ -42,8 +41,10 @@ class BackupController extends AdminController
         // reverse the backups, so the newest one would be on top
         $this->data['backups'] = array_reverse($this->data['backups']);
         $this->data['title'] = 'Backups';
+
         return $this->view('backup.index', $this->data);
     }
+
     public function create()
     {
         try {
@@ -64,8 +65,10 @@ class BackupController extends AdminController
         } catch (Exception $e) {
             Response::make($e->getMessage(), 500);
         }
+
         return 'success';
     }
+
     /**
      * Downloads a backup zip file.
      */
@@ -85,6 +88,7 @@ class BackupController extends AdminController
             abort(404, trans('backpack::backup.only_local_downloads_supported'));
         }
     }
+
     /**
      * Deletes a backup file.
      */
@@ -93,6 +97,7 @@ class BackupController extends AdminController
         $disk = Storage::disk(Request::input('disk'));
         if ($disk->exists($file_name)) {
             $disk->delete($file_name);
+
             return 'success';
         } else {
             abort(404, trans('backpack::backup.backup_doesnt_exist'));

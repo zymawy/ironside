@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use App\Models\IronsideCMSModel;
-use App\Models\Traits\Photoable;
 use App\Models\Traits\Documentable;
 use App\Models\Traits\ImageThumb;
+use App\Models\Traits\Photoable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class PageContent
+ * Class PageContent.
+ *
  * @mixin \Eloquent
  */
 class PageContent extends IronsideCMSModel
@@ -22,7 +22,7 @@ class PageContent extends IronsideCMSModel
 
     public $imageColumn = 'media';
 
-    static $alignments = [
+    public static $alignments = [
         //'bottom' => 'Bottom',
         //'center' => 'Center',
         'left'  => 'Left',
@@ -31,9 +31,9 @@ class PageContent extends IronsideCMSModel
     ];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'heading'         => 'nullable|min:3:max:255',
         'heading_element' => 'required|max:2',
         'content'         => 'nullable|max:8000',
@@ -44,7 +44,8 @@ class PageContent extends IronsideCMSModel
     ];
 
     /**
-     * Get the heading name
+     * Get the heading name.
+     *
      * @return mixed
      */
     public function getNameAttribute()
@@ -53,17 +54,17 @@ class PageContent extends IronsideCMSModel
     }
 
     /**
-     * Get the summary text
+     * Get the summary text.
      *
      * @return mixed
      */
     public function getSummaryAttribute()
     {
-        return substr(strip_tags($this->attributes['content']), 0, 120) . '...';
+        return substr(strip_tags($this->attributes['content']), 0, 120).'...';
     }
 
     /**
-     * Get the Page many to many
+     * Get the Page many to many.
      */
     public function pages()
     {
@@ -71,7 +72,7 @@ class PageContent extends IronsideCMSModel
     }
 
     /**
-     * Get the Page many to many
+     * Get the Page many to many.
      */
     public function component()
     {

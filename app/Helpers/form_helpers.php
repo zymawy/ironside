@@ -1,28 +1,30 @@
 <?php
 
 if (!function_exists('form_error_class')) {
-    function form_error_class($attribute, $errors,$class = 'is-invalid')
+    function form_error_class($attribute, $errors, $class = 'is-invalid')
     {
         return $errors->first($attribute, $class);
     }
 }
 
 if (!function_exists('form_error_message')) {
-    function form_error_message($attribute, $errors,$class = 'invalid-feedback')
+    function form_error_message($attribute, $errors, $class = 'invalid-feedback')
     {
         return $errors->first($attribute,
-            '<i><small for="' . $attribute . '" class="'. $class .'">:message</small></i>');
+            '<i><small for="'.$attribute.'" class="'.$class.'">:message</small></i>');
     }
 }
 
 if (!function_exists('action_row')) {
     /**
-     * Get the html for the actions for a table list
-     * @param            $url
-     * @param            $id
-     * @param            $title
-     * @param array      $actions
-     * @param bool       $wrapButtons
+     * Get the html for the actions for a table list.
+     *
+     * @param       $url
+     * @param       $id
+     * @param       $title
+     * @param array $actions
+     * @param bool  $wrapButtons
+     *
      * @return string
      */
     function action_row(
@@ -32,29 +34,28 @@ if (!function_exists('action_row')) {
         $actions = ['show', 'edit', 'delete'],
         $wrapButtons = true
     ) {
-        $url = rtrim($url, '/') . '/'; // remove last / and add it again (if it was not there)
+        $url = rtrim($url, '/').'/'; // remove last / and add it again (if it was not there)
 
         $show = '<div class="btn-group">
-                    <a href="' . $url . $id . '" class="btn bttn-material-flat bttn-xs bttn-info m-b-10 m-l-5" data-toggle="tooltip" title="' .  __('dashboard/indexes.show') . $title . '">
+                    <a href="'.$url.$id.'" class="btn bttn-material-flat bttn-xs bttn-info m-b-10 m-l-5" data-toggle="tooltip" title="'.__('dashboard/indexes.show').$title.'">
                         <i class="fa fa-eye"></i>
                     </a>
                 </div>';
 
         $edit = '<div class="btn-group">
-                    <a href="' . $url . $id . '/edit' . '" class="btn bttn-material-flat bttn-xs bttn-primary m-b-10 m-l-5" data-toggle="tooltip" title="' .  __('dashboard/indexes.edit') . $title . '">
+                    <a href="'.$url.$id.'/edit'.'" class="btn bttn-material-flat bttn-xs bttn-primary m-b-10 m-l-5" data-toggle="tooltip" title="'.__('dashboard/indexes.edit').$title.'">
                         <i class="fa fa-edit"></i>
                     </a>
                 </div>';
 
-
         $delete = '<div class="btn-group">
-                        <form id="form-delete-row' . $id . '" method="POST" action="' . $url . $id . '">
+                        <form id="form-delete-row'.$id.'" method="POST" action="'.$url.$id.'">
                         <input name="_method" type="hidden" value="DELETE">
-                        <input name="_token" type="hidden" value="' . csrf_token() . '">
-                        <input name="_id" type="hidden" value="' . $id . '">
-                        <a data-form="form-delete-row' . $id . '" 
+                        <input name="_token" type="hidden" value="'.csrf_token().'">
+                        <input name="_id" type="hidden" value="'.$id.'">
+                        <a data-form="form-delete-row'.$id.'" 
                         class="btn bttn-material-flat bttn-xs bttn-danger m-b-10 m-l-5 btn-delete-row text-white" 
-                        data-toggle="tooltip" title="' .  __('dashboard/indexes.delete') . $title . '">
+                        data-toggle="tooltip" title="'.__('dashboard/indexes.delete').$title.'">
                             <i class="fa fa-trash"></i>
                         </a>
                         </form>
@@ -79,8 +80,8 @@ if (!function_exists('action_row')) {
                 $urll = $action[$key];
 
                 $html .= '<div class="btn-group">
-                    <a href="' . $urll . '" class="btn bttn-primary bttn-xs bttn-material-flat m-b-10 m-l-5" data-toggle="tooltip" title="' . __('dashboard/indexes.show') . $key . ' for ' . $title . '">
-                        <i class="fa fa-' . $key . '"></i>
+                    <a href="'.$urll.'" class="btn bttn-primary bttn-xs bttn-material-flat m-b-10 m-l-5" data-toggle="tooltip" title="'.__('dashboard/indexes.show').$key.' for '.$title.'">
+                        <i class="fa fa-'.$key.'"></i>
                     </a>
                 </div>';
             }
@@ -90,19 +91,18 @@ if (!function_exists('action_row')) {
             return $html;
         }
 
-        return '<div class="btn-toolbar">' . $html . '</div>';
+        return '<div class="btn-toolbar">'.$html.'</div>';
     }
 }
 
 if (!function_exists('form_select')) {
-
     function select_option($display, $value, $selected)
     {
         $selected = select_selected($value, $selected);
 
         $options = ['value' => $value, 'selected' => $selected];
 
-        return '<option' . select_attributes($options) . '>' . ($display) . '</option>';
+        return '<option'.select_attributes($options).'>'.($display).'</option>';
     }
 
     function select_selected($value, $selected)
@@ -126,7 +126,7 @@ if (!function_exists('form_select')) {
             }
         }
 
-        return count($html) > 0 ? ' ' . implode(' ', $html) : '';
+        return count($html) > 0 ? ' '.implode(' ', $html) : '';
     }
 
     function select_attribute_element($key, $value)
@@ -136,16 +136,18 @@ if (!function_exists('form_select')) {
         }
 
         if (!is_null($value)) {
-            return $key . '="' . e($value) . '"';
+            return $key.'="'.e($value).'"';
         }
     }
 
     /**
-     * Simple form select options
+     * Simple form select options.
+     *
      * @param $name
      * @param $list
      * @param $selected
      * @param $options
+     *
      * @return string
      */
     function form_select($name, $list, $selected, $options)

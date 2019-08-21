@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Website;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -11,7 +11,7 @@ class BlogController extends Controller
     {
         $perPage = 6;
         $page = input('page', 1);
-        $baseUrl = config('app.url') . '/blog';
+        $baseUrl = config('app.url').'/blog';
         $items = Article::with('photos')->active()->orderBy('active_from', 'DESC')->get();
         $total = $items->count();
         // paginator
@@ -23,8 +23,10 @@ class BlogController extends Controller
                 ->with('paginator', $paginator)
                 ->render());
         }
+
         return $this->view('blog.blog')->with('paginator', $paginator);
     }
+
     public function show($newsSlug)
     {
         $item = Article::with('photos')->where('slug', $newsSlug)->first();
@@ -32,6 +34,7 @@ class BlogController extends Controller
             return redirect('/blog');
         }
         $this->addBreadcrumbLink($item->title, false);
+
         return $this->view('blog.article_show')->with('article', $item);
     }
 }

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard\General;
 
-use App\Models\Banner;
-use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Models\Banner;
+use Illuminate\Http\Request;
 
 class BannersOrderController extends AdminController
 {
@@ -22,8 +21,10 @@ class BannersOrderController extends AdminController
     }
 
     /**
-     * Update the order
+     * Update the order.
+     *
      * @param Request $request
+     *
      * @return array
      */
     public function update(Request $request)

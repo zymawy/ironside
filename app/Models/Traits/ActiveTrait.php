@@ -7,7 +7,7 @@ use Carbon\Carbon;
 trait ActiveTrait
 {
     /**
-     * Format the posted date for display
+     * Format the posted date for display.
      *
      * @return mixed
      */
@@ -17,7 +17,7 @@ trait ActiveTrait
     }
 
     /**
-     * Get the active from carbon instance
+     * Get the active from carbon instance.
      *
      * @return static
      */
@@ -27,7 +27,7 @@ trait ActiveTrait
     }
 
     /**
-     * If Empty String, dont insert date
+     * If Empty String, dont insert date.
      *
      * @param $value
      */
@@ -37,7 +37,7 @@ trait ActiveTrait
     }
 
     /**
-     * If Empty String, dont insert date
+     * If Empty String, dont insert date.
      *
      * @param $value
      */
@@ -47,14 +47,15 @@ trait ActiveTrait
     }
 
     /**
-     * Add filter to only get the active items based on the dates, if they are set
+     * Add filter to only get the active items based on the dates, if they are set.
      *
      * @param $query
+     *
      * @return mixed
      */
     public function scopeActive($query)
     {
-        return $query->whereRaw("(active_from IS NULL OR active_from <= '" . Carbon::now() . "')")
-            ->whereRaw("(active_to IS NULL OR active_to >= '" . Carbon::now() . "')");
+        return $query->whereRaw("(active_from IS NULL OR active_from <= '".Carbon::now()."')")
+            ->whereRaw("(active_to IS NULL OR active_to >= '".Carbon::now()."')");
     }
 }

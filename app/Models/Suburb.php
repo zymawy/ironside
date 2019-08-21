@@ -11,18 +11,19 @@ class Suburb extends IronsideCMSModel
     protected $table = 'suburbs';
     protected $guarded = ['id'];
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'title'   => 'required|min:3:max:255',
         'city_id' => 'required|exists:cities,id',
     ];
 
     public $translatable = [
-        'title'
+        'title',
     ];
+
     /**
-     * Get the province
+     * Get the province.
      */
     public function city()
     {
@@ -30,7 +31,7 @@ class Suburb extends IronsideCMSModel
     }
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */

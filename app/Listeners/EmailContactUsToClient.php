@@ -2,15 +2,16 @@
 
 namespace App\Listeners;
 
-use App\Mail\ClientContactUs;
 use App\Events\ContactUsFeedback;
+use App\Mail\ClientContactUs;
 
 class EmailContactUsToClient
 {
     /**
      * Handle the event.
      *
-     * @param  ContactUsFeedback $event
+     * @param ContactUsFeedback $event
+     *
      * @return void
      */
     public function handle(ContactUsFeedback $event)

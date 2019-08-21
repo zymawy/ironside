@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard\General;
 
-use Password;
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Role;
 use App\User;
-use Illuminate\Validation\Rule;
-use Redirect;
-use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Dashboard\AdminController;
+use Illuminate\Validation\Rule;
+use Password;
+use Redirect;
 
 class ClientsController extends AdminController
 {
@@ -31,6 +30,7 @@ class ClientsController extends AdminController
      * Show the form for editing the specified client.
      *
      * @param User $user
+     *
      * @return Response
      */
     public function edit($user)
@@ -49,6 +49,7 @@ class ClientsController extends AdminController
      * Update the specified client in storage.
      *
      * @param User $user
+     *
      * @return Response
      */
     public function update($user)
@@ -61,7 +62,7 @@ class ClientsController extends AdminController
         request()->validate([
             'firstname' => 'required',
             'lastname'  => 'required',
-            'email'     => 'required|email|' . Rule::unique('users')->ignore($user->id),
+            'email'     => 'required|email|'.Rule::unique('users')->ignore($user->id),
             'roles'     => 'required|array',
         ]);
 
@@ -71,7 +72,7 @@ class ClientsController extends AdminController
             'cellphone',
             'telephone',
             'email',
-            'born_at'
+            'born_at',
         ]));
 
         $user->roles()->sync(input('roles'));
@@ -83,6 +84,7 @@ class ClientsController extends AdminController
      * Remove the specified client from storage.
      *
      * @param User $user
+     *
      * @return Response
      */
     public function destroy($user)
@@ -100,7 +102,8 @@ class ClientsController extends AdminController
     /**
      * Send a reset link to the given user.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function sendResetLinkEmail(Request $request)
@@ -114,8 +117,7 @@ class ClientsController extends AdminController
 
         if ($response == 'passwords.sent') {
             notify()->success('Success!', 'Password email sent to client.');
-        }
-        else {
+        } else {
             notify()->error('Oops', 'Something went wrong', 'warning shake animated');
         }
 

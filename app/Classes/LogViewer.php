@@ -3,10 +3,13 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 1/3/19
- * Time: 9:55 PM
+ * Time: 9:55 PM.
  */
+
 namespace App\Classes;
+
 use Illuminate\Support\Facades\Storage;
+
 /**
  * Class LogViewer.
  */
@@ -68,6 +71,7 @@ class LogViewer
      * Arbitrary max file size.
      */
     const MAX_FILE_SIZE = 52428800;
+
     /**
      * @param string $file
      *
@@ -80,6 +84,7 @@ class LogViewer
             static::$file = $file;
         }
     }
+
     /**
      * @param string $file
      *
@@ -98,8 +103,10 @@ class LogViewer
         if (dirname($file) !== $logsPath) {
             throw new \Exception('No such log file');
         }
+
         return $file;
     }
+
     /**
      * @return string
      */
@@ -107,6 +114,7 @@ class LogViewer
     {
         return basename(static::$file);
     }
+
     /**
      * @throws \Illuminate\Container\EntryNotFoundException
      *
@@ -158,8 +166,10 @@ class LogViewer
                 }
             }
         }
+
         return array_reverse($log);
     }
+
     /**
      * @param bool $basename
      * @param bool $sort_by_date Most recently modified files first
@@ -189,6 +199,7 @@ class LogViewer
                 });
             }
         }
+
         return array_values($files);
     }
 }
