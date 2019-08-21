@@ -12,10 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
  */
-    'todo' => 'لكى يفعل',
+    'todo'      => 'لكى يفعل',
     'todo-desc' => 'فكرة؟ إضافة app_url و google analytics وغيرها من المعلومات ذات الصلة "الإعدادات" هنا',
-    'list' => 'List All Settings',
-    'table' => [
+    'list'      => 'List All Settings',
+    'table'     => [
 
-    ]
+    ],
     ];

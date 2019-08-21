@@ -2,24 +2,22 @@
 
 namespace App\Models\Traits;
 
-use App\Models\BankCard;
-use App\Role;
-
 trait UserHelper
 {
     /**
-     * Get the user fullname (firstname + lastname)
+     * Get the user fullname (firstname + lastname).
      *
      * @return string
      */
     public function getFullnameAttribute()
     {
-        return $this->attributes['firstname'] . ' ' . $this->attributes['lastname'];
+        return $this->attributes['firstname'].' '.$this->attributes['lastname'];
         // return  "";
     }
 
     /**
-     * Get the last 7 digits of the cellphone number
+     * Get the last 7 digits of the cellphone number.
+     *
      * @return string
      */
     public function getCellphone9Attribute()
@@ -28,7 +26,8 @@ trait UserHelper
     }
 
     /**
-     * Is User Disabled
+     * Is User Disabled.
+     *
      * @return int
      */
     public function getIsDisabledAttribute()
@@ -37,7 +36,8 @@ trait UserHelper
     }
 
     /**
-     * Get the disabled at status badge
+     * Get the disabled at status badge.
+     *
      * @return string
      */
     public function getIsDisabledBadgeAttribute()
@@ -46,7 +46,7 @@ trait UserHelper
     }
 
     /**
-     * Set the unique confirmation_token
+     * Set the unique confirmation_token.
      *
      * @param [string] $confirmation_token
      */
@@ -55,8 +55,7 @@ trait UserHelper
         // if null - dont generate and set null in table
         if (is_null($value)) {
             $this->attributes['confirmation_token'] = null;
-        }
-        else {
+        } else {
             $this->attributes['confirmation_token'] = $this->getUniqueConfirmationToken();
         }
     }

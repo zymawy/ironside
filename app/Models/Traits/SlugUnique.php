@@ -5,7 +5,7 @@ namespace App\Models\Traits;
 trait SlugUnique
 {
     /**
-     * On create and update, set the slug
+     * On create and update, set the slug.
      *
      * @return void
      */
@@ -17,28 +17,29 @@ trait SlugUnique
                 // if custom build slug from column not set
                 if (!property_exists($model, 'buildSlugFrom')) {
                     $model->setSlugAttribute($model->title);
-                }
-                else { // use specified column
+                } else { // use specified column
                     $column = $model->buildSlugFrom;
                     $model->setSlugAttribute($model->{$column});
                 }
             });
         }
     }
-    
+
     /**
-     * Set the slug attribute
+     * Set the slug attribute.
      *
      * @param $slug
      */
-    function setSlugAttribute($slug)
+    public function setSlugAttribute($slug)
     {
         $this->attributes['slug'] = $this->makeSlugUnique($slug);
     }
 
     /**
-     * Make Slug Unique in same table
+     * Make Slug Unique in same table.
+     *
      * @param $slug
+     *
      * @return string
      */
     private function makeSlugUnique($slug)
@@ -63,9 +64,10 @@ trait SlugUnique
     }
 
     /**
-     * Get existing slugs matching slug
+     * Get existing slugs matching slug.
      *
      * @param $slug
+     *
      * @return \Illuminate\Support\Collection|static
      */
     private function getExistingSlugs($slug)
@@ -79,10 +81,11 @@ trait SlugUnique
     }
 
     /**
-     * Suffix unique index to slug
+     * Suffix unique index to slug.
      *
      * @param $slug
      * @param $list
+     *
      * @return string
      */
     private function generateSuffix($slug, $list)
@@ -90,18 +93,19 @@ trait SlugUnique
         // loop through list and get highest index number
         $index = $list->map(function ($s) use ($slug) {
             // str_replace instead of explode('-');
-            return intval(str_replace($slug . '-', '', $s));
+            return intval(str_replace($slug.'-', '', $s));
         })->sort()->last();
 
-        return $slug . '-' . ($index + 1);
+        return $slug.'-'.($index + 1);
     }
 
     /**
      * Check if we are updating
      * Find entries with same slug
-     * Exlude current model's entry
+     * Exlude current model's entry.
      *
      * @param $slug
+     *
      * @return bool
      */
     private function checkUpdatingSlug($slug)

@@ -1,7 +1,9 @@
 <?php
+
 // namespace Database\Seeds;
 use App\Models\NavigationDashboard;
 use Illuminate\Database\Seeder;
+
 // use Storage;
 class NavigationDashboardTableSeeder extends Seeder
 {
@@ -10,12 +12,11 @@ class NavigationDashboardTableSeeder extends Seeder
         NavigationDashboard::truncate();
         //DB::delete('TRUNCATE navigation_admin_role');
 
-        $csvPath = __DIR__ . DIRECTORY_SEPARATOR . 'csv' . DIRECTORY_SEPARATOR . 'navigation_dashboard.csv';
+        $csvPath = __DIR__.DIRECTORY_SEPARATOR.'csv'.DIRECTORY_SEPARATOR.'navigation_dashboard.csv';
 
         $items = csv_to_array($csvPath);
 
         foreach ($items as $key => $item) {
-
             $row = NavigationDashboard::create([
                 'id'                  => $item['id'],
                 'title'               => [
@@ -43,7 +44,7 @@ class NavigationDashboardTableSeeder extends Seeder
                 ],
                 'help_create_content' => [
                   'ar' => $item['ar_help_create_content'],
-                  'en' => $item['en_help_create_content']
+                  'en' => $item['en_help_create_content'],
                 ],
                 'help_edit_title'     => [
                   'ar' => $item['ar_help_edit_title'],
@@ -51,7 +52,7 @@ class NavigationDashboardTableSeeder extends Seeder
                 ],
                 'help_edit_content'   => [
                   'ar' => $item['ar_help_edit_content'],
-                  'en' => $item['en_help_edit_content']
+                  'en' => $item['en_help_edit_content'],
                 ],
                 'list_order'          => $item['list_order'],
                 'is_hidden'           => $item['is_hidden'],

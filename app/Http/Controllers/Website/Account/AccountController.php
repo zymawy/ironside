@@ -3,16 +3,15 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 12/26/18
- * Time: 8:15 AM
+ * Time: 8:15 AM.
  */
 
 namespace App\Http\Controllers\Website\Account;
 
-use App\Http\Requests;
-use Illuminate\Http\Request;
-use Bpocallaghan\FAQ\Models\FAQ;
 use App\Http\Controllers\Website\WebsiteController;
-class AccountController extends  WebsiteController
+use Bpocallaghan\FAQ\Models\FAQ;
+
+class AccountController extends WebsiteController
 {
     public function index()
     {

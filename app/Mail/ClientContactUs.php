@@ -6,7 +6,6 @@ use App\Models\FeedbackContactUs;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ClientContactUs extends Mailable
 {
@@ -19,7 +18,9 @@ class ClientContactUs extends Mailable
 
     /**
      * Create a new message instance.
+     *
      * @param FeedbackContactUs $contactUs
+     *
      * @internal param $data
      */
     public function __construct(FeedbackContactUs $contactUs)
@@ -34,7 +35,7 @@ class ClientContactUs extends Mailable
      */
     public function build()
     {
-        return $this->subject('Contact Us - ' . config('app.name'))
+        return $this->subject('Contact Us - '.config('app.name'))
             ->to($this->contactUs->email, $this->contactUs->fullname)
             ->markdown('emails.contactus_client');
     }

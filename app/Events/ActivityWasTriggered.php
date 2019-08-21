@@ -10,6 +10,7 @@ class ActivityWasTriggered extends BaseEvent
 
     /**
      * Create a new event instance.
+     *
      * @param string $title
      * @param string $description
      * @param        $subject

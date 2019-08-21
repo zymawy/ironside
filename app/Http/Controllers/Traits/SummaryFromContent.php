@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers\Traits;
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use ReCaptcha\ReCaptcha;
-
 trait SummaryFromContent
 {
     /**
-     * Get the summary text
+     * Get the summary text.
      *
      * @return mixed
      */

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Password;
-use App\Http\Requests;
 use Illuminate\Http\Request;
+use Password;
 
 class ForgotPasswordController extends AuthController
 {
@@ -23,7 +22,8 @@ class ForgotPasswordController extends AuthController
     /**
      * Send a reset link to the given user.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function sendResetLinkEmail(Request $request)

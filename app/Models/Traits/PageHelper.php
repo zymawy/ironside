@@ -7,7 +7,7 @@ use App\Models\Page;
 trait PageHelper
 {
     /**
-     * Get the parent
+     * Get the parent.
      *
      * @return \Eloquent
      */
@@ -17,7 +17,7 @@ trait PageHelper
     }
 
     /**
-     * Get the parent
+     * Get the parent.
      *
      * @return \Eloquent
      */
@@ -27,33 +27,34 @@ trait PageHelper
     }
 
     /**
-     * Get All navigation where parent id, and not hidden
+     * Get All navigation where parent id, and not hidden.
      *
      * @param        $id
      * @param string $type
      * @param string $order
      * @param int    $hidden
+     *
      * @return mixed
      */
-    static public function whereParentIdORM(
+    public static function whereParentIdORM(
         $id,
         $type = 'list',
         $order = 'list_order',
         $hidden = 0
     ) {
         $query = Page::query();
-        if($type != "featured") {
+        if ($type != 'featured') {
             $query->whereParentId($id);
         }
 
         switch ($type) {
-            case "header":
+            case 'header':
                 $query->where('is_header', 1);
                 break;
-            case "footer";
+            case 'footer':
                 $query->where('is_footer', 1);
                 break;
-            case "featured":
+            case 'featured':
                 $query->where('is_featured', 1);
                 break;
             default:
@@ -69,31 +70,33 @@ trait PageHelper
     /**
      * Get the url from db
      * If true given, we generate a new one,
-     * This us usefull if parent_id updated, etc
+     * This us usefull if parent_id updated, etc.
      */
     public function updateUrl()
     {
         // if slug is url
-        if(is_slug_url($this->slug)) {
+        if (is_slug_url($this->slug)) {
             $this->url = $this->slug;
+
             return $this;
         }
-        
+
         $this->url = '';
         $this->generateCompleteUrl($this);
         $this->url = $this->url;
 
         if (strlen($this->slug) > 1) {
-            $this->url .= (is_slug_url($this->slug) ? "" : "/") . $this->slug;
+            $this->url .= (is_slug_url($this->slug) ? '' : '/').$this->slug;
         }
 
         return $this;
     }
 
     /**
-     * Generate the new nav based on parent_id
+     * Generate the new nav based on parent_id.
      *
      * @param $nav
+     *
      * @return \Illuminate\Support\Collection|static
      */
     private function generateCompleteUrl($nav)
@@ -102,7 +105,7 @@ trait PageHelper
 
         if ($row) {
             if (strlen($row->slug) > 1) {
-                $this->url = "/{$row->slug}" . ("{$this->url}");
+                $this->url = "/{$row->slug}".("{$this->url}");
             }
 
             return $this->generateCompleteUrl($row);
@@ -112,7 +115,7 @@ trait PageHelper
     }
 
     /**
-     * Get All his parents and himself
+     * Get All his parents and himself.
      *
      * @return mixed
      */
@@ -122,10 +125,11 @@ trait PageHelper
     }
 
     /**
-     * Recursive find his parents
+     * Recursive find his parents.
      *
      * @param $nav
      * @param $parents
+     *
      * @return mixed
      */
     private function getParentsRecursive($nav, $parents)
@@ -140,7 +144,7 @@ trait PageHelper
     }
 
     /**
-     * Get All his parents and himself
+     * Get All his parents and himself.
      *
      * @return mixed
      */
@@ -150,10 +154,11 @@ trait PageHelper
     }
 
     /**
-     * Recursive find his parents
+     * Recursive find his parents.
      *
      * @param $nav
      * @param $parents
+     *
      * @return mixed
      */
     private function getUrlParentsRecursive($nav, $parents)
@@ -168,26 +173,28 @@ trait PageHelper
     }
 
     /**
-     * Get All navigation where parent id, and not hidden
+     * Get All navigation where parent id, and not hidden.
      *
      * @param        $id
      * @param string $type
+     *
      * @return mixed
      */
-    static public function parentIdAndType($id, $type = 'main')
+    public static function parentIdAndType($id, $type = 'main')
     {
         $builder = self::where('parent_id', $id);
         $builder->where("is_$type", 1);
-        $builder->where("is_hidden", 0);
+        $builder->where('is_hidden', 0);
 
-        return $builder->orderBy("list_$type" . '_order')->get();
+        return $builder->orderBy("list_$type".'_order')->get();
     }
 
     /**
      * Get all the navigation to render
      * Hide hidden
      * Order by list order
-     * Group by parent_id
+     * Group by parent_id.
+     *
      * @return mixed
      */
     public static function getHeaderNavigation()
@@ -256,7 +263,8 @@ trait PageHelper
     }
 
     /**
-     * Get the popular pages
+     * Get the popular pages.
+     *
      * @return static
      */
     public static function getPopularPages()

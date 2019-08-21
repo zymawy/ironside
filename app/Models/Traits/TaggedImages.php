@@ -3,15 +3,15 @@
 namespace App\Models\Traits;
 
 use App\Models\Image;
-use DB;
 use App\Models\ImageTag;
+use DB;
 
 trait TaggedImages
 {
     public $imagesTagged = [];
 
     /**
-     * Get all the images linked to entry
+     * Get all the images linked to entry.
      *
      * @return \Eloquent
      */
@@ -21,7 +21,7 @@ trait TaggedImages
     }
 
     /**
-     * Get the Photo set as cover
+     * Get the Photo set as cover.
      *
      * @return object
      */
@@ -29,16 +29,18 @@ trait TaggedImages
     {
         $images = $this->images();
 
-        return (count($images) >= 1 ? $images[0] : (object) [
+        return count($images) >= 1 ? $images[0] : (object) [
             'title' => '',
             'thumb' => 'placeholder.jpg',
-            'name'  => 'placeholder.jpg'
-        ]);
+            'name'  => 'placeholder.jpg',
+        ];
     }
 
     /**
-     * Get the images tagged to this model
+     * Get the images tagged to this model.
+     *
      * @param int $limit
+     *
      * @return \Eloquent
      */
     public function images($limit = 50)
@@ -56,14 +58,13 @@ trait TaggedImages
             WHERE images.deleted_at IS NULL AND $this->table.id = ? AND image_tag.subject_type LIKE ?
             GROUP BY images.id
             ORDER BY image_tag.is_cover DESC, images.updated_at DESC
-            LIMIT $limit", [$this->id, '%' . $parent]);
+            LIMIT $limit", [$this->id, '%'.$parent]);
 
         //$this->imagesTagged = $rows;
 
         $images = collect();
         // filter active and get photos for entry
         foreach ($rows as $k => $row) {
-
             $item = $row;
             $item->thumb = substr_replace($row->name, Image::$thumbAppend, strpos($row->name, '.'),
                 0);

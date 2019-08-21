@@ -13,7 +13,6 @@ class GoogleDriveServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         \Storage::extend('backup_google', function ($app, $config) {
             $client = new \Google_Client();
             $client->setClientId($config['clientId']);
@@ -21,6 +20,7 @@ class GoogleDriveServiceProvider extends ServiceProvider
             $client->refreshToken($config['refreshToken']);
             $service = new \Google_Service_Drive($client);
             $adapter = new \Hypweb\Flysystem\GoogleDrive\GoogleDriveAdapter($service, $config['folderId']);
+
             return new \League\Flysystem\Filesystem($adapter);
         });
         \Storage::extend('google', function ($app, $config) {
@@ -30,6 +30,7 @@ class GoogleDriveServiceProvider extends ServiceProvider
             $client->refreshToken($config['refreshToken']);
             $service = new \Google_Service_Drive($client);
             $adapter = new \Hypweb\Flysystem\GoogleDrive\GoogleDriveAdapter($service, $config['folderId']);
+
             return new \League\Flysystem\Filesystem($adapter);
         });
     }

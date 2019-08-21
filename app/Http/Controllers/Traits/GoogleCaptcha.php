@@ -12,8 +12,10 @@ trait GoogleCaptcha
     // https://github.com/google/recaptcha (package - google/recaptcha)
 
     /**
-     * Validate Captcha
+     * Validate Captcha.
+     *
      * @param $request
+     *
      * @return bool
      */
     private function validateCaptcha(Request $request)
@@ -26,8 +28,10 @@ trait GoogleCaptcha
     }
 
     /**
-     * Get the captcha json responses
+     * Get the captcha json responses.
+     *
      * @param $response
+     *
      * @return JsonResponse
      */
     private function captchaResponse($response)

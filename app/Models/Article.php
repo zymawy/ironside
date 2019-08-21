@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use App\Classes\SlugOptions;
-use App\Models\Traits\HasSlug;
-use App\User;
-use App\Models\Traits\Photoable;
-use App\Models\IronsideCMSModel;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Traits\ActiveTrait;
+use App\Models\Traits\HasSlug;
+use App\Models\Traits\Photoable;
+use App\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends IronsideCMSModel
 {
@@ -25,16 +24,16 @@ class Article extends IronsideCMSModel
     public static $THUMB_SIZE = [460, 200];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'title'       => 'required|min:3:max:255',
         'content'     => 'required|min:5:max:2000',
         'category_id' => 'required|exists:article_categories,id',
     ];
 
     /**
-     * Get the summary text
+     * Get the summary text.
      *
      * @return mixed
      */
@@ -48,7 +47,7 @@ class Article extends IronsideCMSModel
     }
 
     /**
-     * Get the createdBy
+     * Get the createdBy.
      */
     public function createdBy()
     {
@@ -56,7 +55,7 @@ class Article extends IronsideCMSModel
     }
 
     /**
-     * Get the category
+     * Get the category.
      */
     public function category()
     {

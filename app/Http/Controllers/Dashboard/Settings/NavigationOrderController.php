@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Http\Controllers\Dashboard\Settings;
 
-use Illuminate\Http\Request;
-use App\Models\NavigationDashboard;
 use App\Http\Controllers\Dashboard\IronsideDashboardController;
+use App\Models\NavigationDashboard;
+use Illuminate\Http\Request;
 
 class NavigationOrderController extends IronsideDashboardController
 {
@@ -33,7 +34,7 @@ class NavigationOrderController extends IronsideDashboardController
     }
 
     /**
-     * Generate the nestable html
+     * Generate the nestable html.
      *
      * @param null $parent
      *
@@ -45,26 +46,25 @@ class NavigationOrderController extends IronsideDashboardController
 
         if (!(isset($parent) && $parent)) {
             $items = NavigationDashboard::whereParentIdORM(0, true);
-        }
-        else {
+        } else {
             $items = NavigationDashboard::whereParentIdORM($parent->id, true);
         }
 
         foreach ($items as $key => $nav) {
-            $html .= '<li class="dd-item" data-id="' . $nav->id . '">';
-            $html .= '<div class="dd-handle">' . (strlen($nav->icon) > 1 ? '<i class="fa-fw fa fa-' . $nav->icon . '"></i> ' : '');
-            $html .= $nav->title . ' ' . ($nav->is_hidden == 1? '(HIDDEN)':'') . ' <span style="float:right"> ' . $nav->url . ' </span></div>';
+            $html .= '<li class="dd-item" data-id="'.$nav->id.'">';
+            $html .= '<div class="dd-handle">'.(strlen($nav->icon) > 1 ? '<i class="fa-fw fa fa-'.$nav->icon.'"></i> ' : '');
+            $html .= $nav->title.' '.($nav->is_hidden == 1 ? '(HIDDEN)' : '').' <span style="float:right"> '.$nav->url.' </span></div>';
             $html .= $this->getNavigationHtml($nav);
             $html .= '</li>';
         }
 
         $html .= '</ol>';
 
-        return (count($items) >= 1 ? $html : '');
+        return count($items) >= 1 ? $html : '';
     }
 
     /**
-     * Loop through children and update list order (recursive)
+     * Loop through children and update list order (recursive).
      *
      * @param $nav
      */
@@ -81,7 +81,7 @@ class NavigationOrderController extends IronsideDashboardController
     }
 
     /**
-     * Update Navigation Item, with new list order and parent id (list and parent can change)
+     * Update Navigation Item, with new list order and parent id (list and parent can change).
      *
      * @param     $id
      * @param     $listOrder

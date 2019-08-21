@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ActiveTrait;
+use App\Models\Traits\ImageThumb;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use  App\Models\IronsideCMSModel;
-use  App\Models\Traits\ActiveTrait;
-use  App\Models\Traits\ImageThumb;
+use  Illuminate\Database\Eloquent\Model;
+use  Illuminate\Database\Eloquent\SoftDeletes;
 
 class Banner extends IronsideCMSModel
 {
@@ -24,9 +23,9 @@ class Banner extends IronsideCMSModel
     public static $THUMB_SIZE = [576, 150];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'name'        => 'required|min:3:max:255',
         'summary'     => 'nullable|max:500',
         'action_name' => 'nullable|max:500',
@@ -37,7 +36,7 @@ class Banner extends IronsideCMSModel
     ];
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */
@@ -46,16 +45,17 @@ class Banner extends IronsideCMSModel
         return self::active()->orderBy('name')->get()->pluck('name', 'id')->toArray();
     }
 
-	/**
-	 * Get the Page many to many
-	 */
-	public function pages()
-	{
-		return $this->belongsToMany(Page::class);
-	}
+    /**
+     * Get the Page many to many.
+     */
+    public function pages()
+    {
+        return $this->belongsToMany(Page::class);
+    }
 
     /**
-     * Get the is active label attribute
+     * Get the is active label attribute.
+     *
      * @return string
      */
     public function getIsActiveLabelAttribute()

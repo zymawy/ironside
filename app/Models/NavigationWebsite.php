@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\IronsideWebsiteNavigation;
-
 class NavigationWebsite extends IronsideWebsiteNavigation
 {
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */
@@ -17,12 +15,13 @@ class NavigationWebsite extends IronsideWebsiteNavigation
     }
 
     /**
-     * Get the top main level menu
+     * Get the top main level menu.
      *
      * @param int $hidden
+     *
      * @return mixed
      */
-    static public function mainNavigation($hidden = 0)
+    public static function mainNavigation($hidden = 0)
     {
         $builder = self::where('parent_id', 0)->where('is_main', 1);
 
@@ -34,15 +33,16 @@ class NavigationWebsite extends IronsideWebsiteNavigation
     }
 
     /**
-     * Get All navigation where parent id, and not hidden
+     * Get All navigation where parent id, and not hidden.
      *
      * @param        $id
      * @param string $type
      * @param string $order
      * @param int    $hidden
+     *
      * @return mixed
      */
-    static public function whereParentIdORM(
+    public static function whereParentIdORM(
         $id,
         $type = 'main',
         $order = 'list_main_order',
@@ -51,7 +51,7 @@ class NavigationWebsite extends IronsideWebsiteNavigation
         $query = self::whereParentId($id);
 
         switch ($type) {
-            case 'footer';
+            case 'footer':
                 $query->where('is_footer', 1);
                 break;
             default:
@@ -62,18 +62,19 @@ class NavigationWebsite extends IronsideWebsiteNavigation
     }
 
     /**
-     * Get All navigation where parent id, and not hidden
+     * Get All navigation where parent id, and not hidden.
      *
      * @param        $id
      * @param string $type
+     *
      * @return mixed
      */
-    static public function parentIdAndType($id, $type = 'main')
+    public static function parentIdAndType($id, $type = 'main')
     {
         $builder = self::where('parent_id', $id);
         $builder->where("is_$type", 1);
-        $builder->where("is_hidden", 0);
+        $builder->where('is_hidden', 0);
 
-        return $builder->orderBy("list_$type" . '_order')->get();
+        return $builder->orderBy("list_$type".'_order')->get();
     }
 }

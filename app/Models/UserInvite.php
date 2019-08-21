@@ -14,7 +14,7 @@ class UserInvite extends Model
     protected $dates = ['claimed_at'];
 
     /**
-     * Hash the password attribute before insert into the database
+     * Hash the password attribute before insert into the database.
      *
      * @param [string] $password
      */
@@ -24,7 +24,7 @@ class UserInvite extends Model
     }
 
     /**
-     * Set the unique token
+     * Set the unique token.
      *
      * @param [string] $token
      */
@@ -44,7 +44,7 @@ class UserInvite extends Model
     }
 
     /**
-     * Get the user that sent invite to email
+     * Get the user that sent invite to email.
      *
      * @return \Eloquent
      */

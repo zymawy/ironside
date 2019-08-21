@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class LogActivity extends Model
 {
@@ -23,21 +22,25 @@ class LogActivity extends Model
     }
 
     /**
-     * Get the latest activities on the site
+     * Get the latest activities on the site.
+     *
      * @param int $limit
+     *
      * @return mixed
      */
-    static public function getLatest($limit = 200)
+    public static function getLatest($limit = 200)
     {
         return self::with('subject')->orderBy('created_at', 'DESC')->limit($limit)->get();
     }
 
     /**
-     * Get the latest activities on the site
+     * Get the latest activities on the site.
+     *
      * @param int $minutes
+     *
      * @return mixed
      */
-    static public function getLatestMinutes($minutes = 24 * 60)
+    public static function getLatestMinutes($minutes = 24 * 60)
     {
         $date = Carbon::now()->subMinutes($minutes);
 

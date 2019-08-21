@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Models\LogActivity;
 use App\Events\ActivityWasTriggered;
+use App\Models\LogActivity;
 
 class SaveActivity
 {

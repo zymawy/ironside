@@ -2,9 +2,6 @@
 
 namespace App\Models\Traits;
 
-use App\Models\LogAdminActivity;
-use ReflectionClass;
-
 trait URLFromParent
 {
     /**
@@ -24,7 +21,8 @@ trait URLFromParent
     }
 
     /**
-     * Get the prefix for the url
+     * Get the prefix for the url.
+     *
      * @return string
      */
     private function getURLPrefix()
@@ -37,7 +35,8 @@ trait URLFromParent
     }
 
     /**
-     * Get the postifx for the url
+     * Get the postifx for the url.
+     *
      * @return string
      */
     private function getURLPosfix()
@@ -52,30 +51,30 @@ trait URLFromParent
     /**
      * Get the url from db
      * If true given, we generate a new one,
-     * This us usefull if parent_id updated, etc
+     * This us usefull if parent_id updated, etc.
      *
      * @return \Eloquent
      */
-
     public function updateUrl($model)
     {
         $this->url = '';
         $this->generateCompleteUrl($model);
 
         if (strlen($this->slug) > 1) {
-            $this->url .= (strlen($this->url) > 1 ? '/' : '') . $this->slug;
+            $this->url .= (strlen($this->url) > 1 ? '/' : '').$this->slug;
         }
 
         // prefix the sport type and news - 'complete url'
-        $this->url = $this->getURLPrefix() . $this->url . $this->getURLPosfix();
+        $this->url = $this->getURLPrefix().$this->url.$this->getURLPosfix();
 
         return $this;
     }
 
     /**
-     * Generate the new nav based on parent_id
+     * Generate the new nav based on parent_id.
      *
      * @param $model
+     *
      * @return \Illuminate\Support\Collection|static
      */
     private function generateCompleteUrl($model)
@@ -84,7 +83,7 @@ trait URLFromParent
 
         if ($row) {
             if (strlen($row->slug) > 1) {
-                $this->url = $row->slug . (strlen($this->url) ? '/' . $this->url : '');
+                $this->url = $row->slug.(strlen($this->url) ? '/'.$this->url : '');
             }
 
             return $this->generateCompleteUrl($row);

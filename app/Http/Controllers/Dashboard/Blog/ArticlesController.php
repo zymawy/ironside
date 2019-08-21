@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard\Blog;
 
-use App\Models\ArticleCategory;
-use Redirect;
-use App\Http\Requests;
-use App\Models\Article;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Models\Article;
+use App\Models\ArticleCategory;
+use Illuminate\Http\Request;
 
 class ArticlesController extends AdminController
 {
@@ -40,6 +38,7 @@ class ArticlesController extends AdminController
      * Store a newly created article in storage.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
@@ -55,6 +54,7 @@ class ArticlesController extends AdminController
      * Display the specified article.
      *
      * @param Article $article
+     *
      * @return Response
      */
     public function show(Article $article)
@@ -66,6 +66,7 @@ class ArticlesController extends AdminController
      * Show the form for editing the specified article.
      *
      * @param Article $article
+     *
      * @return Response
      */
     public function edit(Article $article)
@@ -80,6 +81,7 @@ class ArticlesController extends AdminController
      *
      * @param Article $article
      * @param Request $request
+     *
      * @return Response
      */
     public function update(Article $article, Request $request)
@@ -96,6 +98,7 @@ class ArticlesController extends AdminController
      *
      * @param Article $article
      * @param Request $request
+     *
      * @return Response
      */
     public function destroy(Article $article, Request $request)

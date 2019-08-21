@@ -3,10 +3,8 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 12/26/18
- * Time: 5:25 AM
+ * Time: 5:25 AM.
  */
-
-
 Route::middleware('localizer')->group(function () {
     /*
     |------------------------------------------
@@ -107,7 +105,7 @@ Route::middleware('localizer')->group(function () {
             // clients
             Route::post('clients/filter', 'ClientsController@filter');
             Route::resource('clients', 'ClientsController')->parameters([
-                'clients' => 'user'
+                'clients' => 'user',
             ]);
             Route::post('clients/{user}/notify/forgot-password',
                 'ClientsController@sendResetLinkEmail');
@@ -143,9 +141,9 @@ Route::middleware('localizer')->group(function () {
             Route::get('summary', 'SummaryController@index');
 
             // feedback contact us
-             Route::get('contact-us', 'ContactUsController@index');
-             Route::post('contact-us/chart', 'ContactUsController@getChartData');
-             Route::get('contact-us/datatable', 'ContactUsController@getTableData');
+            Route::get('contact-us', 'ContactUsController@index');
+            Route::post('contact-us/chart', 'ContactUsController@getChartData');
+            Route::get('contact-us/datatable', 'ContactUsController@getTableData');
         });
 
         Route::namespace('Settings')->prefix('settings')->group(function () {
@@ -188,7 +186,7 @@ Route::middleware('localizer')->group(function () {
             Route::post('/login/{user}', 'ImpersonateController@login')
                 ->name('impersonate.login')
 //                ->middleware('auth.admin')
-            ;
+;
         });
 
         Route::namespace('Developer')->prefix('developer/area')->group(function () {
@@ -204,9 +202,6 @@ Route::middleware('localizer')->group(function () {
             Route::get('log/preview/{file_name}', 'LogController@preview');
             Route::get('log/download/{file_name}', 'LogController@download');
             Route::delete('log/delete/{file_name}', 'LogController@delete');
-
         }); // Developer Area
-
-
     }); // End Auth
 });

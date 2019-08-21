@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: ironside
  * Date: 1/3/19
- * Time: 9:53 PM
+ * Time: 9:53 PM.
  */
 
 namespace App\Http\Controllers\Dashboard\Developer;
 
-use App\Http\Controllers\Dashboard\AdminController;
 use App\Classes\LogViewer;
+use App\Http\Controllers\Dashboard\AdminController;
 
 class LogController extends AdminController
 {
@@ -20,13 +20,13 @@ class LogController extends AdminController
      */
     public function index()
     {
-
         $this->data['files'] = LogViewer::getFiles(true, false);
         $this->data['title'] = trans('dashboard/log.log_manager');
 
 //        return $this->data;
         return $this->view('logs.logs', $this->data);
     }
+
     /**
      * Previews a log file.
      *
@@ -42,8 +42,10 @@ class LogController extends AdminController
         $this->data['logs'] = $logs;
         $this->data['title'] = trans('dashboard/log.preview').' '.trans('dashboard/log.logs');
         $this->data['file_name'] = base64_decode($file_name);
+
         return $this->view('logs.log_item', $this->data);
     }
+
     /**
      * Downloads a log file.
      *
@@ -57,6 +59,7 @@ class LogController extends AdminController
     {
         return response()->download(LogViewer::pathToLogFile(base64_decode($file_name)));
     }
+
     /**
      * Deletes a log file.
      *

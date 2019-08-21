@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ModifyBy;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use PhpParser\Node\Expr\AssignOp\Mod;
-use  App\Models\IronsideCMSModel;
-use  App\Models\Traits\ModifyBy;
+use  Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Document
+ * Class Document.
+ *
  * @mixin \Eloquent
  */
 class Document extends Model
@@ -21,10 +20,10 @@ class Document extends Model
     protected $guarded = ['id'];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
-        'file' => 'required|file|max:5000|mimes:pdf'
+    public static $rules = [
+        'file' => 'required|file|max:5000|mimes:pdf',
     ];
 
     public function getUrlAttribute()
@@ -40,12 +39,12 @@ class Document extends Model
     }
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */
     public static function getAllList()
     {
-    	return self::with('documentable')->orderBy('name')->get()->pluck('name', 'id')->toArray();
+        return self::with('documentable')->orderBy('name')->get()->pluck('name', 'id')->toArray();
     }
 }

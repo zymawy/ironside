@@ -1,7 +1,8 @@
 <?php
+
 // namespace Database\Seeds;
-use Illuminate\Database\Seeder;
 use App\Models\Banner;
+use Illuminate\Database\Seeder;
 
 class BannerTableSeeder extends Seeder
 {
@@ -13,26 +14,26 @@ class BannerTableSeeder extends Seeder
 
         $items = collect([
             [
-                'name' => 'Banner 1',
-                'image' => 'banner-1.jpg',
+                'name'       => 'Banner 1',
+                'image'      => 'banner-1.jpg',
                 'is_website' => true,
-                'hide_name' => true,
+                'hide_name'  => true,
             ],
             [
-                'name' => 'Banner 2',
-                'image' => 'banner-2.jpg',
+                'name'       => 'Banner 2',
+                'image'      => 'banner-2.jpg',
                 'is_website' => true,
-                'hide_name' => true,
+                'hide_name'  => true,
             ],
             [
-                'name' => 'Banner 3',
-                'image' => 'banner-3.jpg',
+                'name'       => 'Banner 3',
+                'image'      => 'banner-3.jpg',
                 'is_website' => true,
-                'hide_name' => true,
-            ]
+                'hide_name'  => true,
+            ],
         ]);
 
-        $items->map(function($item) {
+        $items->map(function ($item) {
             Banner::create([
                 'name'        => $item['name'],
                 'image'       => $item['image'],

@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Password;
 use Carbon\Carbon;
-use App\Http\Requests;
 use Illuminate\Http\Request;
-use Zymawy\Ironside\Http\Controllers\WebsiteController;
+use Password;
 
 class ResetPasswordController extends AuthController
 {
@@ -15,7 +13,8 @@ class ResetPasswordController extends AuthController
      *
      * If no token is present, display the link request form.
      *
-     * @param  string|null $token
+     * @param string|null $token
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showResetForm($token = null)
@@ -29,7 +28,8 @@ class ResetPasswordController extends AuthController
     /**
      * Reset the given user's password.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function reset(Request $request)

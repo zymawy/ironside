@@ -3,11 +3,11 @@
 namespace App\Events;
 
 use App\Models\UserInvite;
+use App\Notifications\UserRegistered as NotifyUserRegistered;
+use App\Role;
 use App\User;
 use Carbon\Carbon;
-use App\Role;
 use Illuminate\Queue\SerializesModels;
-use App\Notifications\UserRegistered as NotifyUserRegistered;
 
 class UserRegistered
 {
@@ -15,6 +15,7 @@ class UserRegistered
 
     /**
      * Create a new event instance.
+     *
      * @param User $user
      * @param null $token
      */
@@ -35,8 +36,8 @@ class UserRegistered
         $user->attachRole($role);
 
         // notify / send email to user to confirm account
-         $user->notify(new NotifyUserRegistered());
+        $user->notify(new NotifyUserRegistered());
 
-        log_activity('User Registered', $user->fullname . ' registered as a new user.', $user);
+        log_activity('User Registered', $user->fullname.' registered as a new user.', $user);
     }
 }

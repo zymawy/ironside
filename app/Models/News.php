@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use App\Classes\SlugOptions;
+use App\Models\Traits\ActiveTrait;
 use App\Models\Traits\HasSlug;
 use App\Models\Traits\Photoable;
 use App\User;
-use App\Models\Traits\ActiveTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class News
+ * Class News.
+ *
  * @mixin \Eloquent
  */
 class News extends IronsideCMSModel
@@ -28,9 +29,9 @@ class News extends IronsideCMSModel
     public static $THUMB_SIZE = [460, 200];
 
     /**
-     * Validation rules for this model
+     * Validation rules for this model.
      */
-    static public $rules = [
+    public static $rules = [
         'title'       => 'required|min:3:max:255',
         'content'     => 'required|min:5:max:2000',
         'category_id' => 'required|exists:news_categories,id',
@@ -39,7 +40,7 @@ class News extends IronsideCMSModel
     ];
 
     /**
-     * Get the summary text
+     * Get the summary text.
      *
      * @return mixed
      */
@@ -53,7 +54,7 @@ class News extends IronsideCMSModel
     }
 
     /**
-     * Get the createdBy
+     * Get the createdBy.
      */
     public function createdBy()
     {
@@ -61,7 +62,7 @@ class News extends IronsideCMSModel
     }
 
     /**
-     * Get the category
+     * Get the category.
      */
     public function category()
     {
@@ -69,7 +70,7 @@ class News extends IronsideCMSModel
     }
 
     /**
-     * Get all the rows as an array (ready for dropdowns)
+     * Get all the rows as an array (ready for dropdowns).
      *
      * @return array
      */

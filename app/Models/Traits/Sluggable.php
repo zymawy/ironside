@@ -5,7 +5,7 @@ namespace App\Models\Traits;
 trait Sluggable
 {
     /**
-     * On create and update, set the slug
+     * On create and update, set the slug.
      *
      * @return void
      */
@@ -13,14 +13,12 @@ trait Sluggable
     {
         // on model's creating and updating event
         foreach (['creating', 'updating'] as $event) {
-
             static::$event(function ($model) use ($event) {
                 dd($model);
                 // if custom build slug from column not set
                 if (!property_exists($model, 'buildSlugFrom')) {
                     $model->setSlugAttribute($model->title);
-                }
-                else { // use specified column
+                } else { // use specified column
                     $column = $model->buildSlugFrom;
                     $model->setSlugAttribute($model->{$column});
                 }
@@ -29,10 +27,11 @@ trait Sluggable
     }
 
     /**
-     * Set the slug attribute
+     * Set the slug attribute.
+     *
      * @param $slug
      */
-    function setSlugAttribute($slug)
+    public function setSlugAttribute($slug)
     {
         $this->attributes['slug'] = slugifyMe($slug);
     }
@@ -42,6 +41,7 @@ trait Sluggable
      *
      * @param $scope
      * @param $slug
+     *
      * @return mixed
      */
     public function scopeWhereSlug($scope, $slug)
@@ -51,8 +51,10 @@ trait Sluggable
 
     /**
      * Find a model by slug.
+     *
      * @param       $slug
      * @param array $columns
+     *
      * @return mixed
      */
     public static function findBySlug($slug, array $columns = ['*'])
@@ -65,6 +67,7 @@ trait Sluggable
      *
      * @param       $slug
      * @param array $columns
+     *
      * @return mixed
      */
     public static function findBySlugOrFail($slug, array $columns = ['*'])

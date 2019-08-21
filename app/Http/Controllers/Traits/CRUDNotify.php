@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 trait CRUDNotify
 {
     /**
-     * Get Model class name, add space before all capital letters
+     * Get Model class name, add space before all capital letters.
      *
      * @param $model
+     *
      * @return mixed
      */
     private function formatModelName($model)
@@ -18,10 +19,11 @@ trait CRUDNotify
     }
 
     /**
-     * Create Entry
+     * Create Entry.
      *
      * @param $model
      * @param $inputs
+     *
      * @return mixed
      */
     public function createEntry($model, $inputs)
@@ -30,9 +32,8 @@ trait CRUDNotify
 
         if ($row) {
             notify()->success(__('dashboard/general.successfully'),
-                __('dashboard/general.the_msg_create',['model' => $this->formatModelName($model)]));
-        }
-        else {
+                __('dashboard/general.the_msg_create', ['model' => $this->formatModelName($model)]));
+        } else {
             notify()->error(__('dashboard/general.oops'), __('dashboard/general.something_went'));
         }
 
@@ -42,6 +43,7 @@ trait CRUDNotify
     /**
      * @param $model
      * @param $inputs
+     *
      * @return mixed
      */
     public function updateEntry($model, $inputs)
@@ -49,7 +51,7 @@ trait CRUDNotify
         $response = $model->update($inputs);
 
         notify()->success(__('dashboard/general.successfully'),
-        __('dashboard/general.the_msg_update',['model' => $this->formatModelName($model)]));
+        __('dashboard/general.the_msg_update', ['model' => $this->formatModelName($model)]));
 
         return $model;
     }
@@ -64,16 +66,14 @@ trait CRUDNotify
         if ($request->get('_id') == $model->id) {
             if ($model->delete() >= 1) {
                 notify()->success(__('dashboard/general.successfully'),
-                    __('dashboard/general.the_msg_remove',['model' => $this->formatModelName($model)]));
-            }
-            else {
+                    __('dashboard/general.the_msg_remove', ['model' => $this->formatModelName($model)]));
+            } else {
                 notify()->error(__('dashboard/general.oops'),
-                    __('dashboard/general.the_msg_could_not_find',['model' => $this->formatModelName($model)]));
+                    __('dashboard/general.the_msg_could_not_find', ['model' => $this->formatModelName($model)]));
             }
-        }
-        else {
+        } else {
             notify()->error(__('dashboard/general.oops'),
-                __('dashboard/general.the_msg_not_match',['model' => $this->formatModelName($model)]));
+                __('dashboard/general.the_msg_not_match', ['model' => $this->formatModelName($model)]));
         }
     }
 }

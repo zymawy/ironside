@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\NavigationDashboard;
 use App\Http\Controllers\IronsideController;
 use App\Http\Controllers\Traits\CRUDNotify;
+use App\Models\NavigationDashboard;
 
 class IronsideDashboardController extends IronsideController
 {
@@ -15,7 +15,7 @@ class IronsideDashboardController extends IronsideController
     // name of the resource we are viewing / modify
     protected $resource = '';
 
-    function __construct()
+    public function __construct()
     {
         $this->setSelectedNavigation();
 
@@ -27,7 +27,7 @@ class IronsideDashboardController extends IronsideController
     }
 
     /**
-     * Get the html title (check for crud reserve word)
+     * Get the html title (check for crud reserve word).
      *
      * @return string
      */
@@ -35,23 +35,24 @@ class IronsideDashboardController extends IronsideController
     {
         if (strlen($this->title) <= 5) {
             if ($word = $this->checkIfReservedWordInUrl()) {
-                $this->title .= ucfirst($word) . ' ';
+                $this->title .= ucfirst($word).' ';
             }
 
             $navigation = array_reverse($this->urlParentNavs);
             foreach ($navigation as $key => $nav) {
-                $this->title .= $nav->title . ($key + 1 < count($navigation) ? ' - ' : '');
+                $this->title .= $nav->title.($key + 1 < count($navigation) ? ' - ' : '');
             }
         }
 
-        return $this->title . ' - ' . __('dashboard/general.dashboard') . ' | ' . config('app.name');
+        return $this->title.' - '.__('dashboard/general.dashboard').' | '.config('app.name');
     }
 
     /**
-     * Return / Render the view
+     * Return / Render the view.
      *
      * @param       $view
      * @param array $data
+     *
      * @return $this
      */
     protected function view($view, $data = [])
@@ -71,7 +72,7 @@ class IronsideDashboardController extends IronsideController
     /**
      * Generate the breadcrumbs
      * TODO: check for reserved words and some parent links are only for show (not
-     * clickable)
+     * clickable).
      *
      * @return string
      */
@@ -79,18 +80,17 @@ class IronsideDashboardController extends IronsideController
     {
         $navigation = $this->urlParentNavs;
         $url = config('app.url');
-        $isFloat = \App::isLocale('ar')? 'float-left': 'float-right';
-        $html = '<ol class="breadcrumb ' . $isFloat .'">';
+        $isFloat = \App::isLocale('ar') ? 'float-left' : 'float-right';
+        $html = '<ol class="breadcrumb '.$isFloat.'">';
 
         // for dashboard, only add home
         if (count($navigation) == 1 && $navigation[0]->title == 'Dashboard') {
-            $html .= '<li><a href="' . $url . '" class="text-primary"><i class="fa fa-home"></i>'. __('dashboard/general.dashboard') . '</a></li>';
-        }
-        else {
+            $html .= '<li><a href="'.$url.'" class="text-primary"><i class="fa fa-home"></i>'.__('dashboard/general.dashboard').'</a></li>';
+        } else {
             foreach ($navigation as $key => $nav) {
                 $html .= '<li class="breadcrumb-item">';
-                $icon = (strlen($nav->icon) > 2 ? '<i class="fa fa-' . $nav->icon . '"></i> ' : '');
-                $html .= '<a href="' . url($nav->url) . '">' . $icon . '' . $nav->title . '</a>';
+                $icon = (strlen($nav->icon) > 2 ? '<i class="fa fa-'.$nav->icon.'"></i> ' : '');
+                $html .= '<a href="'.url($nav->url).'">'.$icon.''.$nav->title.'</a>';
                 $html .= '</li>';
             }
 
@@ -99,10 +99,10 @@ class IronsideDashboardController extends IronsideController
                 $html .= '<li class="breadcrumb-item active">';
                 $html .= ucfirst($word);
                 $html .= '</li>';
-            };
+            }
         }
 
-        return $html . '</ol>';
+        return $html.'</ol>';
     }
 
     public function getPageCrumb()
@@ -113,30 +113,30 @@ class IronsideDashboardController extends IronsideController
         // for dashboard, only add home
         if (count($navigation) == 1 && $navigation[0]->title == 'Dashboard') {
             $html .= '<i class="fa fa-home"></i> Dashboard';
-        }
-        else {
+        } else {
             //foreach ($navigation as $key => $nav) {
             //    $html .= '<li>';
             //    $html .= '<i class="fa fa-' . $nav->icon . '"></i> ' . $nav->title;
             //    $html .= '</li>';
             //}
-            $html .= '<i class="fa fa-' . $this->selectedNavigation->icon . '"></i> ' . $this->selectedNavigation->title;
+            $html .= '<i class="fa fa-'.$this->selectedNavigation->icon.'"></i> '.$this->selectedNavigation->title;
 
             // TODO: show edit / create, etc icon ?
             if ($word = $this->checkIfReservedWordInUrl()) {
                 $html .= '<small> ';
                 $html .= ucfirst($word);
                 $html .= ' </small>';
-            };
+            }
         }
 
-        return $html . '</h1>';
+        return $html.'</h1>';
     }
 
     /**
-     * Check if one of the keywords are in the url
+     * Check if one of the keywords are in the url.
      *
      * @param bool $url
+     *
      * @return bool
      */
     protected function checkIfReservedWordInUrl($url = false)
@@ -168,7 +168,7 @@ class IronsideDashboardController extends IronsideController
 
     /**
      * Set the Current Navigation
-     * Find the navigations parents and url parents
+     * Find the navigations parents and url parents.
      *
      * @return bool
      */
@@ -181,8 +181,7 @@ class IronsideDashboardController extends IronsideController
         if ($url === false) {
             // dahboard (substring from the /, laravel removes last /)
             $nav = NavigationDashboard::whereSlug('/')->get()->last();
-        }
-        else {
+        } else {
             // find nav with url - get last (parent can have same url)
             $nav = NavigationDashboard::where('url', '=', $url)
                 ->orderBy('is_hidden', 'DESC')//->orderBy('url_parent_id')
@@ -233,8 +232,10 @@ class IronsideDashboardController extends IronsideController
 
     /**
      * Get the items, check if we use ajax or send items to view
-     * Return the index view
+     * Return the index view.
+     *
      * @param string $view
+     *
      * @return mixed
      */
     protected function showIndex($view = '')
@@ -246,7 +247,8 @@ class IronsideDashboardController extends IronsideController
     }
 
     /**
-     * Return the data formatted for the table
+     * Return the data formatted for the table.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function getTableData()

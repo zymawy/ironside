@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Website\WebsiteController;
 use App\Models\LogLogin;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Website\WebsiteController;
 
 class AuthController extends WebsiteController
 {

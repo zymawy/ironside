@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use Analytics;
-use App\Http\Requests;
 use App\Http\Controllers\Traits\GoogleAnalyticsHelper;
 
 class AnalyticsController extends ApiController
@@ -11,7 +10,8 @@ class AnalyticsController extends ApiController
     use GoogleAnalyticsHelper;
 
     /**
-     * Get the sessions grouped by country
+     * Get the sessions grouped by country.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function getVisitorsLocations()
@@ -21,7 +21,7 @@ class AnalyticsController extends ApiController
         $data = Analytics::performQuery($period, 'ga:sessions', [
             'dimensions'  => 'ga:country',
             'sort'        => '-ga:sessions',
-            'max-results' => 50
+            'max-results' => 50,
         ]);
 
         $items = [];

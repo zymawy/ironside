@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Website;
 
-
 use App\Http\Controllers\Controller;
 use App\Models\PhotoAlbum;
 use Illuminate\Http\Request;
@@ -14,7 +13,7 @@ class GalleryController extends Controller
     {
         $perPage = 9;
         $page = input('page', 1);
-        $baseUrl = config('app.url') . '/gallery';
+        $baseUrl = config('app.url').'/gallery';
         $items = PhotoAlbum::with('photos')->orderBy('name')->get();
         $total = $items->count();
         // paginator
@@ -26,16 +25,19 @@ class GalleryController extends Controller
                 ->with('paginator', $paginator)
                 ->render());
         }
+
         return $this->view('gallery.albums')->with('paginator', $paginator);
     }
+
     public function showAlbum($albumSlug)
     {
         $album = PhotoAlbum::where('slug', $albumSlug)->first();
-        if(!$album) {
+        if (!$album) {
             return redirect('/gallery');
         }
         $items = $album->photos;
         $this->addBreadcrumbLink($album->name, '/gallery');
+
         return $this->view('gallery.album_show')->with('album', $album);
     }
 }

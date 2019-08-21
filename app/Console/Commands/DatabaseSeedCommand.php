@@ -2,10 +2,9 @@
 
 namespace App\Console\Commands;
 
+use Database\Seeds\DatabaseSeeder;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Artisan;
-use Database\Seeds\DatabaseSeeder;
 
 class DatabaseSeedCommand extends Command
 {
@@ -38,7 +37,7 @@ class DatabaseSeedCommand extends Command
     /**
      * Create a new controller creator command instance.
      *
-     * @param  \Illuminate\Filesystem\Filesystem $filesystem
+     * @param \Illuminate\Filesystem\Filesystem $filesystem
      */
     public function __construct(Filesystem $filesystem)
     {
@@ -47,24 +46,24 @@ class DatabaseSeedCommand extends Command
         $this->ds = DIRECTORY_SEPARATOR;
         $this->filesystem = $filesystem;
 
-        $this->basePath = __DIR__ . $this->ds . '..' . $this->ds . '..' . $this->ds;
-        $this->appPath = $this->basePath . "app" . $this->ds;
+        $this->basePath = __DIR__.$this->ds.'..'.$this->ds.'..'.$this->ds;
+        $this->appPath = $this->basePath.'app'.$this->ds;
     }
 
     /**
-     * Execute the command
+     * Execute the command.
      */
     public function handle()
     {
         $seed = new DatabaseSeeder();
         $seed->run();
 
-        $this->line("Seeding: RoleTableSeeder");
-        $this->line("Seeding: UserTableSeeder");
-        $this->line("Seeding: BannerTableSeeder");
-        $this->line("Seeding: PageTableSeeder");
-        $this->line("Seeding: NavigationDashboardTableSeeder");
-        $this->info("Database seeding completed successfully.");
+        $this->line('Seeding: RoleTableSeeder');
+        $this->line('Seeding: UserTableSeeder');
+        $this->line('Seeding: BannerTableSeeder');
+        $this->line('Seeding: PageTableSeeder');
+        $this->line('Seeding: NavigationDashboardTableSeeder');
+        $this->info('Database seeding completed successfully.');
     }
 
     /**

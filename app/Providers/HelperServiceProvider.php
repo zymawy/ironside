@@ -23,9 +23,9 @@ class HelperServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $appPath = __DIR__ . DIRECTORY_SEPARATOR;
-        $path = $appPath . ".." . DIRECTORY_SEPARATOR;
-        $path .= "Helpers" . DIRECTORY_SEPARATOR . "*.php";
+        $appPath = __DIR__.DIRECTORY_SEPARATOR;
+        $path = $appPath.'..'.DIRECTORY_SEPARATOR;
+        $path .= 'Helpers'.DIRECTORY_SEPARATOR.'*.php';
 
         foreach (glob($path) as $filename) {
             require_once $filename;
