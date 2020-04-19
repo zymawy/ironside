@@ -38,7 +38,7 @@
         "datatables.net-select-bs4": "^1.2.7",
         "flag-icon-css": "^3.2.1",
         "fontawesome": "^4.7.2",
-        "jquery": "^3.3.1",
+        "jquery": "^3.4.0",
         "jquery-cropper": "^1.0.0",
         "lodash": "^4.17.5",
         "moment": "^2.24.0",
